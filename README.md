@@ -32,4 +32,4 @@ To keep our codebase readable and to keep Git happy (Git is case-sensitive!), we
 2. **Pull before you push.** Always fetch and pull the latest version of the `main` branch before you start working, and right before you push your new commits. 
 3. **Test before committing.** Never push a broken build to the main branch. Ensure the game runs without crashing before pushing your code.
 
-# more soon, if I'm not admitted to a mental institution by then
+### more soon, if I'm not admitted to a mental institution by then ⚠️⚠️⚠️
