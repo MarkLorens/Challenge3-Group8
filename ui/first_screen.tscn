@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://cde748alnree4"]
+
+[ext_resource type="Script" uid="uid://bud6jmpytt0l8" path="res://ui/first_tap.gd" id="1_rfri3"]
+[ext_resource type="Texture2D" uid="uid://cnxl7e5kjr3bk" path="res://assets/art/ui/background.png" id="2_ovww7"]
+[ext_resource type="FontFile" uid="uid://b8ldgkkm5118m" path="res://assets/fonts/kawaii-cubes-cute-pixel-sans-2026-04-22-22-56-18-utc/Kawaii Cubes.ttf" id="3_dbm4f"]
+[ext_resource type="FontFile" uid="uid://ecqbsbyb6m2t" path="res://assets/fonts/ComicMode-SemiBold.ttf" id="4_nwyk8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xuhuk"]
+
+[node name="FirstScreen" type="Control" unique_id=984247949]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rfri3")
+
+[node name="background" type="TextureRect" parent="." unique_id=466086991]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ovww7")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1602100159]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -447.0
+offset_right = 33.0
+offset_bottom = 447.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="gamename" type="Label" parent="CenterContainer" unique_id=679021938]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
+theme_override_colors/font_outline_color = Color(0.96862745, 0.972549, 0.96862745, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_dbm4f")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxTexture_xuhuk")
+text = "Infinite Studio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tap" type="Label" parent="." unique_id=1245550127]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 479.0
+offset_right = 647.0
+offset_bottom = 504.0
+theme_override_colors/font_color = Color(0.11764706, 0.105882354, 0.16470589, 1)
+theme_override_colors/font_outline_color = Color(0.96862745, 0.972549, 0.96862745, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("4_nwyk8")
+theme_override_font_sizes/font_size = 24
+text = "tap anywhere"
+horizontal_alignment = 1
