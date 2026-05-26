@@ -11,17 +11,9 @@ config_version=5
 [application]
 
 config/name="Later"
-<<<<<<< Updated upstream
-run/main_scene="uid://cde748alnree4"
-=======
 run/main_scene="uid://b1yvay0rxrbxw"
->>>>>>> Stashed changes
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
-
-[display]
-
-window/stretch/mode="canvas_items"
 
 [editor]
 
