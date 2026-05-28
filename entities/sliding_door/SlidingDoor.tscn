@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://mwjqm2h2ukp5"]
+
+[ext_resource type="Texture2D" uid="uid://nqh6186wb7a8" path="res://assets/art/environment/walls/sliding_door_glass_left_resized.png" id="1_sssku"]
+
+[node name="SlidingDoor" type="Node2D" unique_id=747853674]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1711166329]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=979038507]
+texture = ExtResource("1_sssku")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1035988549]
+polygon = PackedVector2Array(21, 25, -15, 46, -18, 43, -18, -24, 17, -44, 20, -42)
