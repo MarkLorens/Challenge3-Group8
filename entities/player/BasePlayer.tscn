@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://dnrlir6rdqga4"]
 
 [ext_resource type="Script" uid="uid://t4cbf0c6fe4v" path="res://entities/player/base_player.gd" id="1_bj2ww"]
-[ext_resource type="Texture2D" uid="uid://bcs6idvg4sig4" path="res://icon.svg" id="2_203me"]
+[ext_resource type="Texture2D" uid="uid://c1bfba1gv5oci" path="res://assets/art/characters/abled_idle_left.png" id="2_bj2ww"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bj2ww"]
+radius = 0.01
 
 [node name="BasePlayer" type="CharacterBody2D" unique_id=1493889780]
 script = ExtResource("1_bj2ww")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=93296087]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_203me")
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_bj2ww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=549855525]
+shape = SubResource("CircleShape2D_bj2ww")
