@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsbcllqbss7n4"
-path="res://.godot/imported/WallSpriteSheet.png-4e996398406f14cfdd1cac4492f6cf1d.ctex"
+uid="uid://lbh8d5looyfg"
+path="res://.godot/imported/WallTileSpriteSheet.png-d324fa59f40d73ae18d78d2be12e4cb6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/tilesets/WallSpriteSheet.png"
-dest_files=["res://.godot/imported/WallSpriteSheet.png-4e996398406f14cfdd1cac4492f6cf1d.ctex"]
+source_file="res://assets/art/tilesets/WallTileSpriteSheet.png"
+dest_files=["res://.godot/imported/WallTileSpriteSheet.png-d324fa59f40d73ae18d78d2be12e4cb6.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nqh6186wb7a8"
-path="res://.godot/imported/sliding_door_glass_left_resized.png-b0cd7ea43e1c3a643fa1d8c2813227c5.ctex"
+uid="uid://oulikvvksjl2"
+path="res://.godot/imported/FloorTileSpriteSheet.png-e4a7396b7904bcdd066b4058f60eeece.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/environment/walls/sliding_door_glass_left_resized.png"
-dest_files=["res://.godot/imported/sliding_door_glass_left_resized.png-b0cd7ea43e1c3a643fa1d8c2813227c5.ctex"]
+source_file="res://assets/art/tilesets/FloorTileSpriteSheet.png"
+dest_files=["res://.godot/imported/FloorTileSpriteSheet.png-e4a7396b7904bcdd066b4058f60eeece.ctex"]
 
 [params]
 
