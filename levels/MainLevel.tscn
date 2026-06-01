@@ -66,7 +66,8 @@ tile_set = SubResource("TileSet_qkoq2")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1994155343]
 zoom = Vector2(0.2, 0.2)
 
-[node name="BasePlayer" parent="." unique_id=1493889780 instance=ExtResource("4_jg0uj")]
+[node name="BasePlayer" parent="." unique_id=1493889780 node_paths=PackedStringArray("floor_tilemap") instance=ExtResource("4_jg0uj")]
+floor_tilemap = NodePath("../FloorTile")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1844859755]
 position = Vector2(422, 171)

@@ -22,4 +22,8 @@ sources/0 = SubResource("TileSetAtlasSource_e62ln")
 tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 251, 255, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_ghc0l")
 
-[node name="BasePlayer" parent="." unique_id=1493889780 instance=ExtResource("1_ux2x0")]
+[node name="BasePlayer" parent="." unique_id=1493889780 node_paths=PackedStringArray("floor_tilemap") instance=ExtResource("1_ux2x0")]
+floor_tilemap = NodePath("../TileMapLayer")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1036833976]
+zoom = Vector2(0.1, 0.1)
