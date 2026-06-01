@@ -1,3 +1,70 @@
-[gd_scene format=3 uid="uid://biw122kdhy1gm"]
+[gd_scene format=4 uid="uid://biw122kdhy1gm"]
 
-[node name="Node2D" type="Node2D" unique_id=1909207718]
+[ext_resource type="Texture2D" uid="uid://oulikvvksjl2" path="res://assets/art/tilesets/FloorTileSpriteSheet.png" id="1_3348v"]
+[ext_resource type="Texture2D" uid="uid://lbh8d5looyfg" path="res://assets/art/tilesets/WallTileSpriteSheet.png" id="2_jg0uj"]
+[ext_resource type="PackedScene" uid="uid://mwjqm2h2ukp5" path="res://entities/sliding_door/SlidingDoor.tscn" id="3_3348v"]
+[ext_resource type="PackedScene" uid="uid://dnrlir6rdqga4" path="res://entities/player/BasePlayer.tscn" id="4_jg0uj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jg0uj"]
+texture = ExtResource("1_3348v")
+texture_region_size = Vector2i(518, 597)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -149)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -149, -259, 0, 0, 149, 259, 0)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -149)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -149)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, -149)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, -149)
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(0, -149)
+6:0/0 = 0
+6:0/0/texture_origin = Vector2i(0, -149)
+
+[sub_resource type="TileSet" id="TileSet_srceu"]
+tile_shape = 1
+tile_size = Vector2i(518, 298)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_jg0uj")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_srceu"]
+texture = ExtResource("2_jg0uj")
+texture_region_size = Vector2i(327, 485)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(-100, 120)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(155, 240)
+1:0/0/z_index = 1
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(-160, 240)
+2:0/0/z_index = 1
+
+[sub_resource type="TileSet" id="TileSet_qkoq2"]
+tile_shape = 1
+tile_size = Vector2i(518, 298)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_srceu")
+
+[node name="Level_0" type="Node2D" unique_id=1909207718]
+
+[node name="FloorTile" type="TileMapLayer" parent="." unique_id=385642768]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAD//wUAAAABAAAAAAD//wQAAAABAAAAAAD+/wMAAAABAAAAAAD+/wIAAAABAAAAAAD9/wEAAAABAAAAAAD9/wAAAAABAAAAAAD8////AAABAAAAAAD8//7/AAABAAAAAAAAAAQAAAABAAAAAAAAAAMAAAABAAAAAAABAAIAAAABAAAAAAABAAEAAAABAAAAAAABAAAAAAADAAAAAAAAAP//AAADAAAAAAAAAP7/AAADAAAAAAD///3/AAADAAAAAAD///z/AAADAAAAAAD+//v/AAADAAAAAAD+//r/AAADAAAAAAD9//v/AAADAAAAAAD9//z/AAADAAAAAAD9//3/AAACAAAAAAD9//7/AAACAAAAAAD8//3/AAADAAAAAAD+//z/AAACAAAAAAD+//3/AAACAAAAAAD+//7/AAACAAAAAAD+////AAACAAAAAAD9////AAACAAAAAAD+/wAAAAACAAAAAAD+/wEAAAACAAAAAAD//wAAAAACAAAAAAD///7/AAACAAAAAAD/////AAACAAAAAAAAAAAAAAACAAAAAAAAAAEAAAACAAAAAAAAAAIAAAACAAAAAAD//wEAAAACAAAAAAD//wIAAAACAAAAAAD//wMAAAACAAAAAAACAP7/AAAEAAAAAAABAP3/AAAEAAAAAAABAPz/AAAEAAAAAAAAAPv/AAAEAAAAAAAAAPr/AAAEAAAAAAD///n/AAAEAAAAAAD///j/AAAEAAAAAAD+//f/AAAEAAAAAAACAP3/AAAEAAAAAAADAPz/AAAEAAAAAAACAPv/AAAGAAAAAAACAPr/AAAGAAAAAAABAPn/AAAGAAAAAAABAPj/AAAGAAAAAAAAAPf/AAAGAAAAAAAAAPb/AAAGAAAAAAD///b/AAAGAAAAAAD///X/AAAGAAAAAAD///f/AAAFAAAAAAAAAPj/AAAFAAAAAAAAAPn/AAAFAAAAAAABAPr/AAAFAAAAAAABAPv/AAAFAAAAAAACAPz/AAAFAAAAAAA=")
+tile_set = SubResource("TileSet_srceu")
+
+[node name="WallTile" type="TileMapLayer" parent="." unique_id=4761558]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAD9//z/AAACAAAAAAD9//3/AAACAAAAAAD///7/AAABAAAAAAD+//7/AAACAAAAAAA=")
+tile_set = SubResource("TileSet_qkoq2")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1994155343]
+zoom = Vector2(0.2, 0.2)
+
+[node name="BasePlayer" parent="." unique_id=1493889780 node_paths=PackedStringArray("floor_tilemap") instance=ExtResource("4_jg0uj")]
+floor_tilemap = NodePath("../FloorTile")
+
+[node name="SlidingDoor" parent="." unique_id=747853674 instance=ExtResource("3_3348v")]
+position = Vector2(-138, -593)
