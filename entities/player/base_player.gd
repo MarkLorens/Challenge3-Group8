@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name BasePlayer
 #Grid-By-Grid movement
 @export var floor_tilemap: TileMapLayer
+@export var wall_tilemap: TileMapLayer
 @export var speed: float = 400.0
 
 var target_pos: Vector2 = global_position
@@ -30,16 +31,19 @@ func _unhandled_input(event):
 				floor_tilemap.to_local(mouse_pos)
 			)
 			current_grid = clicked_tile
-			global_position = floor_tilemap.map_to_local(current_grid)
-			print(clicked_tile)
+			if can_move_to(clicked_tile):
+				global_position = floor_tilemap.map_to_local(current_grid)
+				print(clicked_tile)
+			
 
-func move_grid(direction: Vector2i):
+func can_move_to(tile: Vector2i) -> bool:
 
-	current_grid += direction
+	if floor_tilemap.get_cell_source_id(tile) == -1:
+		return false
+	if wall_tilemap.get_cell_source_id(tile) != -1:
+		return false
 
-	global_position = floor_tilemap.map_to_local(current_grid)
-
-	print(current_grid)
+	return true
 
 func _draw():
 	draw_circle(
