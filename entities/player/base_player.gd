@@ -3,19 +3,30 @@ class_name BasePlayer
 #Grid-By-Grid movement
 @export var floor_tilemap: TileMapLayer
 @export var wall_tilemap: TileMapLayer
-@export var speed: float = 400.0
+@export var highlight_layer: TileMapLayer
+@export var move_range: int = 2
 
 var target_pos: Vector2 = global_position
 var is_moving: bool = false
 var current_grid: Vector2i
+
+const DIRECTIONS = [
+	Vector2i(1, 0),
+	Vector2i(-1, 0),
+	Vector2i(0, 1),
+	Vector2i(0, -1)
+]
 
 func _ready() -> void:
 	current_grid = floor_tilemap.local_to_map(global_position)
 	global_position = floor_tilemap.map_to_local(current_grid)
 
 	target_pos = global_position
-	print(current_grid)
-	print(floor_tilemap.map_to_local(Vector2i(0,0)))
+	
+	highlight_layer.show_move_range(
+		current_grid,
+		move_range
+	)
 	
 func _unhandled_input(event):
 
@@ -30,11 +41,29 @@ func _unhandled_input(event):
 			var clicked_tile = floor_tilemap.local_to_map(
 				floor_tilemap.to_local(mouse_pos)
 			)
-			current_grid = clicked_tile
-			if can_move_to(clicked_tile):
-				global_position = floor_tilemap.map_to_local(current_grid)
-				print(clicked_tile)
 			
+			var distance = (
+				abs(clicked_tile.x - current_grid.x)
+				+ abs(clicked_tile.y - current_grid.y)
+			)
+
+			if distance > move_range:
+				return
+		
+			if can_move_to(clicked_tile):
+				current_grid = clicked_tile
+				global_position = floor_tilemap.to_global(
+					floor_tilemap.map_to_local(current_grid)
+				)
+				highlight_layer.show_move_range(
+					current_grid,
+					move_range
+				)
+				print(current_grid)
+			
+
+#func get_reachable_tiles(start: Vector2i, max_steps: int) -> Array[Vector2i]:
+	
 
 func can_move_to(tile: Vector2i) -> bool:
 
@@ -44,10 +73,3 @@ func can_move_to(tile: Vector2i) -> bool:
 		return false
 
 	return true
-
-func _draw():
-	draw_circle(
-		floor_tilemap.map_to_local(current_grid),
-		5,
-		Color.RED
-	)
