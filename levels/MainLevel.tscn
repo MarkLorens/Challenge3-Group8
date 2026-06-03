@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c20p5u32i8csc" path="res://core/pause_menu.gd" id="5_k5fuh"]
 [ext_resource type="FontFile" uid="uid://b8ldgkkm5118m" path="res://assets/fonts/kawaii-cubes-cute-pixel-sans-2026-04-22-22-56-18-utc/Kawaii Cubes.ttf" id="6_k5fuh"]
 [ext_resource type="FontFile" uid="uid://ecqbsbyb6m2t" path="res://assets/fonts/ComicMode-SemiBold.ttf" id="7_bb6xo"]
+[ext_resource type="Texture2D" uid="uid://c0t6yu3a7xb46" path="res://assets/art/button/play.png" id="8_q7j5t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jg0uj"]
 texture = ExtResource("1_3348v")
@@ -141,7 +142,6 @@ z_index = 2
 position = Vector2(-375, -442)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=400454896]
-visible = false
 script = ExtResource("5_bb6xo")
 
 [node name="PauseButton" type="TextureButton" parent="CanvasLayer" unique_id=1688624501]
@@ -156,7 +156,16 @@ grow_vertical = 2
 texture_normal = ExtResource("5_k0gbw")
 stretch_mode = 6
 
+[node name="EndTurnButton" type="TextureButton" parent="CanvasLayer" unique_id=1860387765]
+offset_left = 170.0
+offset_top = 50.0
+offset_right = 265.0
+offset_bottom = 147.0
+texture_normal = ExtResource("8_q7j5t")
+stretch_mode = 4
+
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=62743263]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -269,6 +278,7 @@ text = "EXIT
 "
 
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/PauseMenu" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/EndTurnButton" to="BasePlayer" method="end_turn"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/continue" to="CanvasLayer/PauseMenu" method="_on_continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/restart" to="CanvasLayer/PauseMenu" method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/exit" to="CanvasLayer/PauseMenu" method="_on_exit_pressed"]
