@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b22nloift612y"
-path="res://.godot/imported/floor_dark_01.png-a4bf17626a0fe5de1fae5bbccfc038ef.ctex"
+uid="uid://0rbrh1nfifba"
+path="res://.godot/imported/Group 5.png-0d82b2b5df67fba4df52735a3a348a27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/environment/floors/floor_dark_01.png"
-dest_files=["res://.godot/imported/floor_dark_01.png-a4bf17626a0fe5de1fae5bbccfc038ef.ctex"]
+source_file="res://assets/art/button/Group 5.png"
+dest_files=["res://.godot/imported/Group 5.png-0d82b2b5df67fba4df52735a3a348a27.ctex"]
 
 [params]
 
