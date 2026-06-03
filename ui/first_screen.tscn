@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cde748alnree4"]
 
-[ext_resource type="Script" uid="uid://bud6jmpytt0l8" path="res://ui/first_tap.gd" id="1_rfri3"]
+[ext_resource type="Script" uid="uid://bud6jmpytt0l8" path="res://core/first_tap.gd" id="1_rfri3"]
 [ext_resource type="Texture2D" uid="uid://cnxl7e5kjr3bk" path="res://assets/art/ui/background.png" id="2_ovww7"]
 [ext_resource type="FontFile" uid="uid://b8ldgkkm5118m" path="res://assets/fonts/kawaii-cubes-cute-pixel-sans-2026-04-22-22-56-18-utc/Kawaii Cubes.ttf" id="3_dbm4f"]
 [ext_resource type="FontFile" uid="uid://ecqbsbyb6m2t" path="res://assets/fonts/ComicMode-SemiBold.ttf" id="4_nwyk8"]
@@ -54,10 +54,10 @@ vertical_alignment = 1
 
 [node name="tap" type="Label" parent="." unique_id=1245550127]
 layout_mode = 0
-offset_left = 507.0
-offset_top = 479.0
-offset_right = 647.0
-offset_bottom = 504.0
+offset_left = 602.0
+offset_top = 469.0
+offset_right = 742.0
+offset_bottom = 494.0
 theme_override_colors/font_color = Color(0.11764706, 0.105882354, 0.16470589, 1)
 theme_override_colors/font_outline_color = Color(0.96862745, 0.972549, 0.96862745, 1)
 theme_override_constants/outline_size = 9
