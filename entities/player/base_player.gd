@@ -57,7 +57,5 @@ func can_move_to(tile: Vector2i) -> bool:
 
 	if floor_tilemap.get_cell_source_id(tile) == -1:
 		return false
-	if wall_tilemap.get_cell_source_id(tile) != -1:
-		return false
 
 	return true
