@@ -1,11 +1,33 @@
 [gd_scene format=3 uid="uid://mwjqm2h2ukp5"]
 
-[ext_resource type="Texture2D" uid="uid://q8d37jikvxjx" path="res://assets/art/environment/walls/sliding_door_glass_left.png" id="1_sssku"]
+[ext_resource type="Script" uid="uid://buh4krenlc3ou" path="res://entities/sliding_door/sliding_door.gd" id="1_6ni5u"]
+[ext_resource type="Texture2D" uid="uid://cl5kpdyjl10du" path="res://assets/art/environment/walls/sliding_door_glass_left.png" id="1_sssku"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ugr7"]
+size = Vector2(259, 594)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ni5u"]
+radius = 257.91
 
 [node name="SlidingDoor" type="Node2D" unique_id=747853674]
+script = ExtResource("1_6ni5u")
+slide_offset = Vector2(256, -128)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1711166329]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=979038507]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_sssku")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1693386331]
+position = Vector2(1.5, -1)
+shape = SubResource("RectangleShape2D_6ugr7")
+
+[node name="InteractableArea" type="Area2D" parent="." unique_id=1592695517]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea" unique_id=130687955]
+position = Vector2(-65, 180)
+shape = SubResource("CircleShape2D_6ni5u")
+
+[connection signal="body_entered" from="InteractableArea" to="." method="_on_interactable_area_body_entered"]
+[connection signal="body_exited" from="InteractableArea" to="." method="_on_interactable_area_body_exited"]
