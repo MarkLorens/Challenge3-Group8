@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cldkounbwk6xx"]
 
-[ext_resource type="Script" uid="uid://cp2k2x8ha4ndv" path="res://ui/storywhildchair_controller.gd" id="1_otep2"]
+[ext_resource type="Script" uid="uid://cp2k2x8ha4ndv" path="res://core/storywhildchair_controller.gd" id="1_otep2"]
 [ext_resource type="Texture2D" uid="uid://w0exi0tgclg5" path="res://assets/art/ui/whildchair.png" id="2_mytdp"]
 [ext_resource type="FontFile" uid="uid://b8ldgkkm5118m" path="res://assets/fonts/kawaii-cubes-cute-pixel-sans-2026-04-22-22-56-18-utc/Kawaii Cubes.ttf" id="3_qgi8w"]
 [ext_resource type="FontFile" uid="uid://bh7tmqa5nyd78" path="res://assets/fonts/ComicMode-Medium.ttf" id="4_l8mav"]
@@ -59,7 +59,7 @@ theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_qgi8w")
 theme_override_font_sizes/font_size = 58
-text = "Lilo Pelakai"
+text = "Will"
 
 [node name="storytext" type="RichTextLabel" parent="dialogue" unique_id=1803619714]
 layout_mode = 0
