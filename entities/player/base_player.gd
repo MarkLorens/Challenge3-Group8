@@ -5,6 +5,7 @@ class_name BasePlayer
 @export var wall_tilemap: TileMapLayer
 @export var highlight_layer: TileMapLayer
 @export var max_move_points: int = 2
+@export var max_move_distance: int = 1
 var current_move_points: int
 
 var target_pos: Vector2 = global_position
@@ -14,14 +15,13 @@ var current_grid: Vector2i
 func _ready() -> void:
 	current_grid = floor_tilemap.local_to_map(floor_tilemap.to_local(global_position))
 	current_move_points = max_move_points
-	await get_tree().process_frame
-	highlight_layer.show_move_range(current_grid, current_move_points)
+	highlight_layer.show_move_range(current_grid, max_move_distance)
 
 func _unhandled_input(event):
 	if is_moving:
 		return
-	if current_move_points <= 0:
-		return
+	#if current_move_points <= 0:
+		#return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			var mouse_pos = get_global_mouse_position()
@@ -41,16 +41,16 @@ func _unhandled_input(event):
 				if current_move_points > 0:
 					highlight_layer.show_move_range(
 						current_grid,
-						current_move_points
+						max_move_distance
 					)
 				else:
-					highlight_layer.clear()
+					end_turn()
 
 func end_turn():
 	current_move_points = max_move_points
 	highlight_layer.show_move_range(
 		current_grid,
-		current_move_points
+		max_move_distance
 	)
 
 func can_move_to(tile: Vector2i) -> bool:
