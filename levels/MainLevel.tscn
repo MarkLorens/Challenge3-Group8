@@ -131,7 +131,6 @@ tile_set = SubResource("TileSet_qkoq2")
 zoom = Vector2(0.2, 0.2)
 
 [node name="BasePlayer" parent="." unique_id=1493889780 node_paths=PackedStringArray("floor_tilemap", "wall_tilemap", "highlight_layer") instance=ExtResource("4_jg0uj")]
-position = Vector2(-594, -554)
 floor_tilemap = NodePath("../FloorTile")
 wall_tilemap = NodePath("../WallTile")
 highlight_layer = NodePath("../HighlightTile")
