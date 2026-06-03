@@ -15,13 +15,15 @@ var current_grid: Vector2i
 func _ready() -> void:
 	current_grid = floor_tilemap.local_to_map(floor_tilemap.to_local(global_position))
 	current_move_points = max_move_points
+	TurnManager.turn_ended.connect(end_turn)
+	await get_tree().process_frame
 	highlight_layer.show_move_range(current_grid, max_move_distance)
 
 func _unhandled_input(event):
 	if is_moving:
 		return
-	#if current_move_points <= 0:
-		#return
+	if current_move_points <= 0:
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			var mouse_pos = get_global_mouse_position()
@@ -44,7 +46,7 @@ func _unhandled_input(event):
 						max_move_distance
 					)
 				else:
-					end_turn()
+					highlight_layer.clear()
 
 func end_turn():
 	current_move_points = max_move_points
@@ -59,3 +61,7 @@ func can_move_to(tile: Vector2i) -> bool:
 		return false
 
 	return true
+
+
+func _on_end_turn_button_pressed() -> void:
+	pass # Replace with function body.
