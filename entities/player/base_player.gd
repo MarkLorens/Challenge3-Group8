@@ -11,24 +11,16 @@ var target_pos: Vector2 = global_position
 var is_moving: bool = false
 var current_grid: Vector2i
 
-const DIRECTIONS = [
-	Vector2i(1, 0),
-	Vector2i(-1, 0),
-	Vector2i(0, 1),
-	Vector2i(0, -1)
-]
-
 func _ready() -> void:
 	current_grid = floor_tilemap.local_to_map(floor_tilemap.to_local(global_position))
 	current_move_points = max_move_points
+	await get_tree().process_frame
+	highlight_layer.show_move_range(current_grid, current_move_points)
 
-	highlight_layer.show_move_range(
-		current_grid,
-		current_move_points
-	)
-	
 func _unhandled_input(event):
 	if is_moving:
+		return
+	if current_move_points <= 0:
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -36,7 +28,6 @@ func _unhandled_input(event):
 			var clicked_tile = floor_tilemap.local_to_map(
 				floor_tilemap.to_local(mouse_pos)
 			)
-
 			var valid_neighbors = NeighboringTile.get_isometric_neighbors(current_grid)
 			if clicked_tile not in valid_neighbors:
 				return
@@ -52,13 +43,14 @@ func _unhandled_input(event):
 						current_grid,
 						current_move_points
 					)
-				print(current_grid)
+				else:
+					highlight_layer.clear()
 
 func end_turn():
 	current_move_points = max_move_points
 	highlight_layer.show_move_range(
 		current_grid,
-		1
+		current_move_points
 	)
 
 func can_move_to(tile: Vector2i) -> bool:
