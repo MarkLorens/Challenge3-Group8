@@ -15,6 +15,8 @@ var current_grid: Vector2i
 func _ready() -> void:
 	current_grid = floor_tilemap.local_to_map(floor_tilemap.to_local(global_position))
 	current_move_points = max_move_points
+	TurnManager.turn_ended.connect(end_turn)
+	await get_tree().process_frame
 	highlight_layer.show_move_range(current_grid, max_move_distance)
 
 func _unhandled_input(event):
