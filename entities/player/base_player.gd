@@ -37,7 +37,7 @@ func _unhandled_input(event):
 				floor_tilemap.to_local(mouse_pos)
 			)
 
-			var valid_neighbors = get_isometric_neighbors(current_grid)
+			var valid_neighbors = NeighboringTile.get_isometric_neighbors(current_grid)
 			if clicked_tile not in valid_neighbors:
 				return
 
@@ -52,12 +52,14 @@ func _unhandled_input(event):
 						current_grid,
 						current_move_points
 					)
-				else:
-					highlight_layer.clear()
 				print(current_grid)
 
-#func get_reachable_tiles(start: Vector2i, max_steps: int) -> Array[Vector2i]:
-	
+func end_turn():
+	current_move_points = max_move_points
+	highlight_layer.show_move_range(
+		current_grid,
+		1
+	)
 
 func can_move_to(tile: Vector2i) -> bool:
 
