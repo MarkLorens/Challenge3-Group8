@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://biw122kdhy1gm"]
 
 [ext_resource type="Texture2D" uid="uid://oulikvvksjl2" path="res://assets/art/tilesets/FloorTileSpriteSheet.png" id="1_3348v"]
+[ext_resource type="Script" uid="uid://c35p8lagphi21" path="res://levels/MainLevel.gd" id="1_k0gbw"]
 [ext_resource type="Texture2D" uid="uid://lbh8d5looyfg" path="res://assets/art/tilesets/WallTileSpriteSheet.png" id="2_jg0uj"]
 [ext_resource type="Script" uid="uid://btiqvp5qw43ai" path="res://levels/FloorTileHighlighted.gd" id="2_srceu"]
 [ext_resource type="PackedScene" uid="uid://mwjqm2h2ukp5" path="res://entities/sliding_door/SlidingDoor.tscn" id="3_3348v"]
@@ -56,6 +57,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_srceu")
 
 [node name="Level_0" type="Node2D" unique_id=1909207718]
+script = ExtResource("1_k0gbw")
 
 [node name="FloorTile" type="TileMapLayer" parent="." unique_id=385642768]
 y_sort_enabled = true
@@ -90,6 +92,8 @@ position = Vector2(239, 445)
 floor_tilemap = NodePath("../FloorTile")
 wall_tilemap = NodePath("../WallTile")
 highlight_layer = NodePath("../HighlightTile")
+max_move_points = 2
+max_move_distance = 1
 
 [node name="SlidingDoor" parent="." unique_id=747853674 instance=ExtResource("3_3348v")]
 z_index = 2

@@ -48,12 +48,13 @@ func _unhandled_input(event):
 				else:
 					highlight_layer.clear()
 
-func end_turn():
+func end_turn(turn_count: int):
 	current_move_points = max_move_points
 	highlight_layer.show_move_range(
 		current_grid,
 		max_move_distance
 	)
+	print("test")
 
 func can_move_to(tile: Vector2i) -> bool:
 

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cfnwp10e6cqla" path="res://ui/GameUI.gd" id="1_e78dt"]
 [ext_resource type="Script" uid="uid://chnmr7duojoov" path="res://core/canvas_layer.gd" id="1_fpxnd"]
 [ext_resource type="Texture2D" uid="uid://0rbrh1nfifba" path="res://assets/art/button/Group 5.png" id="2_e78dt"]
+[ext_resource type="Texture2D" uid="uid://bgliy7r0eqe62" path="res://assets/art/ui/TurnCount.png" id="3_2e40r"]
 [ext_resource type="Texture2D" uid="uid://c0t6yu3a7xb46" path="res://assets/art/button/play.png" id="3_rn3fg"]
 [ext_resource type="Texture2D" uid="uid://bsjyqrgc0whgd" path="res://assets/art/button/pause_pressed.png" id="4_5volr"]
 [ext_resource type="Script" uid="uid://c20p5u32i8csc" path="res://core/pause_menu.gd" id="4_j65kr"]
@@ -60,39 +61,66 @@ expand_margin_top = 10.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
-[node name="GameUi" type="Control" unique_id=963071057]
+[node name="GameUi" type="Control" unique_id=963071057 node_paths=PackedStringArray("turn_label")]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_e78dt")
+turn_label = NodePath("CanvasLayer/HBoxContainer/TurnLabelBg/TurnLabel")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=122177760]
 script = ExtResource("1_fpxnd")
 
-[node name="PauseButton" type="TextureButton" parent="CanvasLayer" unique_id=135613477]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 50.0
-offset_top = -310.0
-offset_right = 145.0
-offset_bottom = -213.0
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1351226747]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -513.0
+offset_top = 30.0
+offset_right = 151.00006
+offset_bottom = 70.0
+grow_horizontal = 2
+scale = Vector2(1.5, 1.5)
+alignment = 2
+
+[node name="TurnLabelBg" type="TextureRect" parent="CanvasLayer/HBoxContainer" unique_id=135511364]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_2e40r")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TurnLabel" type="Label" parent="CanvasLayer/HBoxContainer/TurnLabelBg" unique_id=712126324]
+layout_mode = 1
+offset_right = 158.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("5_5volr")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer/HBoxContainer" unique_id=135613477]
+layout_mode = 2
 texture_normal = ExtResource("2_e78dt")
 texture_pressed = ExtResource("4_5volr")
 texture_hover = ExtResource("5_r8fx2")
-stretch_mode = 6
+metadata/_edit_use_anchors_ = true
 
-[node name="EndTurnButton" type="TextureButton" parent="CanvasLayer" unique_id=2027465860]
-offset_left = 170.0
-offset_top = 50.0
-offset_right = 265.0
-offset_bottom = 147.0
+[node name="EndTurnButton" type="TextureButton" parent="CanvasLayer/HBoxContainer" unique_id=2027465860]
+layout_mode = 2
 texture_normal = ExtResource("3_rn3fg")
 texture_pressed = ExtResource("7_r8fx2")
 texture_hover = ExtResource("8_2e40r")
-stretch_mode = 4
+metadata/_edit_use_anchors_ = true
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=807747375]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,7 +140,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.003921569)
 
 [node name="Panel" type="Panel" parent="CanvasLayer/PauseMenu" unique_id=402207093]
-visible = false
 custom_minimum_size = Vector2(320, 280)
 layout_mode = 1
 anchors_preset = 15
@@ -205,7 +232,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_yjrrb")
 text = "EXIT
 "
 
-[connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/PauseMenu" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/PauseButton" to="CanvasLayer/PauseMenu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/continue" to="CanvasLayer/PauseMenu" method="_on_continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/restart" to="CanvasLayer/PauseMenu" method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/exit" to="CanvasLayer/PauseMenu" method="_on_exit_pressed"]
