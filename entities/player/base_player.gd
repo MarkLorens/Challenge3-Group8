@@ -48,7 +48,7 @@ func _unhandled_input(event):
 				else:
 					highlight_layer.clear()
 
-func end_turn(turn_count: int):
+func end_turn(_turn_count: int):
 	current_move_points = max_move_points
 	highlight_layer.show_move_range(
 		current_grid,
@@ -60,9 +60,7 @@ func can_move_to(tile: Vector2i) -> bool:
 
 	if floor_tilemap.get_cell_source_id(tile) == -1:
 		return false
+	if wall_tilemap.get_cell_source_id(tile) != -1:
+		return false
 
 	return true
-
-
-func _on_end_turn_button_pressed() -> void:
-	pass # Replace with function body.
