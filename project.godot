@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 NeighboringTile="*uid://c3kqka7yyd8f0"
 TurnManager="*uid://vee8u0bilhcx"
+LevelManager="*uid://djtjnmc5s2r1u"
 
 [display]
 
