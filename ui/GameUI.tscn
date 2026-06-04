@@ -12,6 +12,8 @@
 [ext_resource type="FontFile" uid="uid://ecqbsbyb6m2t" path="res://assets/fonts/ComicMode-SemiBold.ttf" id="6_r8fx2"]
 [ext_resource type="Texture2D" uid="uid://dyoau0afq62ln" path="res://assets/art/button/playpressed.png" id="7_r8fx2"]
 [ext_resource type="Texture2D" uid="uid://86v2l1m0x6qe" path="res://assets/art/button/playhover.png" id="8_2e40r"]
+[ext_resource type="Texture2D" uid="uid://b65hehcjk3dc4" path="res://assets/art/ui/MissionBoard.png" id="14_a753d"]
+[ext_resource type="FontFile" uid="uid://dkw1u4n66htrd" path="res://assets/fonts/ComicMode-Regular.ttf" id="14_yjrrb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2e40r"]
 bg_color = Color(0.9882353, 0.98039216, 0.8156863, 1)
@@ -60,6 +62,11 @@ expand_margin_left = 10.0
 expand_margin_top = 10.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a753d"]
+load_path = "res://.godot/imported/missionboardcrop.png-6bb114394642a7d8e14b13583113a148.ctex"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yjrrb"]
 
 [node name="GameUi" type="Control" unique_id=963071057 node_paths=PackedStringArray("turn_label")]
 layout_mode = 3
@@ -232,7 +239,82 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_yjrrb")
 text = "EXIT
 "
 
+[node name="MissionBoard" type="TextureButton" parent="CanvasLayer" unique_id=217383108]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -394.0
+offset_top = -162.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = SubResource("CompressedTexture2D_a753d")
+
+[node name="MissionDetail" type="Control" parent="CanvasLayer" unique_id=2111092194]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 893.0
+offset_top = 493.0
+offset_right = 1274.0
+offset_bottom = 716.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MissionDetail" unique_id=598175621]
+layout_mode = 0
+offset_left = -5.0
+offset_top = -126.0
+offset_right = 389.0
+offset_bottom = 234.0
+texture = ExtResource("14_a753d")
+expand_mode = 1
+
+[node name="CloseArea" type="Button" parent="CanvasLayer/MissionDetail" unique_id=414126500]
+layout_mode = 0
+offset_left = -9.0
+offset_top = -103.0
+offset_right = 388.0
+offset_bottom = 232.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yjrrb")
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MissionDetail" unique_id=1048882892]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 1.0
+offset_right = 363.0
+offset_bottom = 151.0
+
+[node name="CheckBox A wants coffee" type="CheckBox" parent="CanvasLayer/MissionDetail/VBoxContainer" unique_id=592871388]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
+theme_override_fonts/font = ExtResource("14_yjrrb")
+theme_override_font_sizes/font_size = 18
+text = "A wants coffee"
+
+[node name="CheckBox A needs toilet" type="CheckBox" parent="CanvasLayer/MissionDetail/VBoxContainer" unique_id=1766394671]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
+theme_override_fonts/font = ExtResource("14_yjrrb")
+theme_override_font_sizes/font_size = 18
+text = "A needs toilet"
+
+[node name="CheckBox B needs help" type="CheckBox" parent="CanvasLayer/MissionDetail/VBoxContainer" unique_id=1889564667]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
+theme_override_fonts/font = ExtResource("14_yjrrb")
+theme_override_font_sizes/font_size = 18
+text = "B needs help"
+
+[node name="CheckBox A & B must get to meeting within 15 turns" type="CheckBox" parent="CanvasLayer/MissionDetail/VBoxContainer" unique_id=64552196]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
+theme_override_fonts/font = ExtResource("14_yjrrb")
+theme_override_font_sizes/font_size = 18
+text = "A & B must get to meeting within 15 turns"
+
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/PauseButton" to="CanvasLayer/PauseMenu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/continue" to="CanvasLayer/PauseMenu" method="_on_continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/restart" to="CanvasLayer/PauseMenu" method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/exit" to="CanvasLayer/PauseMenu" method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/MissionBoard" to="." method="_on_mission_board_pressed"]
+[connection signal="pressed" from="CanvasLayer/MissionDetail/CloseArea" to="." method="_on_close_area_pressed"]
