@@ -22,6 +22,9 @@ func _on_restart_pressed() -> void:
 	
 
 func _on_exit_pressed() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		SaveManager.save_position(player.current_grid)
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://ui/menu.tscn")
 
