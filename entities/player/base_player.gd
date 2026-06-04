@@ -7,15 +7,28 @@ class_name BasePlayer
 @export var max_move_points: int = 2
 @export var max_move_distance: int = 1
 var current_move_points: int
-
 var target_pos: Vector2 = global_position
 var is_moving: bool = false
 var current_grid: Vector2i
 
 func _ready() -> void:
-	current_grid = floor_tilemap.local_to_map(floor_tilemap.to_local(global_position))
+	add_to_group("player")
 	current_move_points = max_move_points
 	TurnManager.turn_ended.connect(end_turn)
+	
+	if SaveManager.has_save():
+		var saved_grid = SaveManager.load_position()
+		if saved_grid != Vector2i(-1, -1):
+			current_grid = saved_grid
+			global_position = floor_tilemap.to_global(
+				floor_tilemap.map_to_local(current_grid)
+			)
+			SaveManager.delete_save()
+	else:
+		current_grid = floor_tilemap.local_to_map(
+			floor_tilemap.to_local(global_position)
+		)
+	
 	await get_tree().process_frame
 	highlight_layer.show_move_range(current_grid, max_move_distance)
 
@@ -33,7 +46,6 @@ func _unhandled_input(event):
 			var valid_neighbors = NeighboringTile.get_isometric_neighbors(current_grid)
 			if clicked_tile not in valid_neighbors:
 				return
-
 			if can_move_to(clicked_tile):
 				current_grid = clicked_tile
 				global_position = floor_tilemap.to_global(
@@ -57,10 +69,9 @@ func end_turn(_turn_count: int):
 	print("test")
 
 func can_move_to(tile: Vector2i) -> bool:
-
 	if floor_tilemap.get_cell_source_id(tile) == -1:
 		return false
-	if wall_tilemap.get_cell_source_id(tile) != -1:
-		return false
-
 	return true
+
+func _on_end_turn_button_pressed() -> void:
+	pass

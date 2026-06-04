@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Later"
-run/main_scene="uid://biw122kdhy1gm"
+run/main_scene="uid://cde748alnree4"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 NeighboringTile="*uid://c3kqka7yyd8f0"
 TurnManager="*uid://vee8u0bilhcx"
 LevelManager="*uid://djtjnmc5s2r1u"
+SaveManager="*uid://bwd87mar0k8ns"
 
 [display]
 
