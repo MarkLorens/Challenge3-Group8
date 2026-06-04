@@ -6059,7 +6059,7 @@ texture = ExtResource("10_41fje")
 sources/0 = SubResource("TileSetAtlasSource_41fje")
 
 [node name="Level_0" type="Node2D" unique_id=1909207718]
-position = Vector2(-35, -24)
+script = ExtResource("1_k0gbw")
 
 [node name="FloorTile" type="TileMapLayer" parent="." unique_id=385642768]
 y_sort_enabled = true
