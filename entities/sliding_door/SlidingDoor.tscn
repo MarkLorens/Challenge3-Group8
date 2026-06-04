@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://mwjqm2h2ukp5"]
 
 [ext_resource type="Script" uid="uid://buh4krenlc3ou" path="res://entities/sliding_door/sliding_door.gd" id="1_6ni5u"]
-[ext_resource type="Texture2D" uid="uid://cl5kpdyjl10du" path="res://assets/art/environment/walls/sliding_door_glass_left.png" id="1_sssku"]
+[ext_resource type="Texture2D" uid="uid://cbohb8rbkxlae" path="res://assets/art/environment/walls/sliding_door_glass_ns.png" id="2_6ni5u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ugr7"]
 size = Vector2(259, 594)
@@ -17,7 +17,7 @@ slide_offset = Vector2(256, -128)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=979038507]
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("1_sssku")
+texture = ExtResource("2_6ni5u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1693386331]
 position = Vector2(1.5, -1)
