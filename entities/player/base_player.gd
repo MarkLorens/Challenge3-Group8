@@ -5,12 +5,14 @@ class_name BasePlayer
 @export var wall_tilemap: TileMapLayer
 @export var highlight_layer: TileMapLayer
 @export var poi_tilemap: TileMapLayer
-@export var max_move_points: int = 2
+@export var max_move_points: int = 6  
 @export var max_move_distance: int = 1
 var current_move_points: int
 var target_pos: Vector2 = global_position
 var is_moving: bool = false
 var current_grid: Vector2i
+
+signal move_updated(current: int, max: int)  
 
 func _ready() -> void:
 	add_to_group("player")
@@ -32,6 +34,7 @@ func _ready() -> void:
 	
 	await get_tree().process_frame
 	highlight_layer.show_move_range(current_grid, max_move_distance)
+	move_updated.emit(current_move_points, max_move_points)  
 
 func _unhandled_input(event):
 	if is_moving:
@@ -54,21 +57,17 @@ func _unhandled_input(event):
 				)
 				current_move_points -= 1
 				check_poi()
+				move_updated.emit(current_move_points, max_move_points)
 				if current_move_points > 0:
-					highlight_layer.show_move_range(
-						current_grid,
-						max_move_distance
-					)
+					highlight_layer.show_move_range(current_grid, max_move_distance)
 				else:
 					highlight_layer.clear()
 
 func end_turn(_turn_count: int):
 	current_move_points = max_move_points
-	highlight_layer.show_move_range(
-		current_grid,
-		max_move_distance
-	)
-	
+	move_updated.emit(current_move_points, max_move_points)  
+	highlight_layer.show_move_range(current_grid, max_move_distance)
+
 func _on_end_turn_button_pressed() -> void:
 	pass
 

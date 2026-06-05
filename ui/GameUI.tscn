@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dk71ohanangbg" path="res://assets/art/button/ButtonRedHover.png" id="6_a753d"]
 [ext_resource type="FontFile" uid="uid://ecqbsbyb6m2t" path="res://assets/fonts/ComicMode-SemiBold.ttf" id="6_r8fx2"]
 [ext_resource type="FontFile" uid="uid://dt0ye6xvqo0ll" path="res://assets/fonts/ComicMode-ExtraBold.ttf" id="7_2cap4"]
+[ext_resource type="FontFile" uid="uid://bohbc7w1bgqdm" path="res://assets/fonts/ComicMode-Bold.ttf" id="11_olnky"]
 [ext_resource type="Texture2D" uid="uid://f3deenbh4nvc" path="res://assets/art/button/MenuButton.png" id="12_olnky"]
 [ext_resource type="Texture2D" uid="uid://ch4pqp2rd7hwr" path="res://assets/art/button/UndoButton.png" id="13_vjewj"]
 [ext_resource type="Texture2D" uid="uid://b65hehcjk3dc4" path="res://assets/art/ui/MissionBoard.png" id="14_a753d"]
@@ -71,7 +72,7 @@ load_path = "res://.godot/imported/missionboardcrop.png-6bb114394642a7d8e14b1358
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yjrrb"]
 
-[node name="GameUi" type="Control" unique_id=963071057 node_paths=PackedStringArray("turn_label", "action_label")]
+[node name="GameUi" type="Control" unique_id=963071057 node_paths=PackedStringArray("turn_label", "action_label", "move_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,6 +82,7 @@ grow_vertical = 2
 script = ExtResource("1_e78dt")
 turn_label = NodePath("CanvasLayer/TurnLabelBg/TurnLabel")
 action_label = NodePath("CanvasLayer/ActionButton/BoxContainer/ActionLabel")
+move_label = NodePath("CanvasLayer/TurnLabelBg/MoveLabel")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=122177760]
 script = ExtResource("1_fpxnd")
@@ -164,6 +166,17 @@ theme_override_fonts/font = ExtResource("5_5volr")
 theme_override_font_sizes/font_size = 25
 text = "Turn: "
 vertical_alignment = 1
+
+[node name="MoveLabel" type="Label" parent="CanvasLayer/TurnLabelBg" unique_id=1655700714]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 49.0
+offset_right = 197.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0.36984968, 0.31926554, 0.21674433, 1)
+theme_override_fonts/font = ExtResource("11_olnky")
+theme_override_font_sizes/font_size = 19
+text = "MOVE 1/5"
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=807747375]
 visible = false
@@ -334,6 +347,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
 theme_override_fonts/font = ExtResource("14_yjrrb")
 theme_override_font_sizes/font_size = 28
+toggle_mode = false
 text = "A wants coffee"
 
 [node name="MissionDetail2" type="CheckBox" parent="CanvasLayer/MissionDetail/MissionDetail" unique_id=1766394671]

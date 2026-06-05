@@ -7,6 +7,7 @@ extends Control
 @onready var mission_bg = $CanvasLayer/MissionDetail/TextureRect
 @onready var close_area = $CanvasLayer/MissionDetail/CloseArea  
 @onready var action_button = $CanvasLayer/ActionButton
+@export var move_label: Label  
 
 var current_poi_id: String = ""
 var max_turns: int
@@ -22,7 +23,14 @@ func _ready():
 	mission_details.visible = false
 	if not mission_board.pressed.is_connected(_on_mission_board_pressed):
 		mission_board.pressed.connect(_on_mission_board_pressed)
-	close_area.pressed.connect(_on_mission_board_pressed)  
+	close_area.pressed.connect(_on_mission_board_pressed)
+	await get_tree().process_frame
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.move_updated.connect(_on_move_updated)
+
+func _on_move_updated(current: int, max: int) -> void:
+	move_label.text = "MOVE " + str(max - current) + "/" + str(max)
 
 func _on_mission_board_pressed() -> void:
 	var is_open = !mission_details.visible
