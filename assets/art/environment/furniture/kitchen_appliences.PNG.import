@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wjprk6eenjru"
-path="res://.godot/imported/TurnCount.png-142bfbe1691456a5592004e75adee090.ctex"
+uid="uid://bkmyfyy72t6as"
+path="res://.godot/imported/kitchen_appliences.PNG-edb1e876dc893c4fb1076750e0950bf9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ui/TurnCount.png"
-dest_files=["res://.godot/imported/TurnCount.png-142bfbe1691456a5592004e75adee090.ctex"]
+source_file="res://assets/art/environment/furniture/kitchen_appliences.PNG"
+dest_files=["res://.godot/imported/kitchen_appliences.PNG-edb1e876dc893c4fb1076750e0950bf9.ctex"]
 
 [params]
 

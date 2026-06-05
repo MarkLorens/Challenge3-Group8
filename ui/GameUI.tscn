@@ -1,18 +1,18 @@
-[gd_scene format=3 uid="uid://dksn18ki8smkw"]
+[gd_scene format=3 uid="uid://c1o6014xt8aim"]
 
 [ext_resource type="Script" uid="uid://cfnwp10e6cqla" path="res://ui/GameUI.gd" id="1_e78dt"]
-[ext_resource type="Script" uid="uid://chnmr7duojoov" path="res://core/canvas_layer.gd" id="1_fpxnd"]
-[ext_resource type="Texture2D" uid="uid://0rbrh1nfifba" path="res://assets/art/button/Group 5.png" id="2_e78dt"]
-[ext_resource type="Texture2D" uid="uid://bgliy7r0eqe62" path="res://assets/art/ui/TurnCount.png" id="3_2e40r"]
-[ext_resource type="Texture2D" uid="uid://c0t6yu3a7xb46" path="res://assets/art/button/play.png" id="3_rn3fg"]
-[ext_resource type="Texture2D" uid="uid://bsjyqrgc0whgd" path="res://assets/art/button/pause_pressed.png" id="4_5volr"]
+[ext_resource type="Script" path="res://core/canvas_layer.gd" id="1_fpxnd"]
+[ext_resource type="Texture2D" uid="uid://wjprk6eenjru" path="res://assets/art/ui/TurnCount.png" id="3_2e40r"]
 [ext_resource type="Script" uid="uid://c20p5u32i8csc" path="res://core/pause_menu.gd" id="4_j65kr"]
 [ext_resource type="FontFile" uid="uid://b8ldgkkm5118m" path="res://assets/fonts/kawaii-cubes-cute-pixel-sans-2026-04-22-22-56-18-utc/Kawaii Cubes.ttf" id="5_5volr"]
-[ext_resource type="Texture2D" uid="uid://crnqwkni43gjl" path="res://assets/art/button/pause_hover.png" id="5_r8fx2"]
+[ext_resource type="Texture2D" uid="uid://cr0jxvr4byi80" path="res://assets/art/button/ButtonRed.png" id="5_yjrrb"]
+[ext_resource type="Texture2D" uid="uid://dk71ohanangbg" path="res://assets/art/button/ButtonRedHover.png" id="6_a753d"]
 [ext_resource type="FontFile" uid="uid://ecqbsbyb6m2t" path="res://assets/fonts/ComicMode-SemiBold.ttf" id="6_r8fx2"]
-[ext_resource type="Texture2D" uid="uid://dyoau0afq62ln" path="res://assets/art/button/playpressed.png" id="7_r8fx2"]
-[ext_resource type="Texture2D" uid="uid://86v2l1m0x6qe" path="res://assets/art/button/playhover.png" id="8_2e40r"]
+[ext_resource type="FontFile" uid="uid://dt0ye6xvqo0ll" path="res://assets/fonts/ComicMode-ExtraBold.ttf" id="7_2cap4"]
+[ext_resource type="Texture2D" uid="uid://f3deenbh4nvc" path="res://assets/art/button/MenuButton.png" id="12_olnky"]
+[ext_resource type="Texture2D" uid="uid://ch4pqp2rd7hwr" path="res://assets/art/button/UndoButton.png" id="13_vjewj"]
 [ext_resource type="Texture2D" uid="uid://b65hehcjk3dc4" path="res://assets/art/ui/MissionBoard.png" id="14_a753d"]
+[ext_resource type="Texture2D" uid="uid://bvpxieppe77s0" path="res://assets/art/button/RestartButton.png" id="14_xkty7"]
 [ext_resource type="FontFile" uid="uid://dkw1u4n66htrd" path="res://assets/fonts/ComicMode-Regular.ttf" id="14_yjrrb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2e40r"]
@@ -76,55 +76,90 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e78dt")
-turn_label = NodePath("CanvasLayer/HBoxContainer/TurnLabelBg/TurnLabel")
+turn_label = NodePath("CanvasLayer/TurnLabelBg/TurnLabel")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=122177760]
 script = ExtResource("1_fpxnd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1351226747]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -513.0
-offset_top = 30.0
-offset_right = 151.00006
-offset_bottom = 70.0
-grow_horizontal = 2
-scale = Vector2(1.5, 1.5)
-alignment = 2
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer" unique_id=135613477]
+anchors_preset = -1
+anchor_right = 0.021875
+anchor_bottom = 0.027777778
+offset_left = 81.0
+offset_top = 82.0
+offset_right = 120.0
+offset_bottom = 122.0
+texture_normal = ExtResource("12_olnky")
+ignore_texture_size = true
+stretch_mode = 6
 
-[node name="TurnLabelBg" type="TextureRect" parent="CanvasLayer/HBoxContainer" unique_id=135511364]
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="RestartButton" type="TextureButton" parent="CanvasLayer" unique_id=481847313]
+offset_left = 260.0
+offset_top = 82.0
+offset_right = 326.0
+offset_bottom = 146.0
+texture_normal = ExtResource("14_xkty7")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="UndoButton" type="TextureButton" parent="CanvasLayer" unique_id=1068977656]
+offset_left = 171.0
+offset_top = 82.0
+offset_right = 238.0
+offset_bottom = 143.0
+texture_normal = ExtResource("13_vjewj")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="EndTurnButton" type="TextureButton" parent="CanvasLayer" unique_id=2027465860]
+offset_left = 81.0
+offset_top = 6.0
+offset_right = 330.0
+offset_bottom = 69.0
+texture_normal = ExtResource("5_yjrrb")
+texture_pressed = ExtResource("5_yjrrb")
+texture_hover = ExtResource("6_a753d")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="EndTurnLabel" type="Label" parent="CanvasLayer/EndTurnButton" unique_id=491968327]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 252.0
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("7_2cap4")
+theme_override_font_sizes/font_size = 40
+text = "END TURN"
+horizontal_alignment = 1
+
+[node name="TurnLabelBg" type="TextureRect" parent="CanvasLayer" unique_id=135511364]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -310.0
+offset_top = 10.0
+offset_right = -58.0
+offset_bottom = 101.0
+grow_horizontal = 0
+size_flags_horizontal = 8
 texture = ExtResource("3_2e40r")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="TurnLabel" type="Label" parent="CanvasLayer/HBoxContainer/TurnLabelBg" unique_id=712126324]
+[node name="TurnLabel" type="Label" parent="CanvasLayer/TurnLabelBg" unique_id=712126324]
 layout_mode = 1
-offset_right = 158.0
-offset_bottom = 38.0
+offset_left = 51.000023
+offset_top = 4.0
+offset_right = 202.00003
+offset_bottom = 45.0
 theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("5_5volr")
 theme_override_font_sizes/font_size = 25
-horizontal_alignment = 1
+text = "Turn: "
 vertical_alignment = 1
-
-[node name="PauseButton" type="TextureButton" parent="CanvasLayer/HBoxContainer" unique_id=135613477]
-layout_mode = 2
-texture_normal = ExtResource("2_e78dt")
-texture_pressed = ExtResource("4_5volr")
-texture_hover = ExtResource("5_r8fx2")
-metadata/_edit_use_anchors_ = true
-
-[node name="EndTurnButton" type="TextureButton" parent="CanvasLayer/HBoxContainer" unique_id=2027465860]
-layout_mode = 2
-texture_normal = ExtResource("3_rn3fg")
-texture_pressed = ExtResource("7_r8fx2")
-texture_hover = ExtResource("8_2e40r")
-metadata/_edit_use_anchors_ = true
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=807747375]
 visible = false
@@ -245,74 +280,83 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -394.0
-offset_top = -162.0
+offset_left = -386.99994
+offset_top = -370.0
+offset_right = 253.0
+offset_bottom = -50.0
 grow_horizontal = 0
 grow_vertical = 0
+scale = Vector2(0.52195084, 0.52627736)
 texture_normal = SubResource("CompressedTexture2D_a753d")
+ignore_texture_size = true
+stretch_mode = 6
 
 [node name="MissionDetail" type="Control" parent="CanvasLayer" unique_id=2111092194]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 893.0
-offset_top = 493.0
-offset_right = 1274.0
-offset_bottom = 716.0
+offset_left = 834.0
+offset_top = 482.0
+offset_right = 1215.0
+offset_bottom = 705.0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/MissionDetail" unique_id=598175621]
 layout_mode = 0
-offset_left = -5.0
-offset_top = -126.0
-offset_right = 389.0
-offset_bottom = 234.0
+offset_left = 55.0
+offset_top = -131.0
+offset_right = 395.0
+offset_bottom = 279.0
 texture = ExtResource("14_a753d")
 expand_mode = 1
+stretch_mode = 6
 
 [node name="CloseArea" type="Button" parent="CanvasLayer/MissionDetail" unique_id=414126500]
 layout_mode = 0
-offset_left = -9.0
-offset_top = -103.0
-offset_right = 388.0
-offset_bottom = 232.0
+offset_left = 38.0
+offset_top = -256.0
+offset_right = 678.0
+offset_bottom = 532.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yjrrb")
 flat = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MissionDetail" unique_id=1048882892]
+[node name="MissionDetail" type="VBoxContainer" parent="CanvasLayer/MissionDetail" unique_id=1048882892]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 1.0
-offset_right = 363.0
-offset_bottom = 151.0
+offset_left = 87.0
+offset_top = 14.0
+offset_right = 635.0
+offset_bottom = 237.0
 
-[node name="CheckBox A wants coffee" type="CheckBox" parent="CanvasLayer/MissionDetail/VBoxContainer" unique_id=592871388]
+[node name="MissionDetail1" type="CheckBox" parent="CanvasLayer/MissionDetail/MissionDetail" unique_id=592871388]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
 theme_override_fonts/font = ExtResource("14_yjrrb")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 28
 text = "A wants coffee"
 
-[node name="CheckBox A needs toilet" type="CheckBox" parent="CanvasLayer/MissionDetail/VBoxContainer" unique_id=1766394671]
+[node name="MissionDetail2" type="CheckBox" parent="CanvasLayer/MissionDetail/MissionDetail" unique_id=1766394671]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
 theme_override_fonts/font = ExtResource("14_yjrrb")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 30
 text = "A needs toilet"
 
-[node name="CheckBox B needs help" type="CheckBox" parent="CanvasLayer/MissionDetail/VBoxContainer" unique_id=1889564667]
+[node name="MissionDetail3" type="CheckBox" parent="CanvasLayer/MissionDetail/MissionDetail" unique_id=1889564667]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
 theme_override_fonts/font = ExtResource("14_yjrrb")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 30
 text = "B needs help"
 
-[node name="CheckBox A & B must get to meeting within 15 turns" type="CheckBox" parent="CanvasLayer/MissionDetail/VBoxContainer" unique_id=64552196]
+[node name="MissionDetail4" type="CheckBox" parent="CanvasLayer/MissionDetail/MissionDetail" unique_id=64552196]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
 theme_override_fonts/font = ExtResource("14_yjrrb")
-theme_override_font_sizes/font_size = 18
-text = "A & B must get to meeting within 15 turns"
+theme_override_font_sizes/font_size = 30
+text = "A & B must get to 
+meeting within 
+15 turns"
 
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/PauseButton" to="CanvasLayer/PauseMenu" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/PauseMenu" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/RestartButton" to="CanvasLayer/PauseMenu" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/continue" to="CanvasLayer/PauseMenu" method="_on_continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/restart" to="CanvasLayer/PauseMenu" method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/exit" to="CanvasLayer/PauseMenu" method="_on_exit_pressed"]
