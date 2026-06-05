@@ -1,10 +1,14 @@
 extends Control
-@onready var end_turn_button: TextureButton = $CanvasLayer/EndTurnButton
 @export var turn_label: Label
+@export var action_label: Label
+@onready var end_turn_button: TextureButton = $CanvasLayer/EndTurnButton
 @onready var mission_board = $CanvasLayer/MissionBoard
 @onready var mission_details = $CanvasLayer/MissionDetail
 @onready var mission_bg = $CanvasLayer/MissionDetail/TextureRect
 @onready var close_area = $CanvasLayer/MissionDetail/CloseArea  
+@onready var action_button = $CanvasLayer/ActionButton
+
+var current_poi_id: String = ""
 var max_turns: int
 var tex_collapsed = preload("res://assets/art/ui/missionboardcrop.png")
 var tex_expanded = preload("res://assets/art/ui/MissionBoard.png")
@@ -13,7 +17,8 @@ func _ready():
 	end_turn_button.pressed.connect(_on_end_turn_pressed)
 	TurnManager.turn_ended.connect(_on_turn_ended)
 	LevelManager.level_loaded.connect(_on_level_loaded)
-	LevelManager.objective_completed.connect(_on_objective_completed)
+	LevelManager.objective_reached.connect(_on_reaching_objective_tile)
+	action_button.pressed.connect(_complete_objective)
 	mission_details.visible = false
 	if not mission_board.pressed.is_connected(_on_mission_board_pressed):
 		mission_board.pressed.connect(_on_mission_board_pressed)
@@ -39,5 +44,14 @@ func _on_end_turn_pressed():
 func _on_turn_ended(turn_count: int):
 	turn_label.text = "Turn " + str(turn_count) + "/" + str(max_turns)
 
-func _on_objective_completed(poi_id: String, description: String):
-	print("Completed: ", description)
+func _on_reaching_objective_tile(poi_id: String, description: String):
+	current_poi_id = poi_id
+	action_label.text = description
+	action_button.show()
+
+func _complete_objective():
+	if current_poi_id != "":
+		LevelManager.complete_objective(current_poi_id)
+		action_label.text = ""
+		current_poi_id = ""
+	#UI Update Soon

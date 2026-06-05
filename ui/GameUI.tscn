@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://c1o6014xt8aim"]
+[gd_scene format=3 uid="uid://dksn18ki8smkw"]
 
 [ext_resource type="Script" uid="uid://cfnwp10e6cqla" path="res://ui/GameUI.gd" id="1_e78dt"]
-[ext_resource type="Script" path="res://core/canvas_layer.gd" id="1_fpxnd"]
+[ext_resource type="Script" uid="uid://chnmr7duojoov" path="res://core/canvas_layer.gd" id="1_fpxnd"]
 [ext_resource type="Texture2D" uid="uid://wjprk6eenjru" path="res://assets/art/ui/TurnCount.png" id="3_2e40r"]
 [ext_resource type="Script" uid="uid://c20p5u32i8csc" path="res://core/pause_menu.gd" id="4_j65kr"]
 [ext_resource type="FontFile" uid="uid://b8ldgkkm5118m" path="res://assets/fonts/kawaii-cubes-cute-pixel-sans-2026-04-22-22-56-18-utc/Kawaii Cubes.ttf" id="5_5volr"]
@@ -16,6 +16,7 @@
 [ext_resource type="FontFile" uid="uid://dkw1u4n66htrd" path="res://assets/fonts/ComicMode-Regular.ttf" id="14_yjrrb"]
 [ext_resource type="Texture2D" uid="uid://bs5ucorasl827" path="res://assets/art/button/MoveButton.png" id="15_a753d"]
 [ext_resource type="Texture2D" uid="uid://dilmyoail83y0" path="res://assets/art/button/ActDisabledButton.png" id="16_2cap4"]
+[ext_resource type="FontFile" uid="uid://bqu0hskpy0aql" path="res://assets/fonts/ComicMode-Light.ttf" id="17_olnky"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2e40r"]
 bg_color = Color(0.9882353, 0.98039216, 0.8156863, 1)
@@ -70,7 +71,7 @@ load_path = "res://.godot/imported/missionboardcrop.png-6bb114394642a7d8e14b1358
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yjrrb"]
 
-[node name="GameUi" type="Control" unique_id=963071057 node_paths=PackedStringArray("turn_label")]
+[node name="GameUi" type="Control" unique_id=963071057 node_paths=PackedStringArray("turn_label", "action_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,6 +80,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e78dt")
 turn_label = NodePath("CanvasLayer/TurnLabelBg/TurnLabel")
+action_label = NodePath("CanvasLayer/ActionButton/BoxContainer/ActionLabel")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=122177760]
 script = ExtResource("1_fpxnd")
@@ -366,7 +368,7 @@ texture_normal = ExtResource("15_a753d")
 ignore_texture_size = true
 stretch_mode = 6
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer" unique_id=684108163]
+[node name="ActionButton" type="TextureButton" parent="CanvasLayer" unique_id=684108163]
 offset_left = 226.0
 offset_top = 528.0
 offset_right = 364.0
@@ -374,6 +376,23 @@ offset_bottom = 712.0
 texture_normal = ExtResource("16_2cap4")
 ignore_texture_size = true
 stretch_mode = 6
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/ActionButton" unique_id=1071752288]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 108.0
+offset_right = 122.0
+offset_bottom = 167.0
+alignment = 2
+vertical = true
+
+[node name="ActionLabel" type="Label" parent="CanvasLayer/ActionButton/BoxContainer" unique_id=197765428]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("17_olnky")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/PauseMenu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/RestartButton" to="CanvasLayer/PauseMenu" method="_on_restart_button_pressed"]
