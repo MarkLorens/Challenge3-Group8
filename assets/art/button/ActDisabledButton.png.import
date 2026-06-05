@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2ml2m52xhoxr"
-path="res://.godot/imported/ramp_wood.PNG-3c1e46401dbea6de3de75a7b9d0eebfb.ctex"
+uid="uid://dilmyoail83y0"
+path="res://.godot/imported/ActDisabledButton.png-e18524263a721fae8ea8d7b9166ea8cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/environment/floors/ramp_wood.PNG"
-dest_files=["res://.godot/imported/ramp_wood.PNG-3c1e46401dbea6de3de75a7b9d0eebfb.ctex"]
+source_file="res://assets/art/button/ActDisabledButton.png"
+dest_files=["res://.godot/imported/ActDisabledButton.png-e18524263a721fae8ea8d7b9166ea8cc.ctex"]
 
 [params]
 

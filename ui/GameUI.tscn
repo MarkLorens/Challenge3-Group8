@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://b65hehcjk3dc4" path="res://assets/art/ui/MissionBoard.png" id="14_a753d"]
 [ext_resource type="Texture2D" uid="uid://bvpxieppe77s0" path="res://assets/art/button/RestartButton.png" id="14_xkty7"]
 [ext_resource type="FontFile" uid="uid://dkw1u4n66htrd" path="res://assets/fonts/ComicMode-Regular.ttf" id="14_yjrrb"]
+[ext_resource type="Texture2D" uid="uid://bs5ucorasl827" path="res://assets/art/button/MoveButton.png" id="15_a753d"]
+[ext_resource type="Texture2D" uid="uid://dilmyoail83y0" path="res://assets/art/button/ActDisabledButton.png" id="16_2cap4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2e40r"]
 bg_color = Color(0.9882353, 0.98039216, 0.8156863, 1)
@@ -354,6 +356,24 @@ theme_override_font_sizes/font_size = 30
 text = "A & B must get to 
 meeting within 
 15 turns"
+
+[node name="MoveButton" type="TextureButton" parent="CanvasLayer" unique_id=461902623]
+offset_left = 76.0
+offset_top = 528.0
+offset_right = 214.0
+offset_bottom = 712.0
+texture_normal = ExtResource("15_a753d")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer" unique_id=684108163]
+offset_left = 226.0
+offset_top = 528.0
+offset_right = 364.0
+offset_bottom = 712.0
+texture_normal = ExtResource("16_2cap4")
+ignore_texture_size = true
+stretch_mode = 6
 
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/PauseMenu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/RestartButton" to="CanvasLayer/PauseMenu" method="_on_restart_button_pressed"]
