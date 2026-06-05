@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://btiqvp5qw43ai" path="res://levels/FloorTileHighlighted.gd" id="2_srceu"]
 [ext_resource type="PackedScene" uid="uid://mwjqm2h2ukp5" path="res://entities/sliding_door/SlidingDoor.tscn" id="3_3348v"]
 [ext_resource type="PackedScene" uid="uid://dnrlir6rdqga4" path="res://entities/player/BasePlayer.tscn" id="4_jg0uj"]
-[ext_resource type="PackedScene" uid="uid://dksn18ki8smkw" path="res://ui/GameUI.tscn" id="6_qkoq2"]
+[ext_resource type="PackedScene" uid="uid://c1o6014xt8aim" path="res://ui/GameUI.tscn" id="6_qkoq2"]
 [ext_resource type="Texture2D" uid="uid://bge6ahj0jo1l3" path="res://assets/art/environment/furniture/table_big_01.PNG" id="7_bb6xo"]
 [ext_resource type="Texture2D" uid="uid://bcweabsbe5c6v" path="res://assets/art/environment/furniture/table_big_02.PNG" id="8_41fje"]
 [ext_resource type="Texture2D" uid="uid://lv8ku2er8lp3" path="res://assets/art/environment/furniture/table_small_01.PNG" id="9_q7j5t"]
@@ -10412,7 +10412,7 @@ floor_tilemap = NodePath("../FloorTile")
 wall_tilemap = NodePath("../WallTile")
 highlight_layer = NodePath("../HighlightTile")
 poi_tilemap = NodePath("../ObjectiveTile")
-max_move_points = 2
+max_move_points = 6
 max_move_distance = 1
 
 [node name="SlidingDoor" parent="." unique_id=747853674 instance=ExtResource("3_3348v")]
