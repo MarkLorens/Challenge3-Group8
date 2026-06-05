@@ -4,6 +4,7 @@ class_name BasePlayer
 @export var floor_tilemap: TileMapLayer
 @export var wall_tilemap: TileMapLayer
 @export var highlight_layer: TileMapLayer
+@export var poi_tilemap: TileMapLayer
 @export var max_move_points: int = 2
 @export var max_move_distance: int = 1
 var current_move_points: int
@@ -52,6 +53,7 @@ func _unhandled_input(event):
 					floor_tilemap.map_to_local(current_grid)
 				)
 				current_move_points -= 1
+				check_poi_neighbors()
 				if current_move_points > 0:
 					highlight_layer.show_move_range(
 						current_grid,
@@ -69,3 +71,12 @@ func end_turn(_turn_count: int):
 	
 func _on_end_turn_button_pressed() -> void:
 	pass
+
+func check_poi_neighbors() -> void:
+	for neighbor in NeighboringTile.get_isometric_neighbors(current_grid):
+		if poi_tilemap.get_cell_source_id(neighbor) != -1:
+			var poi_data = poi_tilemap.get_cell_tile_data(neighbor)
+			var poi_id: String = poi_data.get_custom_data("poi_id")
+			var poi_interaction: String = poi_data.get_custom_data("poi_interaction")
+			print(poi_interaction)
+			LevelManager.complete_objective(poi_id)
