@@ -1,6 +1,7 @@
 extends Node
 
 signal level_loaded(max_turns: int)
+signal objective_reached(poi_id: String, description: String)
 signal objective_completed(poi_id: String, description: String)
 
 var current_level: int = 0
@@ -27,6 +28,11 @@ func get_objectives() -> Dictionary:
 				"Side2": "Help Colleague B"
 			}
 	return {}
+
+func objective_tile_reached(poi_id: String) -> void:
+	var objectives = get_objectives()
+	if poi_id in objectives and not poi_id in completed_objectives:
+		objective_reached.emit(poi_id, objectives[poi_id])
 
 func complete_objective(poi_id: String) -> void:
 	var objectives = get_objectives()
