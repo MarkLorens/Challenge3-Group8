@@ -1,10 +1,10 @@
 extends Control
-@onready var end_turn_button: TextureButton = $CanvasLayer/HBoxContainer/EndTurnButton
+@onready var end_turn_button: TextureButton = $CanvasLayer/EndTurnButton
 @export var turn_label: Label
 @onready var mission_board = $CanvasLayer/MissionBoard
 @onready var mission_details = $CanvasLayer/MissionDetail
 @onready var mission_bg = $CanvasLayer/MissionDetail/TextureRect
-@onready var close_area = $CanvasLayer/MissionDetail/CloseArea  # ← tambah ini
+@onready var close_area = $CanvasLayer/MissionDetail/CloseArea  
 var max_turns: int
 var tex_collapsed = preload("res://assets/art/ui/missionboardcrop.png")
 var tex_expanded = preload("res://assets/art/ui/MissionBoard.png")
@@ -16,7 +16,7 @@ func _ready():
 	mission_details.visible = false
 	if not mission_board.pressed.is_connected(_on_mission_board_pressed):
 		mission_board.pressed.connect(_on_mission_board_pressed)
-	close_area.pressed.connect(_on_mission_board_pressed)  # ← pakai fungsi yang sama
+	close_area.pressed.connect(_on_mission_board_pressed)  
 
 func _on_mission_board_pressed() -> void:
 	var is_open = !mission_details.visible

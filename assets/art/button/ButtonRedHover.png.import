@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wjprk6eenjru"
-path="res://.godot/imported/TurnCount.png-142bfbe1691456a5592004e75adee090.ctex"
+uid="uid://dk71ohanangbg"
+path="res://.godot/imported/ButtonRedHover.png-0dbe54f2f737ab920c4374e5409e3343.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/ui/TurnCount.png"
-dest_files=["res://.godot/imported/TurnCount.png-142bfbe1691456a5592004e75adee090.ctex"]
+source_file="res://assets/art/button/ButtonRedHover.png"
+dest_files=["res://.godot/imported/ButtonRedHover.png-0dbe54f2f737ab920c4374e5409e3343.ctex"]
 
 [params]
 
