@@ -13,6 +13,7 @@ func _ready():
 	end_turn_button.pressed.connect(_on_end_turn_pressed)
 	TurnManager.turn_ended.connect(_on_turn_ended)
 	LevelManager.level_loaded.connect(_on_level_loaded)
+	LevelManager.objective_completed.connect(_on_objective_completed)
 	mission_details.visible = false
 	if not mission_board.pressed.is_connected(_on_mission_board_pressed):
 		mission_board.pressed.connect(_on_mission_board_pressed)
@@ -37,3 +38,6 @@ func _on_end_turn_pressed():
 
 func _on_turn_ended(turn_count: int):
 	turn_label.text = "Turn " + str(turn_count) + "/" + str(max_turns)
+
+func _on_objective_completed(poi_id: String, description: String):
+	print("Completed: ", description)

@@ -3,10 +3,11 @@
 [ext_resource type="Script" uid="uid://c35p8lagphi21" path="res://levels/MainLevel.gd" id="1_k0gbw"]
 [ext_resource type="Texture2D" uid="uid://s215f2wu5wun" path="res://assets/art/environment/floors/floor_gray_01.PNG" id="2_4oiuq"]
 [ext_resource type="Texture2D" uid="uid://lbh8d5looyfg" path="res://assets/art/tilesets/WallTileSpriteSheet.png" id="2_jg0uj"]
+[ext_resource type="Texture2D" uid="uid://dalkk0ub2ep5p" path="res://assets/art/tilesets/Level0Objective.png" id="2_q7j5t"]
 [ext_resource type="Script" uid="uid://btiqvp5qw43ai" path="res://levels/FloorTileHighlighted.gd" id="2_srceu"]
 [ext_resource type="PackedScene" uid="uid://mwjqm2h2ukp5" path="res://entities/sliding_door/SlidingDoor.tscn" id="3_3348v"]
 [ext_resource type="PackedScene" uid="uid://dnrlir6rdqga4" path="res://entities/player/BasePlayer.tscn" id="4_jg0uj"]
-[ext_resource type="PackedScene" uid="uid://c1o6014xt8aim" path="res://ui/GameUI.tscn" id="6_qkoq2"]
+[ext_resource type="PackedScene" uid="uid://dksn18ki8smkw" path="res://ui/GameUI.tscn" id="6_qkoq2"]
 [ext_resource type="Texture2D" uid="uid://bge6ahj0jo1l3" path="res://assets/art/environment/furniture/table_big_01.PNG" id="7_bb6xo"]
 [ext_resource type="Texture2D" uid="uid://bcweabsbe5c6v" path="res://assets/art/environment/furniture/table_big_02.PNG" id="8_41fje"]
 [ext_resource type="Texture2D" uid="uid://lv8ku2er8lp3" path="res://assets/art/environment/furniture/table_small_01.PNG" id="9_q7j5t"]
@@ -67,6 +68,25 @@ physics_layer_0/collision_layer = 1
 custom_data_layer_0/name = "blocked_directions"
 custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetAtlasSource_srceu")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gsvjw"]
+texture = ExtResource("2_q7j5t")
+texture_region_size = Vector2i(168, 156)
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/custom_data_0 = "Side1"
+2:0/0 = 0
+2:0/0/custom_data_0 = "Main"
+
+[sub_resource type="TileSet" id="TileSet_4oiuq"]
+tile_shape = 1
+tile_size = Vector2i(518, 298)
+physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "poi_id"
+custom_data_layer_0/type = 4
+custom_data_layer_1/name = "poi_interaction"
+custom_data_layer_1/type = 4
+sources/0 = SubResource("TileSetAtlasSource_gsvjw")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4oiuq"]
 texture = ExtResource("7_bb6xo")
@@ -10377,16 +10397,21 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAAAAUAAAACAAAAAAAAAAQAAAACAAAAAAD//wMAAAACAAAAAAAFAPf/AAACAAAAAAADAP3/AAACAAAAAAADAPz/AAACAAAAAAACAPv/AAACAAAAAAACAPr/AAACAAAAAAAFAPb/AAACAAAAAAACAPn/AAABAAAAAAADAPj/AAABAAAAAAADAPf/AAABAAAAAAAEAPb/AAABAAAAAAAFAPT/AAAEAAAAAAAGAPj/AAACAAAAAAD//wIAAAACAAAAAAD+/wMAAAABAAAAAAD+/wQAAAABAAAAAAD9/wUAAAABAAAAAAD9/wYAAAABAAAAAAD7//7/AAABAAAAAAADAOv/AAABAAAAAAAEAOz/AAACAAAAAAAEAO3/AAACAAAAAAAFAO7/AAACAAAAAAAFAO//AAACAAAAAAAGAPD/AAACAAAAAAAGAPH/AAACAAAAAAAHAPL/AAACAAAAAAAHAPP/AAACAAAAAAAIAPT/AAACAAAAAAADAOz/AAABAAAAAAACAO3/AAABAAAAAAACAO7/AAABAAAAAAABAO//AAABAAAAAAABAPD/AAABAAAAAAAAAPH/AAABAAAAAAAAAPL/AAABAAAAAAD///P/AAABAAAAAAD///T/AAABAAAAAAD+//f/AAABAAAAAAD+//j/AAABAAAAAAD9//n/AAABAAAAAAD9//r/AAABAAAAAAD8//v/AAABAAAAAAD8//z/AAABAAAAAAD7//3/AAABAAAAAAD6////AAABAAAAAAD6/wAAAAABAAAAAAD7/wEAAAACAAAAAAD7/wAAAAACAAAAAAD8/wIAAAACAAAAAAD///b/AAABAAAAAAA=")
 tile_set = SubResource("TileSet_qkoq2")
 
+[node name="ObjectiveTile" type="TileMapLayer" parent="." unique_id=1014284522]
+tile_map_data = PackedByteArray("AAACAP7/AAABAAAAAAAAAPz/AAACAAAAAAA=")
+tile_set = SubResource("TileSet_4oiuq")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1994155343]
 position = Vector2(-378, 168)
 zoom = Vector2(0.2, 0.2)
 
-[node name="BasePlayer" parent="." unique_id=1493889780 node_paths=PackedStringArray("floor_tilemap", "wall_tilemap", "highlight_layer") instance=ExtResource("4_jg0uj")]
+[node name="BasePlayer" parent="." unique_id=1493889780 node_paths=PackedStringArray("floor_tilemap", "wall_tilemap", "highlight_layer", "poi_tilemap") instance=ExtResource("4_jg0uj")]
 z_index = 10
 y_sort_enabled = true
 floor_tilemap = NodePath("../FloorTile")
 wall_tilemap = NodePath("../WallTile")
 highlight_layer = NodePath("../HighlightTile")
+poi_tilemap = NodePath("../ObjectiveTile")
 max_move_points = 2
 max_move_distance = 1
 
