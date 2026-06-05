@@ -25,5 +25,7 @@ func show_move_range(center: Vector2i, move_range: int):
 		
 		for neighbor in NeighboringTile.get_isometric_neighbors(tile):
 			if neighbor not in visited:
-				visited[neighbor] = true
-				queue.append([neighbor, steps + 1])
+				if NeighboringTile.can_move_to(tile, neighbor, floor_tilemap, wall_tilemap):
+					visited[neighbor] = true
+					if steps + 1 <= move_range:
+						queue.append([neighbor, steps + 1])
