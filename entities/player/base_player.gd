@@ -46,7 +46,7 @@ func _unhandled_input(event):
 			var valid_neighbors = NeighboringTile.get_isometric_neighbors(current_grid)
 			if clicked_tile not in valid_neighbors:
 				return
-			if can_move_to(clicked_tile):
+			if NeighboringTile.can_move_to(current_grid, clicked_tile, floor_tilemap, wall_tilemap):
 				current_grid = clicked_tile
 				global_position = floor_tilemap.to_global(
 					floor_tilemap.map_to_local(current_grid)
@@ -60,18 +60,12 @@ func _unhandled_input(event):
 				else:
 					highlight_layer.clear()
 
-func end_turn(turn_count: int):
+func end_turn(_turn_count: int):
 	current_move_points = max_move_points
 	highlight_layer.show_move_range(
 		current_grid,
 		max_move_distance
 	)
-	print("test")
-
-func can_move_to(tile: Vector2i) -> bool:
-	if floor_tilemap.get_cell_source_id(tile) == -1:
-		return false
-	return true
-
+	
 func _on_end_turn_button_pressed() -> void:
 	pass

@@ -14,5 +14,4 @@ func get_max_turns() -> int:
 
 func load_level(level: int):
 	current_level = level
-	print("LevelManager: loading level ", level, " max turns: ", get_max_turns())
 	call_deferred("emit_signal", "level_loaded", get_max_turns())
