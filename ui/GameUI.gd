@@ -13,7 +13,6 @@ func _ready():
 	end_turn_button.pressed.connect(_on_end_turn_pressed)
 	TurnManager.turn_ended.connect(_on_turn_ended)
 	LevelManager.level_loaded.connect(_on_level_loaded)
-	print("GameUI: connected to level_loaded")
 	mission_details.visible = false
 	if not mission_board.pressed.is_connected(_on_mission_board_pressed):
 		mission_board.pressed.connect(_on_mission_board_pressed)
@@ -30,7 +29,6 @@ func _on_mission_board_pressed() -> void:
 		mission_board.texture_normal = tex_collapsed
 
 func _on_level_loaded(turns: int):
-	print("GameUI: level_loaded received, turns: ", turns)
 	max_turns = turns
 	turn_label.text = "Turn 0/" + str(max_turns)
 
