@@ -7,6 +7,9 @@ signal objective_completed(poi_id: String, description: String)
 var current_level: int = 0
 var completed_objectives: Dictionary = {}
 
+func reset() -> void:
+	completed_objectives.clear() 
+
 func load_level(level: int):
 	current_level = level
 	call_deferred("emit_signal", "level_loaded", get_max_turns())

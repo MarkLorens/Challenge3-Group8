@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dksn18ki8smkw"]
+[gd_scene format=3 uid="uid://c1o6014xt8aim"]
 
 [ext_resource type="Script" uid="uid://cfnwp10e6cqla" path="res://ui/GameUI.gd" id="1_e78dt"]
 [ext_resource type="Script" uid="uid://chnmr7duojoov" path="res://core/canvas_layer.gd" id="1_fpxnd"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://ch4pqp2rd7hwr" path="res://assets/art/button/UndoButton.png" id="13_vjewj"]
 [ext_resource type="Texture2D" uid="uid://b65hehcjk3dc4" path="res://assets/art/ui/MissionBoard.png" id="14_a753d"]
 [ext_resource type="Texture2D" uid="uid://bvpxieppe77s0" path="res://assets/art/button/RestartButton.png" id="14_xkty7"]
-[ext_resource type="FontFile" uid="uid://dkw1u4n66htrd" path="res://assets/fonts/ComicMode-Regular.ttf" id="14_yjrrb"]
 [ext_resource type="Texture2D" uid="uid://bs5ucorasl827" path="res://assets/art/button/MoveButton.png" id="15_a753d"]
 [ext_resource type="Texture2D" uid="uid://dilmyoail83y0" path="res://assets/art/button/ActDisabledButton.png" id="16_2cap4"]
 [ext_resource type="FontFile" uid="uid://bqu0hskpy0aql" path="res://assets/fonts/ComicMode-Light.ttf" id="17_olnky"]
@@ -341,37 +340,6 @@ offset_left = 87.0
 offset_top = 14.0
 offset_right = 635.0
 offset_bottom = 237.0
-
-[node name="MissionDetail1" type="CheckBox" parent="CanvasLayer/MissionDetail/MissionDetail" unique_id=592871388]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
-theme_override_fonts/font = ExtResource("14_yjrrb")
-theme_override_font_sizes/font_size = 28
-toggle_mode = false
-text = "A wants coffee"
-
-[node name="MissionDetail2" type="CheckBox" parent="CanvasLayer/MissionDetail/MissionDetail" unique_id=1766394671]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
-theme_override_fonts/font = ExtResource("14_yjrrb")
-theme_override_font_sizes/font_size = 30
-text = "A needs toilet"
-
-[node name="MissionDetail3" type="CheckBox" parent="CanvasLayer/MissionDetail/MissionDetail" unique_id=1889564667]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
-theme_override_fonts/font = ExtResource("14_yjrrb")
-theme_override_font_sizes/font_size = 30
-text = "B needs help"
-
-[node name="MissionDetail4" type="CheckBox" parent="CanvasLayer/MissionDetail/MissionDetail" unique_id=64552196]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
-theme_override_fonts/font = ExtResource("14_yjrrb")
-theme_override_font_sizes/font_size = 30
-text = "A & B must get to 
-meeting within 
-15 turns"
 
 [node name="MoveButton" type="TextureButton" parent="CanvasLayer" unique_id=461902623]
 offset_left = 76.0

@@ -7,12 +7,15 @@ extends Control
 @onready var mission_bg = $CanvasLayer/MissionDetail/TextureRect
 @onready var close_area = $CanvasLayer/MissionDetail/CloseArea  
 @onready var action_button = $CanvasLayer/ActionButton
+@onready var mission_list = $CanvasLayer/MissionDetail/MissionDetail
 @export var move_label: Label  
+
 
 var current_poi_id: String = ""
 var max_turns: int
 var tex_collapsed = preload("res://assets/art/ui/missionboardcrop.png")
 var tex_expanded = preload("res://assets/art/ui/MissionBoard.png")
+var objective_checkboxes: Dictionary = {}
 
 func _ready():
 	end_turn_button.pressed.connect(_on_end_turn_pressed)
@@ -20,6 +23,7 @@ func _ready():
 	LevelManager.level_loaded.connect(_on_level_loaded)
 	LevelManager.objective_reached.connect(_on_reaching_objective_tile)
 	action_button.pressed.connect(_complete_objective)
+	LevelManager.objective_completed.connect(_on_objective_completed)
 	mission_details.visible = false
 	if not mission_board.pressed.is_connected(_on_mission_board_pressed):
 		mission_board.pressed.connect(_on_mission_board_pressed)
@@ -28,6 +32,25 @@ func _ready():
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		player.move_updated.connect(_on_move_updated)
+
+func _build_mission_list() -> void:
+	for child in mission_list.get_children():
+		child.queue_free()
+	objective_checkboxes.clear()
+	var objectives = LevelManager.get_objectives()
+	for poi_id in objectives:
+		var cb = CheckBox.new()
+		cb.text = objectives[poi_id]
+		cb.disabled = true  
+		cb.button_pressed = poi_id in LevelManager.completed_objectives
+		cb.add_theme_color_override("font_color", Color(0.2, 0.2, 0.4))
+		cb.add_theme_color_override("font_disabled_color", Color(0.2, 0.2, 0.4))
+		mission_list.add_child(cb)
+		objective_checkboxes[poi_id] = cb
+
+func _on_objective_completed(poi_id: String, _description: String) -> void:
+	if poi_id in objective_checkboxes:
+		objective_checkboxes[poi_id].button_pressed = true
 
 func _on_move_updated(current: int, max: int) -> void:
 	move_label.text = "MOVE " + str(max - current) + "/" + str(max)
@@ -45,6 +68,7 @@ func _on_mission_board_pressed() -> void:
 func _on_level_loaded(turns: int):
 	max_turns = turns
 	turn_label.text = "Turn 0/" + str(max_turns)
+	_build_mission_list() 
 
 func _on_end_turn_pressed():
 	TurnManager.end_turn()
