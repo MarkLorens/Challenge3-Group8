@@ -4,15 +4,17 @@ var is_open = false
 
 # @export makes this show up in the Inspector on the right!
 # Vector2(64, 32) is a standard isometric diagonal movement (down-right).
-@export var slide_offset: Vector2 = Vector2(64, 32)
+@export var slide_offset: Vector2 = Vector2(0,0)
 
 func _on_interactable_area_body_entered(body):
 	if body.name == "BasePlayer":
 		open_door()
+		$StaticBody2D.z_index = 2
 
 func _on_interactable_area_body_exited(body):
 	if body.name == "BasePlayer":
 		close_door()
+		$StaticBody2D.z_index = 0
 
 func open_door():
 	if is_open: return

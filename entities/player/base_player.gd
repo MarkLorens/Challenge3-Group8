@@ -7,6 +7,7 @@ class_name BasePlayer
 @export var poi_tilemap: TileMapLayer
 @export var max_move_points: int = 6  
 @export var max_move_distance: int = 1
+@onready var sprite = $Sprite2D
 var current_move_points: int
 var target_pos: Vector2 = global_position
 var is_moving: bool = false
@@ -50,7 +51,7 @@ func _unhandled_input(event):
 			var valid_neighbors = NeighboringTile.get_isometric_neighbors(current_grid)
 			if clicked_tile not in valid_neighbors:
 				return
-			if NeighboringTile.can_move_to(current_grid, clicked_tile, floor_tilemap, wall_tilemap):
+			if NeighboringTile.can_move_to(clicked_tile, floor_tilemap, wall_tilemap):
 				current_grid = clicked_tile
 				global_position = floor_tilemap.to_global(
 					floor_tilemap.map_to_local(current_grid)
