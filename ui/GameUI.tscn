@@ -7,64 +7,16 @@
 [ext_resource type="FontFile" uid="uid://b8ldgkkm5118m" path="res://assets/fonts/kawaii-cubes-cute-pixel-sans-2026-04-22-22-56-18-utc/Kawaii Cubes.ttf" id="5_5volr"]
 [ext_resource type="Texture2D" uid="uid://cr0jxvr4byi80" path="res://assets/art/button/ButtonRed.png" id="5_yjrrb"]
 [ext_resource type="Texture2D" uid="uid://dk71ohanangbg" path="res://assets/art/button/ButtonRedHover.png" id="6_a753d"]
-[ext_resource type="FontFile" uid="uid://ecqbsbyb6m2t" path="res://assets/fonts/ComicMode-SemiBold.ttf" id="6_r8fx2"]
 [ext_resource type="FontFile" uid="uid://dt0ye6xvqo0ll" path="res://assets/fonts/ComicMode-ExtraBold.ttf" id="7_2cap4"]
 [ext_resource type="FontFile" uid="uid://bohbc7w1bgqdm" path="res://assets/fonts/ComicMode-Bold.ttf" id="11_olnky"]
 [ext_resource type="Texture2D" uid="uid://f3deenbh4nvc" path="res://assets/art/button/MenuButton.png" id="12_olnky"]
+[ext_resource type="Texture2D" uid="uid://ble0a86foy6ti" path="res://assets/art/button/ButtonBlue.png" id="13_olnky"]
 [ext_resource type="Texture2D" uid="uid://ch4pqp2rd7hwr" path="res://assets/art/button/UndoButton.png" id="13_vjewj"]
 [ext_resource type="Texture2D" uid="uid://b65hehcjk3dc4" path="res://assets/art/ui/MissionBoard.png" id="14_a753d"]
 [ext_resource type="Texture2D" uid="uid://bvpxieppe77s0" path="res://assets/art/button/RestartButton.png" id="14_xkty7"]
 [ext_resource type="Texture2D" uid="uid://bs5ucorasl827" path="res://assets/art/button/MoveButton.png" id="15_a753d"]
 [ext_resource type="Texture2D" uid="uid://dilmyoail83y0" path="res://assets/art/button/ActDisabledButton.png" id="16_2cap4"]
 [ext_resource type="FontFile" uid="uid://bqu0hskpy0aql" path="res://assets/fonts/ComicMode-Light.ttf" id="17_olnky"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2e40r"]
-bg_color = Color(0.9882353, 0.98039216, 0.8156863, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.9019608, 0.8117647, 0.63529414, 1)
-corner_radius_top_left = 11
-corner_radius_top_right = 11
-corner_radius_bottom_right = 11
-corner_radius_bottom_left = 11
-corner_detail = 11
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3i70a"]
-bg_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-corner_radius_top_left = 11
-corner_radius_top_right = 11
-corner_radius_bottom_right = 11
-corner_radius_bottom_left = 11
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yjrrb"]
-bg_color = Color(0.9019608, 0.8117647, 0.63529414, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.9445512, 0.8029801, 0.5178698, 1)
-corner_radius_top_left = 11
-corner_radius_top_right = 11
-corner_radius_bottom_right = 11
-corner_radius_bottom_left = 11
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a753d"]
 load_path = "res://.godot/imported/missionboardcrop.png-6bb114394642a7d8e14b13583113a148.ctex"
@@ -178,7 +130,6 @@ theme_override_font_sizes/font_size = 19
 text = "MOVE 1/5"
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=807747375]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -229,66 +180,72 @@ theme_override_font_sizes/font_size = 110
 text = "Paused"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/Panel" unique_id=2007425015]
+[node name="continue" type="TextureButton" parent="CanvasLayer/PauseMenu/Panel" unique_id=1232230133]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -143.6875
-offset_top = -139.0
-offset_right = 143.6875
-offset_bottom = 139.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 40
-alignment = 1
+anchors_preset = -1
+anchor_right = 0.058000002
+anchor_bottom = 0.023000002
+offset_left = 477.00003
+offset_top = 213.00002
+offset_right = 850.76
+offset_bottom = 307.44003
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("13_olnky")
 
-[node name="continue" type="Button" parent="CanvasLayer/PauseMenu/Panel/VBoxContainer" unique_id=2038707153]
-custom_minimum_size = Vector2(15, 15)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
-theme_override_colors/font_pressed_color = Color(0.9882353, 0.98039216, 0.8156863, 1)
-theme_override_colors/font_hover_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
-theme_override_fonts/font = ExtResource("6_r8fx2")
-theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_2e40r")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3i70a")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yjrrb")
-text = "CONTINUE"
-icon_alignment = 1
-
-[node name="restart" type="Button" parent="CanvasLayer/PauseMenu/Panel/VBoxContainer" unique_id=608995796]
-custom_minimum_size = Vector2(15, 15)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
-theme_override_colors/font_pressed_color = Color(0.9882353, 0.98039216, 0.8156863, 1)
-theme_override_colors/font_hover_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
-theme_override_fonts/font = ExtResource("6_r8fx2")
-theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_2e40r")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3i70a")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yjrrb")
-text = "RESTART
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/Panel/continue" unique_id=1738305589]
+layout_mode = 0
+offset_left = 15.999958
+offset_top = 22.666649
+offset_right = 439.99997
+offset_bottom = 145.66666
+theme_override_fonts/font = ExtResource("11_olnky")
+theme_override_font_sizes/font_size = 60
+text = "CONTINUE
 "
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="exit" type="Button" parent="CanvasLayer/PauseMenu/Panel/VBoxContainer" unique_id=1509311611]
-custom_minimum_size = Vector2(8, 8)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
-theme_override_colors/font_pressed_color = Color(0.9882353, 0.98039216, 0.8156863, 1)
-theme_override_colors/font_hover_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
-theme_override_fonts/font = ExtResource("6_r8fx2")
-theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_2e40r")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3i70a")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yjrrb")
-text = "EXIT
-"
+[node name="restart" type="TextureButton" parent="CanvasLayer/PauseMenu/Panel" unique_id=691606800]
+layout_mode = 0
+offset_left = 479.0
+offset_top = 317.0
+offset_right = 927.0
+offset_bottom = 428.0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("13_olnky")
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/Panel/restart" unique_id=1147098020]
+layout_mode = 0
+offset_left = 13.333313
+offset_top = 10.6666565
+offset_right = 436.00006
+offset_bottom = 98.66669
+theme_override_fonts/font = ExtResource("11_olnky")
+theme_override_font_sizes/font_size = 60
+text = "RESTART"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="exit" type="TextureButton" parent="CanvasLayer/PauseMenu/Panel" unique_id=125807256]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 423.0
+offset_right = 929.0
+offset_bottom = 534.0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("5_yjrrb")
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/Panel/exit" unique_id=328145631]
+layout_mode = 0
+offset_left = 2.6666667
+offset_top = 9.333334
+offset_right = 431.99997
+offset_bottom = 101.333336
+theme_override_fonts/font = ExtResource("11_olnky")
+theme_override_font_sizes/font_size = 60
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MissionBoard" type="TextureButton" parent="CanvasLayer" unique_id=217383108]
 anchors_preset = 3
@@ -378,8 +335,8 @@ autowrap_mode = 3
 
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/PauseMenu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/RestartButton" to="CanvasLayer/PauseMenu" method="_on_restart_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/continue" to="CanvasLayer/PauseMenu" method="_on_continue_pressed"]
-[connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/restart" to="CanvasLayer/PauseMenu" method="_on_restart_pressed"]
-[connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/exit" to="CanvasLayer/PauseMenu" method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/continue" to="CanvasLayer/PauseMenu" method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/restart" to="CanvasLayer/PauseMenu" method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/exit" to="CanvasLayer/PauseMenu" method="_on_exit_pressed"]
 [connection signal="pressed" from="CanvasLayer/MissionBoard" to="." method="_on_mission_board_pressed"]
 [connection signal="pressed" from="CanvasLayer/MissionDetail/CloseArea" to="." method="_on_close_area_pressed"]

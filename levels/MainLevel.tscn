@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://mwjqm2h2ukp5" path="res://entities/sliding_door/SlidingDoor.tscn" id="3_3348v"]
 [ext_resource type="PackedScene" uid="uid://dnrlir6rdqga4" path="res://entities/player/BasePlayer.tscn" id="4_jg0uj"]
 [ext_resource type="Texture2D" uid="uid://bm3iuxj4650wy" path="res://assets/art/environment/walls/Corner_Resized_N.png" id="6_ff2ql"]
-[ext_resource type="PackedScene" uid="uid://dksn18ki8smkw" path="res://ui/GameUI.tscn" id="6_qkoq2"]
+[ext_resource type="PackedScene" uid="uid://c1o6014xt8aim" path="res://ui/GameUI.tscn" id="6_qkoq2"]
 [ext_resource type="Texture2D" uid="uid://bge6ahj0jo1l3" path="res://assets/art/environment/furniture/table_big_01.PNG" id="7_bb6xo"]
 [ext_resource type="Texture2D" uid="uid://bcweabsbe5c6v" path="res://assets/art/environment/furniture/table_big_02.PNG" id="8_41fje"]
 [ext_resource type="Texture2D" uid="uid://lv8ku2er8lp3" path="res://assets/art/environment/furniture/table_small_01.PNG" id="9_q7j5t"]
@@ -10417,6 +10417,8 @@ y_sort_enabled = true
 position = Vector2(2464, -1791)
 
 [node name="GameUi" parent="." unique_id=963071057 instance=ExtResource("6_qkoq2")]
+offset_top = 1.0
+offset_bottom = 1.0
 
 [node name="Tables" type="TileMapLayer" parent="." unique_id=751617623]
 z_index = 18
