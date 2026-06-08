@@ -14238,6 +14238,8 @@ y_sort_enabled = true
 position = Vector2(2610, -1401)
 
 [node name="GameUi" parent="." unique_id=963071057 instance=ExtResource("6_qkoq2")]
+offset_top = 1.0
+offset_bottom = 1.0
 
 [node name="Tables" type="TileMapLayer" parent="." unique_id=751617623]
 z_index = 18

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0t6yu3a7xb46"
-path="res://.godot/imported/play.png-5242e9857280b868b7570aa7eacd3b34.ctex"
+uid="uid://dsiviufik1sn2"
+path="res://.godot/imported/ButtonBlueHover.png-27cc0ac7d9f4679d87626e2c5f02abb7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/button/play.png"
-dest_files=["res://.godot/imported/play.png-5242e9857280b868b7570aa7eacd3b34.ctex"]
+source_file="res://assets/art/button/ButtonBlueHover.png"
+dest_files=["res://.godot/imported/ButtonBlueHover.png-27cc0ac7d9f4679d87626e2c5f02abb7.ctex"]
 
 [params]
 
