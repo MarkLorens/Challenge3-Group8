@@ -4,9 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://w0exi0tgclg5" path="res://assets/art/ui/whildchair.png" id="2_mytdp"]
 [ext_resource type="FontFile" uid="uid://b8ldgkkm5118m" path="res://assets/fonts/kawaii-cubes-cute-pixel-sans-2026-04-22-22-56-18-utc/Kawaii Cubes.ttf" id="3_qgi8w"]
 [ext_resource type="FontFile" uid="uid://bh7tmqa5nyd78" path="res://assets/fonts/ComicMode-Medium.ttf" id="4_l8mav"]
-[ext_resource type="Texture2D" uid="uid://c0t6yu3a7xb46" path="res://assets/art/button/play.png" id="5_hlbrk"]
-[ext_resource type="Texture2D" uid="uid://dyoau0afq62ln" path="res://assets/art/button/playpressed.png" id="6_qgi8w"]
-[ext_resource type="Texture2D" uid="uid://86v2l1m0x6qe" path="res://assets/art/button/playhover.png" id="7_l8mav"]
+[ext_resource type="Texture2D" uid="uid://bradg0vnvegx0" path="res://assets/art/button/NextButton.png" id="5_otep2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywgpa"]
 bg_color = Color(0.7058824, 0.74509805, 0.7647059, 1)
@@ -77,13 +75,12 @@ text = "Lorem Ipsum is simply dummy text of the printing and typesetting indust
 
 [node name="TextureButton" type="TextureButton" parent="dialogue" unique_id=1846489430]
 layout_mode = 0
-offset_left = 527.0
-offset_top = 337.0
-offset_right = 588.0
-offset_bottom = 397.0
-texture_normal = ExtResource("5_hlbrk")
-texture_pressed = ExtResource("6_qgi8w")
-texture_hover = ExtResource("7_l8mav")
+offset_left = 559.0
+offset_top = 351.0
+offset_right = 707.0
+offset_bottom = 488.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("5_otep2")
 stretch_mode = 6
 
 [connection signal="pressed" from="dialogue/TextureButton" to="." method="_on_texture_button_pressed"]
