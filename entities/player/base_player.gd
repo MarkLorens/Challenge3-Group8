@@ -5,12 +5,15 @@ class_name BasePlayer
 @export var wall_tilemap: TileMapLayer
 @export var highlight_layer: TileMapLayer
 @export var poi_tilemap: TileMapLayer
-@export var max_move_points: int = 2
+@export var max_move_points: int = 6  
 @export var max_move_distance: int = 1
+@onready var sprite = $Sprite2D
 var current_move_points: int
 var target_pos: Vector2 = global_position
 var is_moving: bool = false
 var current_grid: Vector2i
+
+signal move_updated(current: int, max: int)  
 
 func _ready() -> void:
 	add_to_group("player")
@@ -32,6 +35,7 @@ func _ready() -> void:
 	
 	await get_tree().process_frame
 	highlight_layer.show_move_range(current_grid, max_move_distance)
+	move_updated.emit(current_move_points, max_move_points)  
 
 func _unhandled_input(event):
 	if is_moving:
@@ -47,36 +51,31 @@ func _unhandled_input(event):
 			var valid_neighbors = NeighboringTile.get_isometric_neighbors(current_grid)
 			if clicked_tile not in valid_neighbors:
 				return
-			if NeighboringTile.can_move_to(current_grid, clicked_tile, floor_tilemap, wall_tilemap):
+			if NeighboringTile.can_move_to(clicked_tile, floor_tilemap, wall_tilemap):
 				current_grid = clicked_tile
 				global_position = floor_tilemap.to_global(
 					floor_tilemap.map_to_local(current_grid)
 				)
 				current_move_points -= 1
-				check_poi_neighbors()
+				check_poi()
+				move_updated.emit(current_move_points, max_move_points)
 				if current_move_points > 0:
-					highlight_layer.show_move_range(
-						current_grid,
-						max_move_distance
-					)
+					highlight_layer.show_move_range(current_grid, max_move_distance)
 				else:
 					highlight_layer.clear()
 
 func end_turn(_turn_count: int):
 	current_move_points = max_move_points
-	highlight_layer.show_move_range(
-		current_grid,
-		max_move_distance
-	)
-	
+	move_updated.emit(current_move_points, max_move_points)  
+	highlight_layer.show_move_range(current_grid, max_move_distance)
+
 func _on_end_turn_button_pressed() -> void:
 	pass
 
-func check_poi_neighbors() -> void:
-	for neighbor in NeighboringTile.get_isometric_neighbors(current_grid):
-		if poi_tilemap.get_cell_source_id(neighbor) != -1:
-			var poi_data = poi_tilemap.get_cell_tile_data(neighbor)
-			var poi_id: String = poi_data.get_custom_data("poi_id")
-			var poi_interaction: String = poi_data.get_custom_data("poi_interaction")
-			print(poi_interaction)
-			LevelManager.complete_objective(poi_id)
+func check_poi() -> void:
+	if poi_tilemap.get_cell_source_id(current_grid) != -1:
+		var poi_data = poi_tilemap.get_cell_tile_data(current_grid)
+		var poi_id: String = poi_data.get_custom_data("poi_id")
+		var poi_interaction: String = poi_data.get_custom_data("poi_interaction")
+		print(poi_interaction)
+		LevelManager.objective_tile_reached(poi_id)

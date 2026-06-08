@@ -17,6 +17,7 @@ func _on_continue_pressed() -> void:
 	close_pause()
 
 func _on_restart_pressed() -> void:
+	LevelManager.reset()
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 	
