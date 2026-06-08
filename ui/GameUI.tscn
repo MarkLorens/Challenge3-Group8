@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://ch4pqp2rd7hwr" path="res://assets/art/button/UndoButton.png" id="13_vjewj"]
 [ext_resource type="Texture2D" uid="uid://b65hehcjk3dc4" path="res://assets/art/ui/MissionBoard.png" id="14_a753d"]
 [ext_resource type="Texture2D" uid="uid://bvpxieppe77s0" path="res://assets/art/button/RestartButton.png" id="14_xkty7"]
+[ext_resource type="Texture2D" uid="uid://bpa3n7quasnjl" path="res://assets/art/button/ActButton.png" id="15_2cap4"]
 [ext_resource type="Texture2D" uid="uid://bs5ucorasl827" path="res://assets/art/button/MoveButton.png" id="15_a753d"]
-[ext_resource type="Texture2D" uid="uid://dilmyoail83y0" path="res://assets/art/button/ActDisabledButton.png" id="16_2cap4"]
 [ext_resource type="FontFile" uid="uid://bqu0hskpy0aql" path="res://assets/fonts/ComicMode-Light.ttf" id="17_olnky"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a753d"]
@@ -310,7 +310,7 @@ offset_left = 226.0
 offset_top = 528.0
 offset_right = 364.0
 offset_bottom = 712.0
-texture_normal = ExtResource("16_2cap4")
+texture_normal = ExtResource("15_2cap4")
 ignore_texture_size = true
 stretch_mode = 6
 

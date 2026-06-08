@@ -16,6 +16,7 @@ var is_moving: bool = false
 var current_grid: Vector2i
 
 signal move_updated(current: int, max: int)
+signal left_objective_tile 
 
 func _ready() -> void:
 	add_to_group("player")
@@ -107,3 +108,5 @@ func check_poi() -> void:
 		var poi_interaction: String = poi_data.get_custom_data("poi_interaction")
 		print(poi_interaction)
 		LevelManager.objective_tile_reached(poi_id)
+	else:
+		left_objective_tile.emit()   
