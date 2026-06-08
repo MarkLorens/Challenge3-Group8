@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://c20p5u32i8csc" path="res://core/pause_menu.gd" id="4_j65kr"]
 [ext_resource type="FontFile" uid="uid://b8ldgkkm5118m" path="res://assets/fonts/kawaii-cubes-cute-pixel-sans-2026-04-22-22-56-18-utc/Kawaii Cubes.ttf" id="5_5volr"]
 [ext_resource type="Texture2D" uid="uid://cr0jxvr4byi80" path="res://assets/art/button/ButtonRed.png" id="5_yjrrb"]
-[ext_resource type="Texture2D" uid="uid://dk71ohanangbg" path="res://assets/art/button/ButtonRedHover.png" id="6_a753d"]
 [ext_resource type="FontFile" uid="uid://dt0ye6xvqo0ll" path="res://assets/fonts/ComicMode-ExtraBold.ttf" id="7_2cap4"]
 [ext_resource type="FontFile" uid="uid://bohbc7w1bgqdm" path="res://assets/fonts/ComicMode-Bold.ttf" id="11_olnky"]
 [ext_resource type="Texture2D" uid="uid://f3deenbh4nvc" path="res://assets/art/button/MenuButton.png" id="12_olnky"]
@@ -74,8 +73,6 @@ offset_top = 6.0
 offset_right = 330.0
 offset_bottom = 69.0
 texture_normal = ExtResource("5_yjrrb")
-texture_pressed = ExtResource("5_yjrrb")
-texture_hover = ExtResource("6_a753d")
 ignore_texture_size = true
 stretch_mode = 6
 
@@ -171,13 +168,14 @@ offset_bottom = -126.75
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
-theme_override_colors/font_outline_color = Color(0.96862745, 0.972549, 0.96862745, 1)
+theme_override_colors/font_outline_color = Color(0.9490196, 0.9019608, 0.80784315, 1)
 theme_override_constants/shadow_offset_x = 40
 theme_override_constants/shadow_offset_y = 40
-theme_override_constants/outline_size = 30
+theme_override_constants/outline_size = 70
+theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("5_5volr")
 theme_override_font_sizes/font_size = 110
-text = "Paused"
+text = "PAUSED"
 horizontal_alignment = 1
 
 [node name="continue" type="TextureButton" parent="CanvasLayer/PauseMenu/Panel" unique_id=1232230133]
