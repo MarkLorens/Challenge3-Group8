@@ -126,6 +126,92 @@ theme_override_fonts/font = ExtResource("11_olnky")
 theme_override_font_sizes/font_size = 19
 text = "MOVE 1/5"
 
+[node name="MissionBoard" type="TextureButton" parent="CanvasLayer" unique_id=217383108]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -386.99994
+offset_top = -370.0
+offset_right = 253.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.52195084, 0.52627736)
+texture_normal = SubResource("CompressedTexture2D_a753d")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="MissionDetail" type="Control" parent="CanvasLayer" unique_id=2111092194]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 834.0
+offset_top = 482.0
+offset_right = 1215.0
+offset_bottom = 705.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MissionDetail" unique_id=598175621]
+layout_mode = 0
+offset_left = 55.0
+offset_top = -131.0
+offset_right = 395.0
+offset_bottom = 279.0
+texture = ExtResource("14_a753d")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CloseArea" type="Button" parent="CanvasLayer/MissionDetail" unique_id=414126500]
+layout_mode = 0
+offset_left = 38.0
+offset_top = -256.0
+offset_right = 678.0
+offset_bottom = 532.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yjrrb")
+flat = true
+
+[node name="MissionDetail" type="VBoxContainer" parent="CanvasLayer/MissionDetail" unique_id=1048882892]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 14.0
+offset_right = 635.0
+offset_bottom = 237.0
+
+[node name="MoveButton" type="TextureButton" parent="CanvasLayer" unique_id=461902623]
+offset_left = 76.0
+offset_top = 528.0
+offset_right = 214.0
+offset_bottom = 712.0
+texture_normal = ExtResource("15_a753d")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="ActionButton" type="TextureButton" parent="CanvasLayer" unique_id=684108163]
+offset_left = 226.0
+offset_top = 528.0
+offset_right = 364.0
+offset_bottom = 712.0
+texture_normal = ExtResource("15_2cap4")
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/ActionButton" unique_id=1071752288]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 108.0
+offset_right = 122.0
+offset_bottom = 167.0
+alignment = 2
+vertical = true
+
+[node name="ActionLabel" type="Label" parent="CanvasLayer/ActionButton/BoxContainer" unique_id=197765428]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("17_olnky")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=807747375]
 layout_mode = 3
 anchors_preset = 15
@@ -245,96 +331,10 @@ text = "EXIT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MissionBoard" type="TextureButton" parent="CanvasLayer" unique_id=217383108]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -386.99994
-offset_top = -370.0
-offset_right = 253.0
-offset_bottom = -50.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.52195084, 0.52627736)
-texture_normal = SubResource("CompressedTexture2D_a753d")
-ignore_texture_size = true
-stretch_mode = 6
-
-[node name="MissionDetail" type="Control" parent="CanvasLayer" unique_id=2111092194]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 834.0
-offset_top = 482.0
-offset_right = 1215.0
-offset_bottom = 705.0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MissionDetail" unique_id=598175621]
-layout_mode = 0
-offset_left = 55.0
-offset_top = -131.0
-offset_right = 395.0
-offset_bottom = 279.0
-texture = ExtResource("14_a753d")
-expand_mode = 1
-stretch_mode = 6
-
-[node name="CloseArea" type="Button" parent="CanvasLayer/MissionDetail" unique_id=414126500]
-layout_mode = 0
-offset_left = 38.0
-offset_top = -256.0
-offset_right = 678.0
-offset_bottom = 532.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_yjrrb")
-flat = true
-
-[node name="MissionDetail" type="VBoxContainer" parent="CanvasLayer/MissionDetail" unique_id=1048882892]
-layout_mode = 0
-offset_left = 87.0
-offset_top = 14.0
-offset_right = 635.0
-offset_bottom = 237.0
-
-[node name="MoveButton" type="TextureButton" parent="CanvasLayer" unique_id=461902623]
-offset_left = 76.0
-offset_top = 528.0
-offset_right = 214.0
-offset_bottom = 712.0
-texture_normal = ExtResource("15_a753d")
-ignore_texture_size = true
-stretch_mode = 6
-
-[node name="ActionButton" type="TextureButton" parent="CanvasLayer" unique_id=684108163]
-offset_left = 226.0
-offset_top = 528.0
-offset_right = 364.0
-offset_bottom = 712.0
-texture_normal = ExtResource("15_2cap4")
-ignore_texture_size = true
-stretch_mode = 6
-
-[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/ActionButton" unique_id=1071752288]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 108.0
-offset_right = 122.0
-offset_bottom = 167.0
-alignment = 2
-vertical = true
-
-[node name="ActionLabel" type="Label" parent="CanvasLayer/ActionButton/BoxContainer" unique_id=197765428]
-custom_minimum_size = Vector2(1, 1)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("17_olnky")
-theme_override_font_sizes/font_size = 24
-horizontal_alignment = 1
-autowrap_mode = 3
-
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/PauseMenu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/RestartButton" to="CanvasLayer/PauseMenu" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MissionBoard" to="." method="_on_mission_board_pressed"]
+[connection signal="pressed" from="CanvasLayer/MissionDetail/CloseArea" to="." method="_on_close_area_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/continue" to="CanvasLayer/PauseMenu" method="_on_continue_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/restart" to="CanvasLayer/PauseMenu" method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/exit" to="CanvasLayer/PauseMenu" method="_on_exit_pressed"]
-[connection signal="pressed" from="CanvasLayer/MissionBoard" to="." method="_on_mission_board_pressed"]
-[connection signal="pressed" from="CanvasLayer/MissionDetail/CloseArea" to="." method="_on_close_area_pressed"]

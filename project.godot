@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Later"
+config/name="Pathoria"
 run/main_scene="uid://cde748alnree4"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://brovnsyge2sm2"
 
 [autoload]
 
@@ -42,3 +42,4 @@ version_control/autoload_on_startup=true
 
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cde748alnree4"]
 
 [ext_resource type="Script" uid="uid://bud6jmpytt0l8" path="res://core/first_tap.gd" id="1_rfri3"]
-[ext_resource type="VideoStream" uid="uid://bdlbfj60d7y7w" path="res://assets/art/ui/Main-Background_1.ogv" id="2_dbm4f"]
+[ext_resource type="VideoStream" path="res://assets/art/ui/Main-Background_1.ogv" id="2_dbm4f"]
 [ext_resource type="Texture2D" uid="uid://cnxl7e5kjr3bk" path="res://assets/art/ui/background.png" id="2_ovww7"]
 [ext_resource type="FontFile" uid="uid://b8ldgkkm5118m" path="res://assets/fonts/kawaii-cubes-cute-pixel-sans-2026-04-22-22-56-18-utc/Kawaii Cubes.ttf" id="3_dbm4f"]
 [ext_resource type="FontFile" uid="uid://ecqbsbyb6m2t" path="res://assets/fonts/ComicMode-SemiBold.ttf" id="4_nwyk8"]

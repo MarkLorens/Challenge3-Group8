@@ -1,10 +1,13 @@
-extends Control 
+extends Control
 
-@onready var video_player = $VideoStreamPlayer
+func _ready() -> void:
+	$continue.visible = SaveManager.has_save()
+	$newgame.visible = true
 
-func _on_video_stream_player_finished():
-	# looping
-	video_player.play() 
-	
-	# looping
-	video_player.stream_position = 1.11
+func _on_continue_pressed() -> void:
+	get_tree().change_scene_to_file("res://levels/MainLevel.tscn")
+
+func _on_newgame_pressed() -> void:
+	LevelManager.reset()
+	SaveManager.delete_save()
+	get_tree().change_scene_to_file("res://ui/storywhildchair.tscn")
