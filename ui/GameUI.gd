@@ -162,13 +162,16 @@ func _complete_objective():
 			# Upstairs -> Downstairs
 			if player.current_grid == Vector2i(1, -9):
 				player.current_grid = Vector2i(0, -5)
-				player.z_index = 0
+				player.z_index = 2
+				player.map_floor = 1
 
 			# Downstairs -> Upstairs
 			else:
 				player.current_grid = Vector2i(1, -9)
-				player.z_index = 2
-
+				player.z_index = 1
+				player.map_floor = 2
+			
+			player.check_floor()
 			player.global_position = player.floor_tilemap.to_global(
 				player.floor_tilemap.map_to_local(player.current_grid)
 			)
