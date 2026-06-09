@@ -48,16 +48,20 @@ func _ready() -> void:
 		current_grid = floor_tilemap.local_to_map(
 			floor_tilemap.to_local(global_position)
 		)
+
+	check_stairs()
+
 	await get_tree().process_frame
+
 	highlight_layer.show_move_range(
 		current_grid,
 		max_move_distance
 	)
+
 	move_updated.emit(
 		current_move_points,
 		max_move_points
 	)
-	check_tile_effects()
 
 func _unhandled_input(event):
 	if is_moving or current_move_points <= 0:
@@ -86,12 +90,14 @@ func _unhandled_input(event):
 					global_position = floor_tilemap.to_global(floor_tilemap.map_to_local(current_grid))
 					current_move_points -= 1
 					check_tile_effects()
+					check_stairs()
 					move_updated.emit(current_move_points, max_move_points)
 					
 			if current_move_points > 0:
 				highlight_layer.show_move_range(current_grid, max_move_distance)
 			else:
 				highlight_layer.clear()
+		print(z_index)
 
 func get_pushable_at(grid_pos: Vector2i) -> Pushable:
 	var pushables = get_tree().get_nodes_in_group("pushable")
@@ -112,7 +118,6 @@ func _on_end_turn_button_pressed() -> void:
 func check_tile_effects() -> void:
 	_apply_floor_effects()
 	check_poi()
-	check_stairs()
 
 func _apply_floor_effects() -> void:
 	var tile_data: TileData = floor_tilemap.get_cell_tile_data(current_grid)
@@ -128,7 +133,7 @@ func _apply_floor_effects() -> void:
 			movement_locked = false
 		2:
 			movement_locked = true
-			highlight_layer.clear()  # No point showing range if locked
+			highlight_layer.clear()
 		3:
 			z_index = 2
 			movement_locked = false
@@ -136,14 +141,14 @@ func _apply_floor_effects() -> void:
 			z_index = 1
 			movement_locked = false
 		_:
-			z_index = 0
+			z_index = 1
+			movement_locked = false
 
 func check_poi() -> void:
 	if poi_tilemap.get_cell_source_id(current_grid) != -1:
 		var poi_data = poi_tilemap.get_cell_tile_data(current_grid)
 		var poi_id: String = poi_data.get_custom_data("poi_id")
 		var poi_interaction: String = poi_data.get_custom_data("poi_interaction")
-		print(poi_interaction)
 		LevelManager.objective_tile_reached(poi_id)
 	else:
 		left_objective_tile.emit()   

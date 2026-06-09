@@ -1,11 +1,19 @@
 [gd_scene format=4 uid="uid://b0i3c5e8ecfgq"]
 
-[ext_resource type="Texture2D" uid="uid://vkikpbpdgbuo" path="res://assets/art/tilesets/CubicleSpriteSheet.png" id="1_at81k"]
-[ext_resource type="Texture2D" uid="uid://d1q3cjd8bac1p" path="res://assets/art/tilesets/TileSizedObjects.png" id="2_c2o5t"]
+[ext_resource type="Texture2D" uid="uid://b7k28qf6am8br" path="res://assets/art/tilesets/CubicleSpriteSheet.png" id="1_at81k"]
+[ext_resource type="Texture2D" uid="uid://deyqxga1nxj0r" path="res://assets/art/environment/furniture/kitchen_counter_with_appliences.PNG" id="1_c2o5t"]
+[ext_resource type="Texture2D" uid="uid://buigqmph3vgs6" path="res://assets/art/tilesets/TileSizedObjects.png" id="2_c2o5t"]
 [ext_resource type="Texture2D" uid="uid://b6s6pyhx8wux8" path="res://assets/art/environment/furniture/potted_plant_big.PNG" id="3_afcin"]
 [ext_resource type="Texture2D" uid="uid://mpw68fkr7ln6" path="res://assets/art/environment/floors/ramp_wood_with_tile.PNG" id="4_hr1s8"]
 [ext_resource type="Texture2D" uid="uid://c7e4svbmhygqi" path="res://assets/art/environment/furniture/caution_wet_floor_w.PNG" id="5_gmtxa"]
-[ext_resource type="Texture2D" uid="uid://d4drgf3l24xj" path="res://assets/art/tilesets/Tables.png" id="6_4xeff"]
+[ext_resource type="Texture2D" uid="uid://c6hpc5c2ltojm" path="res://assets/art/tilesets/Tables.png" id="6_4xeff"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_afcin"]
+texture = ExtResource("1_c2o5t")
+texture_region_size = Vector2i(1283, 1201)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(130, -50)
+0:0/0/y_sort_origin = -8
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x2uw4"]
 texture = ExtResource("1_at81k")
@@ -27,14 +35,17 @@ texture_region_size = Vector2i(518, 597)
 2:0/0 = 0
 2:0/0/texture_origin = Vector2i(0, 150)
 3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, 220)
 4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, 220)
+4:0/0/y_sort_origin = -8
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_io7o4"]
 texture = ExtResource("3_afcin")
 margins = Vector2i(0, 250)
 texture_region_size = Vector2i(518, 850)
 0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 50)
+0:0/0/texture_origin = Vector2i(0, 350)
 0:0/0/y_sort_origin = -8
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2pw5b"]
@@ -56,6 +67,7 @@ texture_region_size = Vector2i(1283, 1040)
 0:0/0/texture_origin = Vector2i(70, 110)
 0:0/0/y_sort_origin = -8
 1:0/0 = 0
+1:0/0/texture_origin = Vector2i(70, 110)
 1:0/0/y_sort_origin = -8
 
 [sub_resource type="TileSet" id="TileSet_x2uw4"]
@@ -68,9 +80,10 @@ sources/3 = SubResource("TileSetAtlasSource_io7o4")
 sources/4 = SubResource("TileSetAtlasSource_2pw5b")
 sources/5 = SubResource("TileSetAtlasSource_ihpsd")
 sources/6 = SubResource("TileSetAtlasSource_50hyn")
+sources/0 = SubResource("TileSetAtlasSource_afcin")
 
 [node name="ObjectTile" type="TileMapLayer" unique_id=619647178]
 z_index = 1
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD+/wcABgAAAAAAAAD9//7/AQAAAAAAAAD+//z/AQAAAAAAAAD8//3/AQABAAAAAAD9//v/AQABAAAAAAABAPv/AgAAAAAAAAABAPr/AgABAAAAAAACAPv/AwAAAAAAAAD///f/BAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD+/wcABgAAAAAAAAD9//7/AQAAAAAAAAD+//z/AQAAAAAAAAD8//3/AQABAAAAAAD9//v/AQABAAAAAAABAPv/AgAAAAAAAAABAPr/AgABAAAAAAACAPv/AwAAAAAAAAD///f/BAAAAAAAAAD//wgAAgAEAAAAAAD+/wYAAgADAAAAAAACAAMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_x2uw4")
