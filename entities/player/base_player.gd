@@ -15,7 +15,7 @@ var current_move_points: int
 var target_pos: Vector2 = global_position
 var is_moving: bool = false
 var current_grid: Vector2i
-
+var movement_locked: bool
 
 signal move_updated(current: int, max: int)
 signal stairs_available(can_use: bool)
@@ -48,20 +48,16 @@ func _ready() -> void:
 		current_grid = floor_tilemap.local_to_map(
 			floor_tilemap.to_local(global_position)
 		)
-
-	check_stairs()
-
 	await get_tree().process_frame
-
 	highlight_layer.show_move_range(
 		current_grid,
 		max_move_distance
 	)
-
 	move_updated.emit(
 		current_move_points,
 		max_move_points
 	)
+	check_tile_effects()
 
 func _unhandled_input(event):
 	if is_moving or current_move_points <= 0:
@@ -70,41 +66,28 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var mouse_pos = get_global_mouse_position()
 		var clicked_tile = floor_tilemap.local_to_map(floor_tilemap.to_local(mouse_pos))
-		
-		# 1. Identify if we clicked a valid neighbor and GET the direction
 		var push_dir = NeighboringTile.get_direction_to_neighbor(current_grid, clicked_tile)
 		
 		if push_dir != null:
-			# 2. Check if there is a pushable object on the clicked tile
 			var pushable_obj = get_pushable_at(clicked_tile)
 			
 			if pushable_obj:
-				# 3. Calculate the tile BEHIND the pushable object
 				var target_push_tile = NeighboringTile.get_tile_in_direction(clicked_tile, push_dir)
-				
-				# 4. Check if the target tile is empty (no walls, no other pushables)
 				if NeighboringTile.can_move_to(target_push_tile, floor_tilemap, wall_tilemap) and get_pushable_at(target_push_tile) == null:
-					
-					# Push it!
 					pushable_obj.push_to(target_push_tile)
 					current_move_points -= 1
 					move_updated.emit(current_move_points, max_move_points)
-					
-					# (Optional) Move the player into the tile the object just left
 					# current_grid = clicked_tile
 					# global_position = floor_tilemap.to_global(floor_tilemap.map_to_local(current_grid))
 					
 			else:
-				# Normal Movement (No object was there)
 				if NeighboringTile.can_move_to(clicked_tile, floor_tilemap, wall_tilemap):
 					current_grid = clicked_tile
 					global_position = floor_tilemap.to_global(floor_tilemap.map_to_local(current_grid))
 					current_move_points -= 1
-					check_poi()
-					check_stairs()
+					check_tile_effects()
 					move_updated.emit(current_move_points, max_move_points)
-			
-			# Update visuals
+					
 			if current_move_points > 0:
 				highlight_layer.show_move_range(current_grid, max_move_distance)
 			else:
@@ -124,6 +107,36 @@ func end_turn(_turn_count: int):
 
 func _on_end_turn_button_pressed() -> void:
 	pass
+
+# Floor Checks
+func check_tile_effects() -> void:
+	_apply_floor_effects()
+	check_poi()
+	check_stairs()
+
+func _apply_floor_effects() -> void:
+	var tile_data: TileData = floor_tilemap.get_cell_tile_data(current_grid)
+	
+	if tile_data == null:
+		return
+	
+	var floor_type: int = tile_data.get_custom_data("floor_type")
+	
+	match floor_type:
+		1:
+			z_index = 0
+			movement_locked = false
+		2:
+			movement_locked = true
+			highlight_layer.clear()  # No point showing range if locked
+		3:
+			z_index = 2
+			movement_locked = false
+		4:
+			z_index = 1
+			movement_locked = false
+		_:
+			z_index = 0
 
 func check_poi() -> void:
 	if poi_tilemap.get_cell_source_id(current_grid) != -1:
