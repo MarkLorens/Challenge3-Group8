@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://b8ldgkkm5118m" path="res://assets/fonts/kawaii-cubes-cute-pixel-sans-2026-04-22-22-56-18-utc/Kawaii Cubes.ttf" id="2_4c782"]
 [ext_resource type="Texture2D" uid="uid://ble0a86foy6ti" path="res://assets/art/button/ButtonBlue.png" id="4_2ot4n"]
 [ext_resource type="FontFile" uid="uid://bohbc7w1bgqdm" path="res://assets/fonts/ComicMode-Bold.ttf" id="5_fcydj"]
+[ext_resource type="VideoStream" uid="uid://c26uxgtaqaaxt" path="res://assets/art/ui/StartGame-Background.ogv" id="6_jbsda"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ot4n"]
 
@@ -18,6 +19,7 @@ grow_vertical = 2
 script = ExtResource("1_2ot4n")
 
 [node name="background" type="TextureRect" parent="." unique_id=1449102619]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,7 +34,26 @@ texture = ExtResource("1_udkah")
 expand_mode = 1
 stretch_mode = 6
 
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1220121802]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -805.0
+offset_top = -360.0
+offset_right = 793.53
+offset_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("6_jbsda")
+autoplay = true
+expand = true
+loop = true
+
 [node name="gamename" type="Label" parent="." unique_id=1242793161]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
