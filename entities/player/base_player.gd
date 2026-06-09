@@ -1,13 +1,14 @@
 extends CharacterBody2D
 class_name BasePlayer
 
-#Grid-By-Grid movement
+# Grid-By-Grid movement
 @export var floor_tilemap: TileMapLayer
 @export var wall_tilemap: TileMapLayer
 @export var highlight_layer: TileMapLayer
 @export var poi_tilemap: TileMapLayer
 @export var max_move_points: int = 6
 @export var max_move_distance: int = 1
+
 @onready var sprite = $Sprite2D
 
 var current_move_points: int
@@ -15,30 +16,52 @@ var target_pos: Vector2 = global_position
 var is_moving: bool = false
 var current_grid: Vector2i
 
+
 signal move_updated(current: int, max: int)
-signal left_objective_tile 
+signal stairs_available(can_use: bool)
+signal left_objective_tile
+
+func check_stairs() -> void:
+	stairs_available.emit(
+		current_grid == Vector2i(0, -5)
+		or current_grid == Vector2i(1, -9)
+	)
 
 func _ready() -> void:
 	add_to_group("player")
 	current_move_points = max_move_points
+
 	TurnManager.turn_ended.connect(end_turn)
-	
+
 	if SaveManager.has_save():
 		var saved_grid = SaveManager.load_position()
+
 		if saved_grid != Vector2i(-1, -1):
 			current_grid = saved_grid
+
 			global_position = floor_tilemap.to_global(
 				floor_tilemap.map_to_local(current_grid)
 			)
+
 			SaveManager.delete_save()
 	else:
 		current_grid = floor_tilemap.local_to_map(
 			floor_tilemap.to_local(global_position)
 		)
-	
+
+	check_stairs()
+
 	await get_tree().process_frame
-	highlight_layer.show_move_range(current_grid, max_move_distance)
-	move_updated.emit(current_move_points, max_move_points)
+
+	highlight_layer.show_move_range(
+		current_grid,
+		max_move_distance
+	)
+
+	move_updated.emit(
+		current_move_points,
+		max_move_points
+	)
 
 func _unhandled_input(event):
 	if is_moving or current_move_points <= 0:
@@ -78,6 +101,7 @@ func _unhandled_input(event):
 					global_position = floor_tilemap.to_global(floor_tilemap.map_to_local(current_grid))
 					current_move_points -= 1
 					check_poi()
+					check_stairs()
 					move_updated.emit(current_move_points, max_move_points)
 			
 			# Update visuals
