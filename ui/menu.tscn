@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://ble0a86foy6ti" path="res://assets/art/button/ButtonBlue.png" id="4_2ot4n"]
 [ext_resource type="FontFile" uid="uid://bohbc7w1bgqdm" path="res://assets/fonts/ComicMode-Bold.ttf" id="5_fcydj"]
 [ext_resource type="VideoStream" uid="uid://c26uxgtaqaaxt" path="res://assets/art/ui/StartGame-Background.ogv" id="6_jbsda"]
+[ext_resource type="Script" uid="uid://cn52hk3bm8j0o" path="res://ui/continue.gd" id="6_l8jcj"]
+[ext_resource type="Script" uid="uid://csbtjtnfbwqd6" path="res://ui/newgame.gd" id="8_cp6tm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ot4n"]
 
@@ -50,7 +52,6 @@ grow_vertical = 2
 stream = ExtResource("6_jbsda")
 autoplay = true
 expand = true
-loop = true
 
 [node name="gamename" type="Label" parent="." unique_id=1242793161]
 visible = false
@@ -88,6 +89,7 @@ offset_bottom = 526.56
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("4_2ot4n")
 stretch_mode = 6
+script = ExtResource("6_l8jcj")
 
 [node name="Label" type="Label" parent="continue" unique_id=1906464982]
 layout_mode = 0
@@ -112,6 +114,7 @@ scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("4_2ot4n")
 stretch_mode = 6
 flip_v = true
+script = ExtResource("8_cp6tm")
 
 [node name="Label" type="Label" parent="newgame" unique_id=40497138]
 layout_mode = 0
@@ -123,5 +126,11 @@ text = "NEW GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Timer" type="Timer" parent="." unique_id=1440504224]
+one_shot = true
+autostart = true
+
 [connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="newgame" to="." method="_on_newgame_pressed"]
+[connection signal="timeout" from="Timer" to="continue" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="newgame" method="_on_timer_timeout"]
