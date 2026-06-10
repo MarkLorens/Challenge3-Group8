@@ -18,7 +18,7 @@ func show_move_range(center: Vector2i, move_range: int):
 		if steps > 0:  # Don't highlight the player's own tile
 			if floor_tilemap.get_cell_source_id(tile) != -1:
 				if wall_tilemap.get_cell_source_id(tile) == -1:
-					set_cell(tile, 0, Vector2i.ZERO)
+					set_cell(tile, 2, Vector2i(0, 0))
 		
 		if steps >= move_range:
 			continue
