@@ -197,8 +197,10 @@ intro_target = Vector2(2620, -1500)
 map_floor = 1
 
 [node name="Camera" type="Camera2D" parent="BasePlayer" unique_id=1994155343]
-zoom = Vector2(0.5, 0.5)
+scale = Vector2(0.2, 0.2)
+zoom = Vector2(0.2, 0.2)
 position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 script = ExtResource("10_lcqv6")
 
 [node name="PlayerWheelChair" parent="." unique_id=1954243681 node_paths=PackedStringArray("floor_tilemap", "wall_tilemap", "highlight_layer", "poi_tilemap") instance=ExtResource("11_ff2ql")]

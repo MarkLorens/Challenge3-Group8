@@ -9,7 +9,7 @@ class_name BasePlayer
 @export var max_move_points: int = 6
 @export var max_move_distance: int = 1
 @export var intro_target: Vector2 = Vector2.ZERO
-@export var intro_duration: float = 3
+@export var intro_duration: float = 1.5
 
 @onready var camera: Camera2D = $Camera
 @onready var sprite = $Sprite2D
@@ -205,7 +205,6 @@ func _play_intro() -> void:
 	camera.position_smoothing_enabled = false
 
 	await get_tree().process_frame
-	camera.zoom = Vector2(0.5,0.5)
 	camera.global_position = intro_target
 
 	await get_tree().process_frame
