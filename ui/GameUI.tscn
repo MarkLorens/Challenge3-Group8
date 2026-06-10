@@ -16,12 +16,9 @@
 [ext_resource type="FontFile" uid="uid://ecqbsbyb6m2t" path="res://assets/fonts/ComicMode-SemiBold.ttf" id="14_olnky"]
 [ext_resource type="Texture2D" uid="uid://bvpxieppe77s0" path="res://assets/art/button/RestartButton.png" id="14_xkty7"]
 [ext_resource type="Texture2D" uid="uid://bpa3n7quasnjl" path="res://assets/art/button/ActButton.png" id="15_2cap4"]
-<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://bshy7qxjwauu" path="res://assets/art/characters/Player_Resized.png" id="20_abbie"]
-=======
 [ext_resource type="FontFile" uid="uid://bqu0hskpy0aql" path="res://assets/fonts/ComicMode-Light.ttf" id="17_olnky"]
 [ext_resource type="Texture2D" uid="uid://cw63boef84yxd" path="res://assets/art/ui/StarMission.png" id="17_vjewj"]
->>>>>>> origin/master
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a753d"]
 load_path = "res://.godot/imported/missionboardcrop.png-6bb114394642a7d8e14b13583113a148.ctex"
