@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://bvpxieppe77s0" path="res://assets/art/button/RestartButton.png" id="14_xkty7"]
 [ext_resource type="Texture2D" uid="uid://bpa3n7quasnjl" path="res://assets/art/button/ActButton.png" id="15_2cap4"]
 [ext_resource type="FontFile" uid="uid://bqu0hskpy0aql" path="res://assets/fonts/ComicMode-Light.ttf" id="17_olnky"]
-[ext_resource type="Texture2D" uid="uid://cw63boef84yxd" path="res://assets/art/ui/StarMission.png" id="17_vjewj"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a753d"]
 load_path = "res://.godot/imported/missionboardcrop.png-6bb114394642a7d8e14b13583113a148.ctex"
@@ -350,35 +349,6 @@ theme_override_font_sizes/font_size = 60
 text = "EXIT"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="ObjectivePopup" type="Control" parent="." unique_id=125500520]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="ObjectivePopup" unique_id=380565980]
-layout_mode = 0
-offset_left = 485.0
-offset_top = 118.0
-offset_right = 624.0
-offset_bottom = 244.0
-texture = ExtResource("17_vjewj")
-
-[node name="Label" type="Label" parent="ObjectivePopup" unique_id=1168617391]
-layout_mode = 0
-offset_left = 463.0
-offset_top = 258.0
-offset_right = 642.0
-offset_bottom = 307.0
-text = "OBJECTIVE
-COMPLETED"
-horizontal_alignment = 1
-
-[node name="EndGameScreen" type="Control" parent="." unique_id=1470195362]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/PauseMenu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/RestartButton" to="CanvasLayer/PauseMenu" method="_on_restart_button_pressed"]
