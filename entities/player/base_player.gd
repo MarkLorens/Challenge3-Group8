@@ -150,19 +150,19 @@ func _apply_floor_effects() -> void:
 	
 	match floor_type:
 		1:
-			z_index = 0 + extra_z
+			z_index = 0
 			movement_locked = false
 		2:
 			movement_locked = true
 			highlight_layer.clear()
 		3:
-			z_index = 2 + extra_z
+			z_index = 2
 			movement_locked = false
 		4:
-			z_index = 1 + extra_z
+			z_index = 1
 			movement_locked = false
 		_:
-			z_index = 0 + extra_z
+			z_index = 0
 			movement_locked = false
 
 func check_poi() -> void:

@@ -6,9 +6,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ugr7"]
 size = Vector2(259, 594)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6ni5u"]
-radius = 257.91
-
 [node name="SlidingDoor" type="Node2D" unique_id=747853674]
 script = ExtResource("1_6ni5u")
 slide_offset = Vector2(256, -128)
@@ -26,10 +23,10 @@ shape = SubResource("RectangleShape2D_6ugr7")
 
 [node name="InteractableArea" type="Area2D" parent="." unique_id=1592695517]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea" unique_id=130687955]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="InteractableArea" unique_id=956117713]
 y_sort_enabled = true
 position = Vector2(-90, -100)
-shape = SubResource("CircleShape2D_6ni5u")
+polygon = PackedVector2Array(-91, -247, -382, -68, 359, 281, 524, 141)
 
 [connection signal="body_entered" from="InteractableArea" to="." method="_on_interactable_area_body_entered"]
 [connection signal="body_exited" from="InteractableArea" to="." method="_on_interactable_area_body_exited"]
