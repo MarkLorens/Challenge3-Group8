@@ -184,13 +184,14 @@ tile_map_data = PackedByteArray("AAAFAPD/AAACAAAAAAACAP//AAAAAAAAAAADAPr/AAABAAA
 tile_set = SubResource("TileSet_4oiuq")
 
 [node name="BasePlayer" parent="." unique_id=1493889780 node_paths=PackedStringArray("floor_tilemap", "wall_tilemap", "highlight_layer", "poi_tilemap") instance=ExtResource("4_jg0uj")]
+position = Vector2(242, 798)
 floor_tilemap = NodePath("../FloorTile")
 wall_tilemap = NodePath("../WallTile")
 highlight_layer = NodePath("../HighlightTile")
 poi_tilemap = NodePath("../ObjectiveTile")
 map_floor = 1
 
-[node name="AbleBodiedCamera" type="Camera2D" parent="BasePlayer" unique_id=1994155343]
+[node name="Camera" type="Camera2D" parent="BasePlayer" unique_id=1994155343]
 position = Vector2(354, -776)
 zoom = Vector2(0.2, 0.2)
 position_smoothing_enabled = true
@@ -206,7 +207,7 @@ highlight_layer = NodePath("../HighlightTile")
 poi_tilemap = NodePath("../ObjectiveTile")
 map_floor = 1
 
-[node name="WheelChairCamera" type="Camera2D" parent="PlayerWheelChair" unique_id=340574038]
+[node name="Camera" type="Camera2D" parent="PlayerWheelChair" unique_id=340574038]
 position = Vector2(354, -776)
 zoom = Vector2(0.2, 0.2)
 position_smoothing_enabled = true

@@ -156,10 +156,13 @@ func _on_active_player_changed(player: BasePlayer) -> void:
 	_connect_active_player_signals()
 	move_label.text = "MOVE " + str(player.max_move_points - player.current_move_points) + "/" + str(player.max_move_points)
 	current_poi_id = ""
-	stairs_available = false
+	#stairs_available = false
 	action_label.text = ""
 	_set_act_button_state(false)
-	_update_move_button_to_switch()  
+	_update_move_button_to_switch()
+	var camera = player.get_node_or_null("Camera")
+	if camera:
+		camera.make_current()
 
 func _on_move_updated(current: int, max: int) -> void:
 	move_label.text = "MOVE " + str(max - current) + "/" + str(max)
