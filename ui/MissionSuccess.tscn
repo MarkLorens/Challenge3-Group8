@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c35t7ehxpyfad" path="res://assets/art/BGEndGame.png" id="1_1q58v"]
 [ext_resource type="Script" uid="uid://rdveal6fnghb" path="res://ui/mission_success.gd" id="1_8cxxf"]
-[ext_resource type="Texture2D" path="res://assets/art/ui/EndGameBoard.png" id="2_mobkb"]
+[ext_resource type="Texture2D" uid="uid://bpj8vep3tyrya" path="res://assets/art/ui/EndGameBoard.png" id="2_mobkb"]
 [ext_resource type="Texture2D" uid="uid://cw63boef84yxd" path="res://assets/art/ui/StarMission.png" id="3_kguy2"]
 [ext_resource type="FontFile" uid="uid://b8ldgkkm5118m" path="res://assets/fonts/kawaii-cubes-cute-pixel-sans-2026-04-22-22-56-18-utc/Kawaii Cubes.ttf" id="4_kguy2"]
 [ext_resource type="FontFile" uid="uid://bohbc7w1bgqdm" path="res://assets/fonts/ComicMode-Bold.ttf" id="5_cr1rd"]
@@ -108,10 +108,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 262.0
-offset_top = 174.0
-offset_right = 710.0
-offset_bottom = 285.0
+offset_left = 263.0
+offset_top = 146.0
+offset_right = 711.0
+offset_bottom = 257.0
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 texture_normal = ExtResource("6_kiion")
@@ -133,10 +133,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -611.0
-offset_top = 174.0
-offset_right = -163.0
-offset_bottom = 285.0
+offset_left = -631.0
+offset_top = 145.0
+offset_right = -183.0
+offset_bottom = 256.0
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
@@ -156,10 +156,10 @@ vertical_alignment = 1
 
 [node name="MissionList" type="VBoxContainer" parent="TextureRect" unique_id=311453539]
 layout_mode = 0
-offset_left = 496.00003
-offset_top = 358.0
-offset_right = 994.33325
-offset_bottom = 560.0
+offset_left = 494.0
+offset_top = 333.0
+offset_right = 992.33325
+offset_bottom = 535.0
 scale = Vector2(0.6, 0.6)
 theme_override_constants/separation = 20
 alignment = 1
