@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://pjxu8vffx86x"]
 
-[ext_resource type="Texture2D" path="res://assets/art/characters/Player_Wheelchair_Resized.png" id="1_ocnlc"]
+[ext_resource type="Texture2D" uid="uid://dnpe7yno7mk81" path="res://assets/art/characters/Player_Wheelchair_Resized.png" id="1_ocnlc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_02ipa"]
 
@@ -9,7 +9,7 @@
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2008791946]
 y_sort_enabled = true
 texture = ExtResource("1_ocnlc")
-offset = Vector2(0, -318)
+offset = Vector2(0, -150)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=37669956]
 shape = SubResource("CircleShape2D_02ipa")

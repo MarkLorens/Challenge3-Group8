@@ -53,7 +53,7 @@ func check_floor() -> void:
 func _ready() -> void:
 	add_to_group("player")
 	current_move_points = max_move_points
-
+	TurnManager.register_player(self)
 	TurnManager.turn_ended.connect(end_turn)
 
 	check_floor()
@@ -87,6 +87,8 @@ func _ready() -> void:
 	)
 
 func _unhandled_input(event):
+	if TurnManager.active_player != self:
+		return
 	if is_moving or current_move_points <= 0:
 		return
 		
