@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://bvpxieppe77s0" path="res://assets/art/button/RestartButton.png" id="14_xkty7"]
 [ext_resource type="Texture2D" uid="uid://bpa3n7quasnjl" path="res://assets/art/button/ActButton.png" id="15_2cap4"]
 [ext_resource type="Texture2D" uid="uid://bshy7qxjwauu" path="res://assets/art/characters/Player_Resized.png" id="20_abbie"]
-[ext_resource type="FontFile" uid="uid://bqu0hskpy0aql" path="res://assets/fonts/ComicMode-Light.ttf" id="17_olnky"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a753d"]
 load_path = "res://.godot/imported/missionboardcrop.png-6bb114394642a7d8e14b13583113a148.ctex"
@@ -260,7 +259,6 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=807747375]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
