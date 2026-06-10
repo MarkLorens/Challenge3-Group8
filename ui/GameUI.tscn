@@ -11,10 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://f3deenbh4nvc" path="res://assets/art/button/MenuButton.png" id="12_olnky"]
 [ext_resource type="Texture2D" uid="uid://ble0a86foy6ti" path="res://assets/art/button/ButtonBlue.png" id="13_olnky"]
 [ext_resource type="Texture2D" uid="uid://ch4pqp2rd7hwr" path="res://assets/art/button/UndoButton.png" id="13_vjewj"]
+[ext_resource type="Texture2D" uid="uid://cya35te031kqm" path="res://assets/art/button/AbbieSwitch.png" id="14_2cap4"]
 [ext_resource type="Texture2D" uid="uid://b65hehcjk3dc4" path="res://assets/art/ui/MissionBoard.png" id="14_a753d"]
 [ext_resource type="Texture2D" uid="uid://bvpxieppe77s0" path="res://assets/art/button/RestartButton.png" id="14_xkty7"]
 [ext_resource type="Texture2D" uid="uid://bpa3n7quasnjl" path="res://assets/art/button/ActButton.png" id="15_2cap4"]
-[ext_resource type="Texture2D" uid="uid://bs5ucorasl827" path="res://assets/art/button/MoveButton.png" id="15_a753d"]
 [ext_resource type="FontFile" uid="uid://bqu0hskpy0aql" path="res://assets/fonts/ComicMode-Light.ttf" id="17_olnky"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a753d"]
@@ -27,6 +27,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e78dt")
@@ -38,64 +39,69 @@ move_label = NodePath("CanvasLayer/TurnLabelBg/MoveLabel")
 script = ExtResource("1_fpxnd")
 
 [node name="PauseButton" type="TextureButton" parent="CanvasLayer" unique_id=135613477]
-anchors_preset = -1
-anchor_right = 0.021875
-anchor_bottom = 0.027777778
 offset_left = 81.0
-offset_top = 82.0
-offset_right = 120.0
-offset_bottom = 122.0
+offset_top = 86.0
+offset_right = 220.0
+offset_bottom = 214.0
+scale = Vector2(0.4, 0.4)
 texture_normal = ExtResource("12_olnky")
 ignore_texture_size = true
 stretch_mode = 6
 
 [node name="RestartButton" type="TextureButton" parent="CanvasLayer" unique_id=481847313]
-offset_left = 260.0
-offset_top = 82.0
-offset_right = 326.0
-offset_bottom = 146.0
+offset_left = 224.0
+offset_top = 86.0
+offset_right = 363.0
+offset_bottom = 214.0
+scale = Vector2(0.4, 0.4)
 texture_normal = ExtResource("14_xkty7")
 ignore_texture_size = true
 stretch_mode = 6
 
 [node name="UndoButton" type="TextureButton" parent="CanvasLayer" unique_id=1068977656]
-offset_left = 171.0
-offset_top = 82.0
-offset_right = 238.0
-offset_bottom = 143.0
+offset_left = 153.0
+offset_top = 86.0
+offset_right = 292.0
+offset_bottom = 214.0
+scale = Vector2(0.4, 0.4)
 texture_normal = ExtResource("13_vjewj")
 ignore_texture_size = true
 stretch_mode = 6
 
 [node name="EndTurnButton" type="TextureButton" parent="CanvasLayer" unique_id=2027465860]
 offset_left = 81.0
-offset_top = 6.0
-offset_right = 330.0
-offset_bottom = 69.0
+offset_top = 20.0
+offset_right = 481.0
+offset_bottom = 131.0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
 texture_normal = ExtResource("5_yjrrb")
 ignore_texture_size = true
-stretch_mode = 6
+stretch_mode = 0
 
 [node name="EndTurnLabel" type="Label" parent="CanvasLayer/EndTurnButton" unique_id=491968327]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 7.0
-offset_right = 252.0
-offset_bottom = 61.0
+offset_left = 54.0
+offset_top = 24.0
+offset_right = 249.0
+offset_bottom = 64.0
+scale = Vector2(1.5, 1.5)
 theme_override_fonts/font = ExtResource("7_2cap4")
 theme_override_font_sizes/font_size = 40
 text = "END TURN"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TurnLabelBg" type="TextureRect" parent="CanvasLayer" unique_id=135511364]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -310.0
-offset_top = 10.0
-offset_right = -58.0
-offset_bottom = 101.0
+offset_left = -371.0
+offset_top = 20.0
+offset_right = 217.0
+offset_bottom = 253.0
 grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 8
 texture = ExtResource("3_2e40r")
 expand_mode = 1
@@ -103,10 +109,11 @@ stretch_mode = 4
 
 [node name="TurnLabel" type="Label" parent="CanvasLayer/TurnLabelBg" unique_id=712126324]
 layout_mode = 1
-offset_left = 51.000023
-offset_top = 4.0
-offset_right = 202.00003
-offset_bottom = 45.0
+offset_left = 168.00003
+offset_top = 34.0
+offset_right = 241.00003
+offset_bottom = 66.0
+scale = Vector2(2.5, 2.5)
 theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 1
@@ -117,10 +124,11 @@ vertical_alignment = 1
 
 [node name="MoveLabel" type="Label" parent="CanvasLayer/TurnLabelBg" unique_id=1655700714]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 49.0
-offset_right = 197.0
-offset_bottom = 77.0
+offset_left = 252.0
+offset_top = 132.00002
+offset_right = 336.0
+offset_bottom = 152.00002
+scale = Vector2(2.5, 2.5)
 theme_override_colors/font_color = Color(0.36984968, 0.31926554, 0.21674433, 1)
 theme_override_fonts/font = ExtResource("11_olnky")
 theme_override_font_sizes/font_size = 19
@@ -132,13 +140,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -386.99994
-offset_top = -370.0
-offset_right = 253.0
-offset_bottom = -50.0
+offset_left = -325.0
+offset_top = -147.0
+offset_right = 155.0
+offset_bottom = 103.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(0.52195084, 0.52627736)
+scale = Vector2(0.5, 0.5)
 texture_normal = SubResource("CompressedTexture2D_a753d")
 ignore_texture_size = true
 stretch_mode = 6
@@ -152,45 +160,55 @@ offset_right = 1215.0
 offset_bottom = 705.0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/MissionDetail" unique_id=598175621]
-layout_mode = 0
-offset_left = 55.0
-offset_top = -131.0
-offset_right = 395.0
-offset_bottom = 279.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -238.0
+offset_right = 220.0
+offset_bottom = 355.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_a753d")
 expand_mode = 1
 stretch_mode = 6
 
 [node name="CloseArea" type="Button" parent="CanvasLayer/MissionDetail" unique_id=414126500]
 layout_mode = 0
-offset_left = 38.0
-offset_top = -256.0
-offset_right = 678.0
-offset_bottom = 532.0
+offset_left = 121.0
+offset_top = -8.0
+offset_right = 381.0
+offset_bottom = 289.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yjrrb")
 flat = true
 
 [node name="MissionDetail" type="VBoxContainer" parent="CanvasLayer/MissionDetail" unique_id=1048882892]
 layout_mode = 0
-offset_left = 87.0
-offset_top = 14.0
-offset_right = 635.0
-offset_bottom = 237.0
+offset_left = 139.0
+offset_top = 94.0
+offset_right = 341.0
+offset_bottom = 271.0
 
 [node name="MoveButton" type="TextureButton" parent="CanvasLayer" unique_id=461902623]
-offset_left = 76.0
-offset_top = 528.0
-offset_right = 214.0
-offset_bottom = 712.0
-texture_normal = ExtResource("15_a753d")
+offset_left = 81.0
+offset_top = 561.0
+offset_right = 303.0
+offset_bottom = 854.0
+scale = Vector2(0.45, 0.45)
+texture_normal = ExtResource("14_2cap4")
 ignore_texture_size = true
 stretch_mode = 6
 
 [node name="ActionButton" type="TextureButton" parent="CanvasLayer" unique_id=684108163]
-offset_left = 226.0
-offset_top = 528.0
-offset_right = 364.0
-offset_bottom = 712.0
+offset_left = 189.0
+offset_top = 561.0
+offset_right = 411.0
+offset_bottom = 854.0
+scale = Vector2(0.45, 0.45)
 texture_normal = ExtResource("15_2cap4")
 ignore_texture_size = true
 stretch_mode = 6
@@ -213,6 +231,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=807747375]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -247,10 +266,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -241.75
-offset_top = -314.75
-offset_right = 248.25
-offset_bottom = -126.75
+offset_left = -231.0
+offset_top = -229.0
+offset_right = 259.0
+offset_bottom = -41.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.25882354, 0.36862746, 0.65882355, 1)
@@ -269,10 +288,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.058000002
 anchor_bottom = 0.023000002
-offset_left = 477.00003
-offset_top = 213.00002
-offset_right = 850.76
-offset_bottom = 307.44003
+offset_left = 483.00003
+offset_top = 301.0
+offset_right = 856.76
+offset_bottom = 395.44
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("13_olnky")
 
@@ -291,10 +310,10 @@ vertical_alignment = 1
 
 [node name="restart" type="TextureButton" parent="CanvasLayer/PauseMenu/Panel" unique_id=691606800]
 layout_mode = 0
-offset_left = 479.0
-offset_top = 317.0
-offset_right = 927.0
-offset_bottom = 428.0
+offset_left = 483.0
+offset_top = 405.0
+offset_right = 931.0
+offset_bottom = 516.0
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("13_olnky")
 
@@ -312,10 +331,10 @@ vertical_alignment = 1
 
 [node name="exit" type="TextureButton" parent="CanvasLayer/PauseMenu/Panel" unique_id=125807256]
 layout_mode = 0
-offset_left = 481.0
-offset_top = 423.0
-offset_right = 929.0
-offset_bottom = 534.0
+offset_left = 483.0
+offset_top = 511.0
+offset_right = 931.0
+offset_bottom = 622.0
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("5_yjrrb")
 
