@@ -9,8 +9,6 @@ radius = 0.01
 [node name="BasePlayer" type="CharacterBody2D" unique_id=1493889780]
 y_sort_enabled = true
 script = ExtResource("1_bj2ww")
-max_move_points = null
-max_move_distance = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=93296087]
 y_sort_enabled = true

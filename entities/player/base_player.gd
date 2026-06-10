@@ -11,11 +11,25 @@ class_name BasePlayer
 
 @onready var sprite = $Sprite2D
 
+var _map_floor: int = 1
+
+@export var map_floor: int:
+	set(value):
+		_map_floor = value
+		# Guard against calling check_floor before exports are assigned
+		if floor_tilemap != null:
+			check_floor()
+	get:
+		return _map_floor
+
 var current_move_points: int
 var target_pos: Vector2 = global_position
 var is_moving: bool = false
 var current_grid: Vector2i
-
+var movement_locked: bool
+var wall_tilemap_floor: TileMapLayer
+var floor_tilemap_floor: TileMapLayer
+var poi_tilemap_floor: TileMapLayer
 
 signal move_updated(current: int, max: int)
 signal stairs_available(can_use: bool)
@@ -27,28 +41,37 @@ func check_stairs() -> void:
 		or current_grid == Vector2i(1, -9)
 	)
 
+func check_floor() -> void:
+	if map_floor == 2:
+		floor_tilemap_floor = floor_tilemap.get_node("FloorTileSecondFloor") as TileMapLayer
+		wall_tilemap_floor = wall_tilemap.get_node("WallTileSecondFloor") as TileMapLayer
+		poi_tilemap_floor = poi_tilemap
+	else:
+		floor_tilemap_floor = floor_tilemap
+		wall_tilemap_floor = wall_tilemap
+		poi_tilemap_floor = poi_tilemap
 func _ready() -> void:
 	add_to_group("player")
 	current_move_points = max_move_points
 
 	TurnManager.turn_ended.connect(end_turn)
 
+	check_floor()
 	if SaveManager.has_save():
 		var saved_grid = SaveManager.load_position()
 
 		if saved_grid != Vector2i(-1, -1):
 			current_grid = saved_grid
 
-			global_position = floor_tilemap.to_global(
-				floor_tilemap.map_to_local(current_grid)
+			global_position = floor_tilemap_floor.to_global(
+				floor_tilemap_floor.map_to_local(current_grid)
 			)
 
 			SaveManager.delete_save()
 	else:
-		current_grid = floor_tilemap.local_to_map(
-			floor_tilemap.to_local(global_position)
+		current_grid = floor_tilemap_floor.local_to_map(
+			floor_tilemap_floor.to_local(global_position)
 		)
-
 	check_stairs()
 
 	await get_tree().process_frame
@@ -69,42 +92,29 @@ func _unhandled_input(event):
 		
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var mouse_pos = get_global_mouse_position()
-		var clicked_tile = floor_tilemap.local_to_map(floor_tilemap.to_local(mouse_pos))
-		
-		# 1. Identify if we clicked a valid neighbor and GET the direction
+		var clicked_tile = floor_tilemap_floor.local_to_map(floor_tilemap_floor.to_local(mouse_pos))
 		var push_dir = NeighboringTile.get_direction_to_neighbor(current_grid, clicked_tile)
-		
 		if push_dir != null:
-			# 2. Check if there is a pushable object on the clicked tile
 			var pushable_obj = get_pushable_at(clicked_tile)
 			
 			if pushable_obj:
-				# 3. Calculate the tile BEHIND the pushable object
 				var target_push_tile = NeighboringTile.get_tile_in_direction(clicked_tile, push_dir)
-				
-				# 4. Check if the target tile is empty (no walls, no other pushables)
-				if NeighboringTile.can_move_to(target_push_tile, floor_tilemap, wall_tilemap) and get_pushable_at(target_push_tile) == null:
-					
-					# Push it!
+				if NeighboringTile.can_move_to(target_push_tile, floor_tilemap_floor, wall_tilemap_floor) and get_pushable_at(target_push_tile) == null:
 					pushable_obj.push_to(target_push_tile)
 					current_move_points -= 1
 					move_updated.emit(current_move_points, max_move_points)
-					
-					# (Optional) Move the player into the tile the object just left
 					# current_grid = clicked_tile
-					# global_position = floor_tilemap.to_global(floor_tilemap.map_to_local(current_grid))
+					# global_position = floor_tilemap_floor.to_global(floor_tilemap_floor.map_to_local(current_grid))
 					
 			else:
-				# Normal Movement (No object was there)
-				if NeighboringTile.can_move_to(clicked_tile, floor_tilemap, wall_tilemap):
+				if NeighboringTile.can_move_to(clicked_tile, floor_tilemap_floor, wall_tilemap_floor):
 					current_grid = clicked_tile
-					global_position = floor_tilemap.to_global(floor_tilemap.map_to_local(current_grid))
+					global_position = floor_tilemap_floor.to_global(floor_tilemap_floor.map_to_local(current_grid))
 					current_move_points -= 1
-					check_poi()
+					check_tile_effects()
 					check_stairs()
 					move_updated.emit(current_move_points, max_move_points)
-			
-			# Update visuals
+					
 			if current_move_points > 0:
 				highlight_layer.show_move_range(current_grid, max_move_distance)
 			else:
@@ -125,12 +135,41 @@ func end_turn(_turn_count: int):
 func _on_end_turn_button_pressed() -> void:
 	pass
 
+# Floor Checks
+func check_tile_effects() -> void:
+	_apply_floor_effects()
+	check_poi()
+
+func _apply_floor_effects() -> void:
+	var extra_z = map_floor - 1
+	var tile_data: TileData = floor_tilemap_floor.get_cell_tile_data(current_grid)
+	if tile_data == null:
+		return
+	
+	var floor_type: int = tile_data.get_custom_data("floor_type")
+	
+	match floor_type:
+		1:
+			z_index = 0 + extra_z
+			movement_locked = false
+		2:
+			movement_locked = true
+			highlight_layer.clear()
+		3:
+			z_index = 2 + extra_z
+			movement_locked = false
+		4:
+			z_index = 1 + extra_z
+			movement_locked = false
+		_:
+			z_index = 0 + extra_z
+			movement_locked = false
+
 func check_poi() -> void:
-	if poi_tilemap.get_cell_source_id(current_grid) != -1:
-		var poi_data = poi_tilemap.get_cell_tile_data(current_grid)
+	if poi_tilemap_floor.get_cell_source_id(current_grid) != -1:
+		var poi_data = poi_tilemap_floor.get_cell_tile_data(current_grid)
 		var poi_id: String = poi_data.get_custom_data("poi_id")
-		var poi_interaction: String = poi_data.get_custom_data("poi_interaction")
-		print(poi_interaction)
+		var _poi_interaction: String = poi_data.get_custom_data("poi_interaction")
 		LevelManager.objective_tile_reached(poi_id)
 	else:
 		left_objective_tile.emit()   
