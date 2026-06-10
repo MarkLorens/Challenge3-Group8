@@ -10,6 +10,7 @@ extends Control
 @onready var action_button = $CanvasLayer/ActionButton
 @onready var move_button = $CanvasLayer/MoveButton
 @onready var mission_list = $CanvasLayer/MissionDetail/MissionDetail
+@onready var change_player_button = $CanvasLayer/ChangePlayerButton
 @export var move_label: Label
 
 var stairs_available := false
