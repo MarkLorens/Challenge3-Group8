@@ -10,8 +10,11 @@ extends Control
 @onready var action_button = $CanvasLayer/ActionButton
 @onready var move_button = $CanvasLayer/MoveButton
 @onready var mission_list = $CanvasLayer/MissionDetail/MissionDetail
+@onready var character_portrait = $CanvasLayer/TurnLabelBg/CharacterPortrait
 @export var move_label: Label
 
+var tex_portrait_abbie = preload("res://assets/art/characters/Player_Resized.png")
+var tex_portrait_will = preload("res://assets/art/characters/Player_Wheelchair_Resized.png")
 var stairs_available := false
 
 var tex_act_enabled = preload("res://assets/art/button/ActButton.png")
@@ -55,7 +58,8 @@ func _ready():
 
 	_connect_active_player_signals()
 	_update_move_button_to_switch() 
-
+	if TurnManager.active_player:
+		_update_character_portrait(TurnManager.active_player)
 
 func _on_move_button_pressed() -> void:
 	TurnManager.switch_player()
@@ -153,6 +157,7 @@ func _connect_active_player_signals() -> void:
 		active.stairs_available.connect(_on_stairs_available)
 
 func _on_active_player_changed(player: BasePlayer) -> void:
+	print("Player changed to: ", player.name)
 	_connect_active_player_signals()
 	move_label.text = "MOVE " + str(player.max_move_points - player.current_move_points) + "/" + str(player.max_move_points)
 	current_poi_id = ""
@@ -163,6 +168,16 @@ func _on_active_player_changed(player: BasePlayer) -> void:
 	var camera = player.get_node_or_null("Camera")
 	if camera:
 		camera.make_current()
+	_update_character_portrait(player)
+	
+func _update_character_portrait(player) -> void:
+	if character_portrait == null:
+		return
+	print("Active player name: ", player.name)
+	if "PlayerWheelChair" in player.name:
+		character_portrait.texture = tex_portrait_will
+	else:
+		character_portrait.texture = tex_portrait_abbie
 
 func _on_move_updated(current: int, max: int) -> void:
 	move_label.text = "MOVE " + str(max - current) + "/" + str(max)

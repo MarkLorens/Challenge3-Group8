@@ -13,10 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://ch4pqp2rd7hwr" path="res://assets/art/button/UndoButton.png" id="13_vjewj"]
 [ext_resource type="Texture2D" uid="uid://cya35te031kqm" path="res://assets/art/button/AbbieSwitch.png" id="14_2cap4"]
 [ext_resource type="Texture2D" uid="uid://b65hehcjk3dc4" path="res://assets/art/ui/MissionBoard.png" id="14_a753d"]
+[ext_resource type="FontFile" uid="uid://ecqbsbyb6m2t" path="res://assets/fonts/ComicMode-SemiBold.ttf" id="14_olnky"]
 [ext_resource type="Texture2D" uid="uid://bvpxieppe77s0" path="res://assets/art/button/RestartButton.png" id="14_xkty7"]
 [ext_resource type="Texture2D" uid="uid://bpa3n7quasnjl" path="res://assets/art/button/ActButton.png" id="15_2cap4"]
+[ext_resource type="Texture2D" uid="uid://bshy7qxjwauu" path="res://assets/art/characters/Player_Resized.png" id="20_abbie"]
 [ext_resource type="FontFile" uid="uid://bqu0hskpy0aql" path="res://assets/fonts/ComicMode-Light.ttf" id="17_olnky"]
-[ext_resource type="Texture2D" uid="uid://cw63boef84yxd" path="res://assets/art/ui/StarMission.png" id="17_vjewj"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a753d"]
 load_path = "res://.godot/imported/missionboardcrop.png-6bb114394642a7d8e14b13583113a148.ctex"
@@ -135,6 +136,16 @@ theme_override_fonts/font = ExtResource("11_olnky")
 theme_override_font_sizes/font_size = 19
 text = "MOVE 1/5"
 
+[node name="CharacterPortrait" type="TextureRect" parent="CanvasLayer/TurnLabelBg" unique_id=1495800520]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 6.000004
+offset_right = 114.81145
+offset_bottom = 184.0
+texture = ExtResource("20_abbie")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="MissionBoard" type="TextureButton" parent="CanvasLayer" unique_id=217383108]
 anchors_preset = 3
 anchor_left = 1.0
@@ -204,6 +215,22 @@ texture_normal = ExtResource("14_2cap4")
 ignore_texture_size = true
 stretch_mode = 6
 
+[node name="MoveLabel" type="Label" parent="CanvasLayer/MoveButton" unique_id=2040353306]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.21800001
+anchor_bottom = 0.078
+offset_left = 31.111113
+offset_top = 200.00002
+offset_right = 138.27069
+offset_bottom = 264.146
+theme_override_fonts/font = ExtResource("14_olnky")
+theme_override_font_sizes/font_size = 30
+text = "Switch
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ActionButton" type="TextureButton" parent="CanvasLayer" unique_id=684108163]
 offset_left = 189.0
 offset_top = 561.0
@@ -216,19 +243,20 @@ stretch_mode = 6
 
 [node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/ActionButton" unique_id=1071752288]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 108.0
-offset_right = 122.0
-offset_bottom = 167.0
+offset_left = 37.77779
+offset_top = 180.00006
+offset_right = 179.99998
+offset_bottom = 260.00006
 alignment = 2
 vertical = true
 
 [node name="ActionLabel" type="Label" parent="CanvasLayer/ActionButton/BoxContainer" unique_id=197765428]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("17_olnky")
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("14_olnky")
+theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=807747375]
@@ -350,35 +378,6 @@ theme_override_font_sizes/font_size = 60
 text = "EXIT"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="ObjectivePopup" type="Control" parent="." unique_id=125500520]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="ObjectivePopup" unique_id=380565980]
-layout_mode = 0
-offset_left = 485.0
-offset_top = 118.0
-offset_right = 624.0
-offset_bottom = 244.0
-texture = ExtResource("17_vjewj")
-
-[node name="Label" type="Label" parent="ObjectivePopup" unique_id=1168617391]
-layout_mode = 0
-offset_left = 463.0
-offset_top = 258.0
-offset_right = 642.0
-offset_bottom = 307.0
-text = "OBJECTIVE
-COMPLETED"
-horizontal_alignment = 1
-
-[node name="EndGameScreen" type="Control" parent="." unique_id=1470195362]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/PauseMenu" method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/RestartButton" to="CanvasLayer/PauseMenu" method="_on_restart_button_pressed"]

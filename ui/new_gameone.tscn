@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bl6gw6kct43uf"]
+
+[ext_resource type="VideoStream" uid="uid://defd2odjaqnyd" path="res://assets/art/ui/WillIntro1.ogv" id="1_md74k"]
+
+[node name="NewGameone" type="Node2D" unique_id=728981144]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=721127661]
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("1_md74k")
