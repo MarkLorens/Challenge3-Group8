@@ -11,8 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://bm3iuxj4650wy" path="res://assets/art/environment/walls/Corner_Resized_N.png" id="6_ff2ql"]
 [ext_resource type="PackedScene" uid="uid://c1o6014xt8aim" path="res://ui/GameUI.tscn" id="6_qkoq2"]
 [ext_resource type="PackedScene" uid="uid://b0i3c5e8ecfgq" path="res://props/object_tile.tscn" id="8_8pwpk"]
+[ext_resource type="Script" uid="uid://dvoew40m1s4lp" path="res://levels/able_bodied_camera.gd" id="10_lcqv6"]
 [ext_resource type="PackedScene" uid="uid://pjxu8vffx86x" path="res://entities/player/PlayerWheelChair.tscn" id="11_ff2ql"]
 [ext_resource type="Script" uid="uid://t4cbf0c6fe4v" path="res://entities/player/base_player.gd" id="12_28a0o"]
+[ext_resource type="Script" uid="uid://b0arvjey1n20f" path="res://levels/wheel_chair_camera.gd" id="14_8pwpk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jg0uj"]
 texture = ExtResource("2_4oiuq")
@@ -133,7 +135,6 @@ tile_map_data = PackedByteArray("AAACAPn/AAABAAAAAAADAPj/AAABAAAAAAADAPf/AAABAAA
 tile_set = SubResource("TileSet_qkoq2")
 
 [node name="HighlightTile" type="TileMapLayer" parent="." unique_id=358713742 node_paths=PackedStringArray("floor_tilemap", "wall_tilemap")]
-visible = false
 y_sort_enabled = true
 tile_set = SubResource("TileSet_srceu")
 script = ExtResource("2_srceu")
@@ -165,6 +166,7 @@ map_floor = 1
 position = Vector2(354, -776)
 zoom = Vector2(0.2, 0.2)
 position_smoothing_enabled = true
+script = ExtResource("10_lcqv6")
 
 [node name="PlayerWheelChair" parent="." unique_id=1954243681 node_paths=PackedStringArray("floor_tilemap", "wall_tilemap", "highlight_layer", "poi_tilemap") instance=ExtResource("11_ff2ql")]
 y_sort_enabled = true
@@ -180,6 +182,7 @@ map_floor = 1
 position = Vector2(354, -776)
 zoom = Vector2(0.2, 0.2)
 position_smoothing_enabled = true
+script = ExtResource("14_8pwpk")
 
 [node name="SlidingDoor" parent="." unique_id=747853674 instance=ExtResource("3_3348v")]
 y_sort_enabled = true
