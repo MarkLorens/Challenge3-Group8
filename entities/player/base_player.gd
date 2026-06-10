@@ -116,6 +116,7 @@ func _unhandled_input(event):
 					check_tile_effects()
 					check_stairs()
 					move_updated.emit(current_move_points, max_move_points)
+					print(z_index)
 					
 			if current_move_points > 0:
 				highlight_layer.show_move_range(current_grid, max_move_distance)
