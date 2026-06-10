@@ -26,7 +26,8 @@ func get_objectives() -> Dictionary:
 	match current_level:
 		0:
 			return {
-				"Main":  "Attend meeting within 20 turns",
+				"Main":  "Attend meeting 
+				within 20 turns",
 				"Side1": "Get Coffee",
 				"Side2": "Help Colleague B"
 			}

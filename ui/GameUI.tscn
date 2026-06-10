@@ -140,7 +140,6 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-
 offset_left = -325.0
 offset_top = -147.0
 offset_right = 155.0
@@ -148,7 +147,6 @@ offset_bottom = 103.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
-
 texture_normal = SubResource("CompressedTexture2D_a753d")
 ignore_texture_size = true
 stretch_mode = 6
@@ -175,27 +173,25 @@ offset_bottom = 355.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
-
 texture = ExtResource("14_a753d")
 expand_mode = 1
 stretch_mode = 6
 
 [node name="CloseArea" type="Button" parent="CanvasLayer/MissionDetail" unique_id=414126500]
 layout_mode = 0
-offset_left = 38.0
-offset_top = -256.0
-offset_right = 678.0
-offset_bottom = 532.0
+offset_left = 121.0
+offset_top = -8.0
+offset_right = 381.0
+offset_bottom = 289.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yjrrb")
 flat = true
 
 [node name="MissionDetail" type="VBoxContainer" parent="CanvasLayer/MissionDetail" unique_id=1048882892]
 layout_mode = 0
-offset_left = 87.0
-offset_top = 14.0
-offset_right = 635.0
-offset_bottom = 237.0
-
+offset_left = 139.0
+offset_top = 94.0
+offset_right = 341.0
+offset_bottom = 271.0
 
 [node name="MoveButton" type="TextureButton" parent="CanvasLayer" unique_id=461902623]
 offset_left = 81.0
@@ -204,7 +200,6 @@ offset_right = 303.0
 offset_bottom = 854.0
 scale = Vector2(0.45, 0.45)
 texture_normal = ExtResource("14_2cap4")
-
 ignore_texture_size = true
 stretch_mode = 6
 
@@ -214,7 +209,6 @@ offset_top = 561.0
 offset_right = 411.0
 offset_bottom = 854.0
 scale = Vector2(0.45, 0.45)
-
 texture_normal = ExtResource("15_2cap4")
 ignore_texture_size = true
 stretch_mode = 6
