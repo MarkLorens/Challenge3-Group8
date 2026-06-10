@@ -50,7 +50,6 @@ func check_floor() -> void:
 		floor_tilemap_floor = floor_tilemap
 		wall_tilemap_floor = wall_tilemap
 		poi_tilemap_floor = poi_tilemap
-
 func _ready() -> void:
 	add_to_group("player")
 	current_move_points = max_move_points
@@ -117,6 +116,7 @@ func _unhandled_input(event):
 					check_tile_effects()
 					check_stairs()
 					move_updated.emit(current_move_points, max_move_points)
+					print(z_index)
 					
 			if current_move_points > 0:
 				highlight_layer.show_move_range(current_grid, max_move_distance)
@@ -144,29 +144,46 @@ func check_tile_effects() -> void:
 	check_poi()
 
 func _apply_floor_effects() -> void:
-	var extra_z = map_floor - 1
 	var tile_data: TileData = floor_tilemap_floor.get_cell_tile_data(current_grid)
 	if tile_data == null:
 		return
 	
 	var floor_type: int = tile_data.get_custom_data("floor_type")
 	
-	match floor_type:
-		1:
-			z_index = 0 + extra_z
-			movement_locked = false
-		2:
-			movement_locked = true
-			highlight_layer.clear()
-		3:
-			z_index = 2 + extra_z
-			movement_locked = false
-		4:
-			z_index = 1 + extra_z
-			movement_locked = false
-		_:
-			z_index = 0 + extra_z
-			movement_locked = false
+	if map_floor == 1:
+		match floor_type:
+			1:
+				z_index = 0
+				movement_locked = false
+			2:
+				movement_locked = true
+				highlight_layer.clear()
+			3:
+				z_index = 2
+				movement_locked = false
+			4:
+				z_index = 1
+				movement_locked = false
+			_:
+				z_index = 0
+				movement_locked = false
+	else:
+		match floor_type:
+			1:
+				z_index = 1
+				movement_locked = false
+			2:
+				movement_locked = true
+				highlight_layer.clear()
+			3:
+				z_index = 3
+				movement_locked = false
+			4:
+				z_index = 2
+				movement_locked = false
+			_:
+				z_index = 1
+				movement_locked = false
 
 func check_poi() -> void:
 	if poi_tilemap_floor.get_cell_source_id(current_grid) != -1:

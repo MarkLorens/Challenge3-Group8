@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c825sjp6mrxnn"]
+
+[ext_resource type="Texture2D" uid="uid://lv8ku2er8lp3" path="res://assets/art/environment/furniture/table_small_01.PNG" id="1_c54rw"]
+[ext_resource type="Script" uid="uid://crupyb48quffk" path="res://entities/PushableObject.gd" id="2_b5h5w"]
+
+[node name="PushableTable" type="Sprite2D" unique_id=369305121 node_paths=PackedStringArray("floor_tilemap")]
+z_index = 1
+texture = ExtResource("1_c54rw")
+script = ExtResource("2_b5h5w")
+floor_tilemap = NodePath("")
