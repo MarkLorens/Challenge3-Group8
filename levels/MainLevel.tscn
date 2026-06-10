@@ -169,7 +169,7 @@ tile_map_data = PackedByteArray("AAACAPn/AAABAAAAAAADAPj/AAABAAAAAAADAPf/AAABAAA
 tile_set = SubResource("TileSet_qkoq2")
 
 [node name="HighlightTile" type="TileMapLayer" parent="." unique_id=358713742 node_paths=PackedStringArray("floor_tilemap", "wall_tilemap")]
-y_sort_enabled = true
+z_index = 1
 tile_set = SubResource("TileSet_srceu")
 script = ExtResource("2_srceu")
 floor_tilemap = NodePath("../FloorTile")
