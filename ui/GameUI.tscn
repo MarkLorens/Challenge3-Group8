@@ -177,7 +177,7 @@ offset_top = 14.0
 offset_right = 635.0
 offset_bottom = 237.0
 
-[node name="MoveButton" type="TextureButton" parent="CanvasLayer" unique_id=461902623]
+[node name="ChangePlayerButton" type="TextureButton" parent="CanvasLayer" unique_id=461902623]
 offset_left = 76.0
 offset_top = 528.0
 offset_right = 214.0
