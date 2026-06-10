@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cde748alnree4"]
 
 [ext_resource type="Script" uid="uid://bud6jmpytt0l8" path="res://core/first_tap.gd" id="1_rfri3"]
-[ext_resource type="VideoStream" uid="uid://bdlbfj60d7y7w" path="res://assets/art/ui/Main-Background_1.ogv" id="2_dbm4f"]
+[ext_resource type="VideoStream" path="res://assets/art/ui/Main-Background_1.ogv" id="2_dbm4f"]
 [ext_resource type="Texture2D" uid="uid://cnxl7e5kjr3bk" path="res://assets/art/ui/background.png" id="2_ovww7"]
 [ext_resource type="FontFile" uid="uid://b8ldgkkm5118m" path="res://assets/fonts/kawaii-cubes-cute-pixel-sans-2026-04-22-22-56-18-utc/Kawaii Cubes.ttf" id="3_dbm4f"]
 [ext_resource type="FontFile" uid="uid://ecqbsbyb6m2t" path="res://assets/fonts/ComicMode-SemiBold.ttf" id="4_nwyk8"]
@@ -38,8 +38,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -805.0
 offset_top = -357.0
-offset_right = 809.16296
-offset_bottom = 366.0
+offset_right = 793.5348
+offset_bottom = 359.0
 grow_horizontal = 2
 grow_vertical = 2
 stream = ExtResource("2_dbm4f")
@@ -52,9 +52,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -447.0
+offset_top = -4.0
 offset_right = 33.0
-offset_bottom = 447.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
