@@ -8,7 +8,10 @@ class_name BasePlayer
 @export var poi_tilemap: TileMapLayer
 @export var max_move_points: int = 6
 @export var max_move_distance: int = 1
+@export var intro_target: Vector2 = Vector2.ZERO
+@export var intro_duration: float = 3
 
+@onready var camera: Camera2D = $Camera
 @onready var sprite = $Sprite2D
 
 var _map_floor: int = 1
@@ -55,7 +58,6 @@ func _ready() -> void:
 	current_move_points = max_move_points
 	TurnManager.register_player(self)
 	TurnManager.turn_ended.connect(end_turn)
-
 	check_floor()
 	if SaveManager.has_save():
 		var saved_grid = SaveManager.load_position()
@@ -85,6 +87,8 @@ func _ready() -> void:
 		current_move_points,
 		max_move_points
 	)
+	if TurnManager.active_player == self:
+		_play_intro()
 
 func _unhandled_input(event):
 	if TurnManager.active_player != self:
@@ -96,6 +100,7 @@ func _unhandled_input(event):
 		var mouse_pos = get_global_mouse_position()
 		var clicked_tile = floor_tilemap_floor.local_to_map(floor_tilemap_floor.to_local(mouse_pos))
 		var push_dir = NeighboringTile.get_direction_to_neighbor(current_grid, clicked_tile)
+		print(clicked_tile)
 		if push_dir != null:
 			var pushable_obj = get_pushable_at(clicked_tile)
 			
@@ -193,3 +198,28 @@ func check_poi() -> void:
 		LevelManager.objective_tile_reached(poi_id)
 	else:
 		left_objective_tile.emit()   
+
+func _play_intro() -> void:
+	is_moving = true
+	camera.top_level = true
+	camera.position_smoothing_enabled = false
+
+	await get_tree().process_frame
+	camera.zoom = Vector2(0.5,0.5)
+	camera.global_position = intro_target
+
+	await get_tree().process_frame
+
+	camera.position_smoothing_enabled = true
+
+	await get_tree().create_timer(intro_duration).timeout
+
+	# Reset local position before re-attaching so it centers on player
+	camera.position = Vector2.ZERO        # ADD THIS
+	camera.zoom = Vector2(0.2,0.2)
+	camera.top_level = false
+
+	await get_tree().process_frame        # Let re-attach settle
+
+	camera.position_smoothing_enabled = true
+	is_moving = false
