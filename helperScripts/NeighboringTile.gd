@@ -38,4 +38,10 @@ func can_move_to(to: Vector2i, floor_tilemap: TileMapLayer, wall_tilemap: TileMa
 		return false
 	if wall_tilemap.get_cell_source_id(to) != -1:
 		return false
+		
+	var tile_data: TileData = floor_tilemap.get_cell_tile_data(to)
+	if tile_data != null:
+		var floor_type: int = tile_data.get_custom_data("floor_type")
+		if floor_type == 2:
+			return false
 	return true
