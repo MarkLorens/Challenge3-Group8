@@ -143,29 +143,46 @@ func check_tile_effects() -> void:
 	check_poi()
 
 func _apply_floor_effects() -> void:
-	var extra_z = map_floor - 1
 	var tile_data: TileData = floor_tilemap_floor.get_cell_tile_data(current_grid)
 	if tile_data == null:
 		return
 	
 	var floor_type: int = tile_data.get_custom_data("floor_type")
 	
-	match floor_type:
-		1:
-			z_index = 0
-			movement_locked = false
-		2:
-			movement_locked = true
-			highlight_layer.clear()
-		3:
-			z_index = 2
-			movement_locked = false
-		4:
-			z_index = 1
-			movement_locked = false
-		_:
-			z_index = 0
-			movement_locked = false
+	if map_floor == 1:
+		match floor_type:
+			1:
+				z_index = 0
+				movement_locked = false
+			2:
+				movement_locked = true
+				highlight_layer.clear()
+			3:
+				z_index = 2
+				movement_locked = false
+			4:
+				z_index = 1
+				movement_locked = false
+			_:
+				z_index = 0
+				movement_locked = false
+	else:
+		match floor_type:
+			1:
+				z_index = 1
+				movement_locked = false
+			2:
+				movement_locked = true
+				highlight_layer.clear()
+			3:
+				z_index = 3
+				movement_locked = false
+			4:
+				z_index = 2
+				movement_locked = false
+			_:
+				z_index = 1
+				movement_locked = false
 
 func check_poi() -> void:
 	if poi_tilemap_floor.get_cell_source_id(current_grid) != -1:
