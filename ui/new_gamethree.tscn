@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://c5h51x5dswbef"]
 
-[ext_resource type="Script" uid="uid://j2gyaq8v4saw" path="res://ui/new_gameone.gd" id="1_jacbf"]
+[ext_resource type="Script" uid="uid://bjqfevss1awgd" path="res://ui/new_gamethree.gd" id="1_jacbf"]
 [ext_resource type="VideoStream" uid="uid://defd2odjaqnyd" path="res://assets/art/ui/WillIntro1.ogv" id="2_63444"]
 [ext_resource type="Texture2D" uid="uid://bradg0vnvegx0" path="res://assets/art/button/NextButton.png" id="3_f0o0f"]
 
-[node name="NewGameone" type="Node2D" unique_id=728981144]
+[node name="NewGamethree" type="Node2D" unique_id=728981144]
 script = ExtResource("1_jacbf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=198865123]
