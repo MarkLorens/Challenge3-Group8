@@ -164,11 +164,17 @@ stretch_mode = 6
 
 [node name="MissionDetail" type="Control" parent="CanvasLayer" unique_id=2111092194]
 layout_mode = 3
-anchors_preset = 0
-offset_left = 834.0
-offset_top = 482.0
-offset_right = 1215.0
-offset_bottom = 705.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -446.0
+offset_top = -228.0
+offset_right = -65.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/MissionDetail" unique_id=598175621]
 layout_mode = 1
@@ -189,11 +195,16 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="CloseArea" type="Button" parent="CanvasLayer/MissionDetail" unique_id=414126500]
-layout_mode = 0
-offset_left = 121.0
-offset_top = -8.0
-offset_right = 381.0
-offset_bottom = 289.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -297.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yjrrb")
 flat = true
 
@@ -312,13 +323,17 @@ horizontal_alignment = 1
 
 [node name="continue" type="TextureButton" parent="CanvasLayer/PauseMenu/Panel" unique_id=1232230133]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.058000002
-anchor_bottom = 0.023000002
-offset_left = 483.00003
-offset_top = 301.0
-offset_right = 856.76
-offset_bottom = 395.44
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -51.0
+offset_right = 298.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("13_olnky")
 
@@ -336,11 +351,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="restart" type="TextureButton" parent="CanvasLayer/PauseMenu/Panel" unique_id=691606800]
-layout_mode = 0
-offset_left = 483.0
-offset_top = 405.0
-offset_right = 931.0
-offset_bottom = 516.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 44.0
+offset_right = 298.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("13_olnky")
 
@@ -357,11 +379,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="exit" type="TextureButton" parent="CanvasLayer/PauseMenu/Panel" unique_id=125807256]
-layout_mode = 0
-offset_left = 483.0
-offset_top = 511.0
-offset_right = 931.0
-offset_bottom = 622.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 141.0
+offset_right = 298.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("5_yjrrb")
 

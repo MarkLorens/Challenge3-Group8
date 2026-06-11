@@ -13,7 +13,7 @@ config_version=5
 config/name="Pathoria"
 run/main_scene="uid://cde748alnree4"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="uid://brovnsyge2sm2"
+config/icon="uid://c8qcq2qcnlm3w"
 
 [autoload]
 
