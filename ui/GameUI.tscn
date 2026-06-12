@@ -41,30 +41,30 @@ script = ExtResource("1_fpxnd")
 
 [node name="PauseButton" type="TextureButton" parent="CanvasLayer" unique_id=135613477]
 offset_left = 81.0
-offset_top = 86.0
+offset_top = 105.0
 offset_right = 220.0
-offset_bottom = 214.0
-scale = Vector2(0.4, 0.4)
+offset_bottom = 233.0
+scale = Vector2(0.55, 0.55)
 texture_normal = ExtResource("12_olnky")
 ignore_texture_size = true
 stretch_mode = 6
 
 [node name="RestartButton" type="TextureButton" parent="CanvasLayer" unique_id=481847313]
-offset_left = 224.0
-offset_top = 86.0
-offset_right = 363.0
-offset_bottom = 214.0
-scale = Vector2(0.4, 0.4)
+offset_left = 263.0
+offset_top = 105.0
+offset_right = 402.0
+offset_bottom = 233.0
+scale = Vector2(0.55, 0.55)
 texture_normal = ExtResource("14_xkty7")
 ignore_texture_size = true
 stretch_mode = 6
 
 [node name="UndoButton" type="TextureButton" parent="CanvasLayer" unique_id=1068977656]
-offset_left = 153.0
-offset_top = 86.0
-offset_right = 292.0
-offset_bottom = 214.0
-scale = Vector2(0.4, 0.4)
+offset_left = 171.0
+offset_top = 105.0
+offset_right = 310.0
+offset_bottom = 233.0
+scale = Vector2(0.55, 0.55)
 texture_normal = ExtResource("13_vjewj")
 ignore_texture_size = true
 stretch_mode = 6
@@ -74,7 +74,7 @@ offset_left = 81.0
 offset_top = 20.0
 offset_right = 481.0
 offset_bottom = 131.0
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.65, 0.65)
 size_flags_horizontal = 3
 texture_normal = ExtResource("5_yjrrb")
 ignore_texture_size = true
@@ -84,11 +84,11 @@ stretch_mode = 0
 layout_mode = 0
 offset_left = 54.0
 offset_top = 24.0
-offset_right = 249.0
-offset_bottom = 64.0
-scale = Vector2(1.5, 1.5)
+offset_right = 497.077
+offset_bottom = 114.88759
+scale = Vector2(0.65, 0.65)
 theme_override_fonts/font = ExtResource("7_2cap4")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 70
 text = "END TURN"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -217,10 +217,10 @@ offset_bottom = 271.0
 
 [node name="MoveButton" type="TextureButton" parent="CanvasLayer" unique_id=461902623]
 offset_left = 81.0
-offset_top = 561.0
+offset_top = 505.00006
 offset_right = 303.0
-offset_bottom = 854.0
-scale = Vector2(0.45, 0.45)
+offset_bottom = 798.00006
+scale = Vector2(0.65, 0.65)
 texture_normal = ExtResource("14_2cap4")
 ignore_texture_size = true
 stretch_mode = 6
@@ -232,21 +232,22 @@ anchor_right = 0.21800001
 anchor_bottom = 0.078
 offset_left = 31.111113
 offset_top = 200.00002
-offset_right = 138.27069
-offset_bottom = 264.146
+offset_right = 216.5087
+offset_bottom = 300.146
+scale = Vector2(0.65, 0.65)
 theme_override_fonts/font = ExtResource("14_olnky")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 60
 text = "Switch
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ActionButton" type="TextureButton" parent="CanvasLayer" unique_id=684108163]
-offset_left = 189.0
-offset_top = 561.0
-offset_right = 411.0
-offset_bottom = 854.0
-scale = Vector2(0.45, 0.45)
+offset_left = 240.00002
+offset_top = 505.00006
+offset_right = 462.0
+offset_bottom = 798.00006
+scale = Vector2(0.65, 0.65)
 texture_normal = ExtResource("15_2cap4")
 ignore_texture_size = true
 stretch_mode = 6
@@ -264,12 +265,13 @@ vertical = true
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("14_olnky")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=807747375]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

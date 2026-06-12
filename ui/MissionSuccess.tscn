@@ -38,9 +38,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -270.0
+offset_left = -276.41736
 offset_top = -360.0
-offset_right = 282.83472
+offset_right = 276.41736
 offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -124,8 +124,9 @@ texture_normal = ExtResource("6_kiion")
 
 [node name="Label" type="Label" parent="TextureRect/PlayAgain" unique_id=1266544886]
 layout_mode = 0
+offset_top = 7.499999
 offset_right = 441.24997
-offset_bottom = 98.75
+offset_bottom = 106.25
 theme_override_fonts/font = ExtResource("5_cr1rd")
 theme_override_font_sizes/font_size = 65
 text = "PLAY AGAIN"
@@ -160,11 +161,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MissionList" type="VBoxContainer" parent="TextureRect" unique_id=311453539]
-layout_mode = 0
-offset_left = 496.0
-offset_top = 356.0
-offset_right = 994.33325
-offset_bottom = 558.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -18.0
+offset_right = 329.33325
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.6, 0.6)
 theme_override_constants/separation = 20
 alignment = 1
