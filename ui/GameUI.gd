@@ -37,23 +37,31 @@ var objective_checkboxes: Dictionary = {}
 var objective_popup: Control = null
 
 func _ready():
-	end_turn_button.pressed.connect(_on_end_turn_pressed)
-	TurnManager.turn_ended.connect(_on_turn_ended)
-	TurnManager.active_player_changed.connect(_on_active_player_changed)
-	LevelManager.level_loaded.connect(_on_level_loaded)
-	LevelManager.objective_reached.connect(_on_reaching_objective_tile)
-	LevelManager.objective_completed.connect(_on_objective_completed)
-	LevelManager.main_objective_completed.connect(_on_main_objective_completed)
+	if not TurnManager.turn_ended.is_connected(_on_turn_ended):
+		TurnManager.turn_ended.connect(_on_turn_ended)
+	if not TurnManager.active_player_changed.is_connected(_on_active_player_changed):
+		TurnManager.active_player_changed.connect(_on_active_player_changed)
+	if not LevelManager.level_loaded.is_connected(_on_level_loaded):
+		LevelManager.level_loaded.connect(_on_level_loaded)
+	if not LevelManager.objective_reached.is_connected(_on_reaching_objective_tile):
+		LevelManager.objective_reached.connect(_on_reaching_objective_tile)
+	if not LevelManager.objective_completed.is_connected(_on_objective_completed):
+		LevelManager.objective_completed.connect(_on_objective_completed)
+	if not LevelManager.main_objective_completed.is_connected(_on_main_objective_completed):
+		LevelManager.main_objective_completed.connect(_on_main_objective_completed)
 
-	action_button.pressed.connect(_complete_objective)
-	move_button.pressed.connect(_on_move_button_pressed)
-
-	mission_details.visible = false
-
+	if not end_turn_button.pressed.is_connected(_on_end_turn_pressed):
+		end_turn_button.pressed.connect(_on_end_turn_pressed)
+	if not action_button.pressed.is_connected(_complete_objective):
+		action_button.pressed.connect(_complete_objective)
+	if not move_button.pressed.is_connected(_on_move_button_pressed):
+		move_button.pressed.connect(_on_move_button_pressed)
 	if not mission_board.pressed.is_connected(_on_mission_board_pressed):
 		mission_board.pressed.connect(_on_mission_board_pressed)
+	if not close_area.pressed.is_connected(_on_mission_board_pressed):
+		close_area.pressed.connect(_on_mission_board_pressed)
 
-	close_area.pressed.connect(_on_mission_board_pressed)
+	mission_details.visible = false
 	_set_act_button_state(false)
 
 	await get_tree().process_frame
