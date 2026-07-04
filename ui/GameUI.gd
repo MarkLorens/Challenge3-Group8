@@ -9,6 +9,8 @@ extends Control
 @onready var close_area = $CanvasLayer/MissionDetail/CloseArea
 @onready var action_button = $CanvasLayer/ActionButton
 @onready var move_button = $CanvasLayer/MoveButton
+@onready var restart_button = $CanvasLayer/RestartButton
+@onready var undo_button = $CanvasLayer/UndoButton
 @onready var mission_list = $CanvasLayer/MissionDetail/MissionDetail
 @onready var character_portrait = $CanvasLayer/TurnLabelBg/CharacterPortrait
 @export var move_label: Label
@@ -41,6 +43,10 @@ func _ready():
 		TurnManager.turn_ended.connect(_on_turn_ended)
 	if not TurnManager.active_player_changed.is_connected(_on_active_player_changed):
 		TurnManager.active_player_changed.connect(_on_active_player_changed)
+	if not TurnManager.restart_availability_changed.is_connected(_on_restart_availability_changed):
+		TurnManager.restart_availability_changed.connect(_on_restart_availability_changed)
+	if not TurnManager.undo_availability_changed.is_connected(_on_undo_availability_changed):
+		TurnManager.undo_availability_changed.connect(_on_undo_availability_changed)
 	if not LevelManager.level_loaded.is_connected(_on_level_loaded):
 		LevelManager.level_loaded.connect(_on_level_loaded)
 	if not LevelManager.objective_reached.is_connected(_on_reaching_objective_tile):
@@ -56,6 +62,10 @@ func _ready():
 		action_button.pressed.connect(_complete_objective)
 	if not move_button.pressed.is_connected(_on_move_button_pressed):
 		move_button.pressed.connect(_on_move_button_pressed)
+	if not restart_button.pressed.is_connected(_on_restart_button_pressed):
+		restart_button.pressed.connect(_on_restart_button_pressed)
+	if not undo_button.pressed.is_connected(_on_undo_button_pressed):
+		undo_button.pressed.connect(_on_undo_button_pressed)
 	if not mission_board.pressed.is_connected(_on_mission_board_pressed):
 		mission_board.pressed.connect(_on_mission_board_pressed)
 	if not close_area.pressed.is_connected(_on_mission_board_pressed):
@@ -63,6 +73,10 @@ func _ready():
 
 	mission_details.visible = false
 	_set_act_button_state(false)
+	TurnManager.clear_turn_snapshot()
+	TurnManager.reset_restart_uses()
+	restart_button.disabled = !TurnManager.can_restart()
+	undo_button.disabled = !TurnManager.can_undo()
 
 	await get_tree().process_frame
 
@@ -75,6 +89,22 @@ func _ready():
 
 func _on_move_button_pressed() -> void:
 	TurnManager.switch_player()
+
+# Restores both characters to where they stood when the current turn began and
+# refills their move points. Disabled until a move has been made this turn.
+func _on_restart_button_pressed() -> void:
+	TurnManager.restart_turn()
+
+func _on_restart_availability_changed(available: bool) -> void:
+	restart_button.disabled = !available
+
+# Steps the most recently moved character back one tile (see TurnManager).
+# Disabled while there is nothing left to undo this turn.
+func _on_undo_button_pressed() -> void:
+	TurnManager.undo_last_move()
+
+func _on_undo_availability_changed(available: bool) -> void:
+	undo_button.disabled = !available
 
 func _update_move_button_to_switch() -> void:
 	var players = get_tree().get_nodes_in_group("player")
