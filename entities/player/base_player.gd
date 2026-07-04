@@ -58,6 +58,7 @@ func _ready() -> void:
 	current_move_points = max_move_points
 	TurnManager.register_player(self)
 	TurnManager.turn_ended.connect(end_turn)
+	TurnManager.active_player_changed.connect(_on_active_player_changed)
 	check_floor()
 	if SaveManager.has_save():
 		var saved_grid = SaveManager.load_position()
@@ -78,10 +79,14 @@ func _ready() -> void:
 
 	await get_tree().process_frame
 
-	highlight_layer.show_move_range(
-		current_grid,
-		max_move_distance
-	)
+	# The highlight layer is shared between characters, so only the active
+	# player should draw its move range; otherwise the last player to run
+	# _ready() would clobber it (see _on_active_player_changed).
+	if TurnManager.active_player == self:
+		highlight_layer.show_move_range(
+			current_grid,
+			max_move_distance
+		)
 
 	move_updated.emit(
 		current_move_points,
@@ -137,8 +142,17 @@ func get_pushable_at(grid_pos: Vector2i) -> Pushable:
 	
 func end_turn(_turn_count: int):
 	current_move_points = max_move_points
-	move_updated.emit(current_move_points, max_move_points)  
-	highlight_layer.show_move_range(current_grid, max_move_distance)
+	move_updated.emit(current_move_points, max_move_points)
+	if TurnManager.active_player == self:
+		highlight_layer.show_move_range(current_grid, max_move_distance)
+
+# The highlight layer is shared between all players. Whenever the active
+# player changes (switching characters or ending a turn), the newly active
+# player redraws the shared layer at its own position so the highlight always
+# follows the character currently being controlled.
+func _on_active_player_changed(player: BasePlayer) -> void:
+	if player == self and highlight_layer:
+		highlight_layer.show_move_range(current_grid, max_move_distance)
 
 func _on_end_turn_button_pressed() -> void:
 	pass
