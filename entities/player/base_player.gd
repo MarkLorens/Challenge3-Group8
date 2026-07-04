@@ -112,6 +112,7 @@ func _unhandled_input(event):
 			if pushable_obj:
 				var target_push_tile = NeighboringTile.get_tile_in_direction(clicked_tile, push_dir)
 				if NeighboringTile.can_move_to(target_push_tile, floor_tilemap_floor, wall_tilemap_floor) and get_pushable_at(target_push_tile) == null:
+					TurnManager.ensure_turn_snapshot()
 					pushable_obj.push_to(target_push_tile)
 					current_move_points -= 1
 					move_updated.emit(current_move_points, max_move_points)
@@ -120,12 +121,16 @@ func _unhandled_input(event):
 					
 			else:
 				if NeighboringTile.can_move_to(clicked_tile, floor_tilemap_floor, wall_tilemap_floor):
+					TurnManager.ensure_turn_snapshot()
+					var prev_grid := current_grid
+					var prev_floor := map_floor
 					current_grid = clicked_tile
 					global_position = floor_tilemap_floor.to_global(floor_tilemap_floor.map_to_local(current_grid))
 					current_move_points -= 1
 					check_tile_effects()
 					check_stairs()
 					move_updated.emit(current_move_points, max_move_points)
+					TurnManager.record_move(self, prev_grid, prev_floor)
 					print(z_index)
 					
 			if current_move_points > 0:
@@ -142,6 +147,36 @@ func get_pushable_at(grid_pos: Vector2i) -> Pushable:
 	
 func end_turn(_turn_count: int):
 	current_move_points = max_move_points
+	move_updated.emit(current_move_points, max_move_points)
+	if TurnManager.active_player == self:
+		highlight_layer.show_move_range(current_grid, max_move_distance)
+
+# Restores this player to the state captured at the start of the current turn
+# (position, floor and full move points). Called by TurnManager.restart_turn().
+func reset_to_turn_start(state: Dictionary) -> void:
+	map_floor = state["map_floor"]  # setter re-runs check_floor()
+	z_index = state["z_index"]
+	current_grid = state["grid"]
+	current_move_points = max_move_points
+	global_position = floor_tilemap_floor.to_global(
+		floor_tilemap_floor.map_to_local(current_grid)
+	)
+	check_stairs()
+	move_updated.emit(current_move_points, max_move_points)
+	if TurnManager.active_player == self:
+		highlight_layer.show_move_range(current_grid, max_move_distance)
+
+# Steps this player back to the position stored before its most recent move and
+# refunds one move point. Called by TurnManager.undo_last_move().
+func undo_to(state: Dictionary) -> void:
+	map_floor = state["map_floor"]  # setter re-runs check_floor()
+	current_grid = state["grid"]
+	current_move_points = min(current_move_points + 1, max_move_points)
+	global_position = floor_tilemap_floor.to_global(
+		floor_tilemap_floor.map_to_local(current_grid)
+	)
+	check_tile_effects()  # recompute z-index / lock / objective prompt for this tile
+	check_stairs()
 	move_updated.emit(current_move_points, max_move_points)
 	if TurnManager.active_player == self:
 		highlight_layer.show_move_range(current_grid, max_move_distance)
